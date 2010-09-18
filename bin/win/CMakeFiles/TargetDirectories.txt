@@ -1,0 +1,8 @@
+D:/code/fyp/alpha/bin/win/CMakeFiles/ALL_BUILD.dir
+D:/code/fyp/alpha/bin/win/CMakeFiles/ZERO_CHECK.dir
+D:/code/fyp/alpha/bin/win/CMakeFiles/jfBallistic_x86.dir
+D:/code/fyp/alpha/bin/win/CMakeFiles/jfBoxesAndBalls_cuda.dir
+D:/code/fyp/alpha/bin/win/CMakeFiles/jfBoxesAndBalls_x86.dir
+D:/code/fyp/alpha/bin/win/CMakeFiles/jfCore_cuda.dir
+D:/code/fyp/alpha/bin/win/CMakeFiles/jfCore_x86.dir
+D:/code/fyp/alpha/bin/win/CMakeFiles/jfFlight_x86.dir

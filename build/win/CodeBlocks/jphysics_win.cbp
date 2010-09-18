@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="JPhysics" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Debug">
+				<Option output="..\..\bin\Debug\jPhysics" prefix_auto="1" extension_auto="1" />
+				<Option object_output="..\..\..\obj\win" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-g" />
+				</Compiler>
+			</Target>
+			<Target title="Release">
+				<Option output="..\..\bin\Release\lesson01" prefix_auto="1" extension_auto="1" />
+				<Option object_output="..\..\obj\Release\" />
+				<Option type="0" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-O2" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-Wall" />
+			<Add directory="..\..\..\src" />
+		</Compiler>
+		<Linker>
+			<Add library="mingw32" />
+			<Add library="SDLmain" />
+			<Add library="SDL.dll" />
+			<Add library="user32" />
+			<Add library="gdi32" />
+			<Add library="winmm" />
+			<Add library="dxguid" />
+			<Add library="opengl32" />
+			<Add library="glu32" />
+			<Add directory="C:\Users\Carsten\Desktop\SDL-devel-1.2.13-mingw32\SDL-1.2.13\lib" />
+		</Linker>
+		<Unit filename="..\..\..\src\jfClient\jfBallistic\cuda\jfAmmoRound.h" />
+		<Unit filename="..\..\..\src\jfClient\jfBallistic\cuda\jfBallisticEventHandler.h" />
+		<Unit filename="..\..\..\src\jfClient\jfBallistic\cuda\jfBallisticSDLGL3DGraphicsHandler.h" />
+		<Unit filename="..\..\..\src\jfClient\jfBallistic\cuda\jfBallisticSimulation.h" />
+		<Unit filename="..\..\..\src\jfClient\jfBallistic\jfAmmoRound.h" />
+		<Unit filename="..\..\..\src\jfClient\jfBallistic\jfBallisticEventHandler.h" />
+		<Unit filename="..\..\..\src\jfClient\jfBallistic\jfBallisticSDLGL3DGraphicsHandler.h" />
+		<Unit filename="..\..\..\src\jfClient\jfBallistic\jfBallisticSimulation.h" />
+		<Unit filename="..\..\..\src\jfClient\jfBallistic\x86\jfAmmoRound.cpp" />
+		<Unit filename="..\..\..\src\jfClient\jfBallistic\x86\jfAmmoRound.h" />
+		<Unit filename="..\..\..\src\jfClient\jfBallistic\x86\jfBallisticEventHandler.cpp" />
+		<Unit filename="..\..\..\src\jfClient\jfBallistic\x86\jfBallisticEventHandler.h" />
+		<Unit filename="..\..\..\src\jfClient\jfBallistic\x86\jfBallisticSDLGL3DGraphicsHandler.cpp" />
+		<Unit filename="..\..\..\src\jfClient\jfBallistic\x86\jfBallisticSDLGL3DGraphicsHandler.h" />
+		<Unit filename="..\..\..\src\jfClient\jfBallistic\x86\jfBallisticSimulation.cpp" />
+		<Unit filename="..\..\..\src\jfClient\jfBallistic\x86\jfBallisticSimulation.h" />
+		<Unit filename="..\..\..\src\jfClient\jfSimulation.cpp" />
+		<Unit filename="..\..\..\src\jfClient\jfSimulation.h" />
+		<Unit filename="..\..\..\src\jfClient\main.cpp" />
+		<Unit filename="..\..\..\src\jfEvent\jfEvent.cpp" />
+		<Unit filename="..\..\..\src\jfEvent\jfEvent.h" />
+		<Unit filename="..\..\..\src\jfEvent\jfEventHandler.cpp" />
+		<Unit filename="..\..\..\src\jfEvent\jfEventHandler.h" />
+		<Unit filename="..\..\..\src\jfGraphics\jf3DGraphics\jf3DGraphicsHandler.cpp" />
+		<Unit filename="..\..\..\src\jfGraphics\jf3DGraphics\jf3DGraphicsHandler.h" />
+		<Unit filename="..\..\..\src\jfGraphics\jf3DGraphics\jf3DObject\jf3DObject.cpp" />
+		<Unit filename="..\..\..\src\jfGraphics\jf3DGraphics\jf3DObject\jf3DObject.h" />
+		<Unit filename="..\..\..\src\jfGraphics\jf3DGraphics\jfSDLGL\jfSDLGL3DGraphicsHandler.cpp" />
+		<Unit filename="..\..\..\src\jfGraphics\jf3DGraphics\jfSDLGL\jfSDLGL3DGraphicsHandler.h" />
+		<Unit filename="..\..\..\src\jfGraphics\jfWindowManager\jfSDL\jfSDL.cpp" />
+		<Unit filename="..\..\..\src\jfGraphics\jfWindowManager\jfSDL\jfSDL.h" />
+		<Unit filename="..\..\..\src\jfGraphics\jfWindowManager\jfWindowManager.h" />
+		<Unit filename="..\..\..\src\jfParticleContact.cpp" />
+		<Unit filename="..\..\..\src\jfTimer\jfTimer.cpp" />
+		<Unit filename="..\..\..\src\jfTimer\jfTimer.h" />
+		<Unit filename="..\..\..\src\jfpx\cuda\jfParticle_cuda.cpp" />
+		<Unit filename="..\..\..\src\jfpx\cuda\jfParticle_cuda.h" />
+		<Unit filename="..\..\..\src\jfpx\cuda\jfParticle_cuda_integrator.cu" />
+		<Unit filename="..\..\..\src\jfpx\cuda\jfParticle_cuda_integrator_kernel.cu" />
+		<Unit filename="..\..\..\src\jfpx\cuda\jfVector3_cuda.cpp" />
+		<Unit filename="..\..\..\src\jfpx\cuda\jfVector3_cuda.h" />
+		<Unit filename="..\..\..\src\jfpx\jfParticle.cpp" />
+		<Unit filename="..\..\..\src\jfpx\jfParticle.h" />
+		<Unit filename="..\..\..\src\jfpx\jfParticleContact.cpp" />
+		<Unit filename="..\..\..\src\jfpx\jfParticleContact.h" />
+		<Unit filename="..\..\..\src\jfpx\jfPrecision.h" />
+		<Unit filename="..\..\..\src\jfpx\jfVector3.cpp" />
+		<Unit filename="..\..\..\src\jfpx\jfVector3.h" />
+		<Unit filename="..\..\..\src\jfpx\jfpxCore.h" />
+		<Unit filename="..\..\..\src\jfpx\x86\jfParticle.h" />
+		<Unit filename="..\..\..\src\jfpx\x86\jfParticleContact_x86.cpp" />
+		<Unit filename="..\..\..\src\jfpx\x86\jfParticleContact_x86.h" />
+		<Unit filename="..\..\..\src\jfpx\x86\jfParticle_x86.cpp" />
+		<Unit filename="..\..\..\src\jfpx\x86\jfParticle_x86.h" />
+		<Unit filename="..\..\..\src\jfpx\x86\jfPrecision.h" />
+		<Unit filename="..\..\..\src\jfpx\x86\jfVector3.h" />
+		<Unit filename="..\..\..\src\jfpx\x86\jfVector3_x86.cpp" />
+		<Unit filename="..\..\..\src\jfpx\x86\jfVector3_x86.h" />
+		<Unit filename="..\..\..\src\jfpx\x86\jfpxCore.h" />
+		<Extensions>
+			<code_completion />
+			<debugger />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>

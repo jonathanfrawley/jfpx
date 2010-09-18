@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_layout_file>
+	<ActiveTarget name="Debug" />
+	<File name="../../../../src/jfpx/jfContact.cpp" open="0" top="0" tabpos="0">
+		<Cursor position="513" topLine="3" />
+	</File>
+	<File name="../../../../src/jfpx/jfMatrix3.cpp" open="0" top="0" tabpos="0">
+		<Cursor position="208" topLine="1" />
+	</File>
+	<File name="../../../../src/jfpx/x86/jfCollisionDetector_x86.cpp" open="0" top="0" tabpos="0">
+		<Cursor position="315" topLine="0" />
+	</File>
+	<File name="../../../../src/jfpx/x86/jfContactResolver_x86.cpp" open="0" top="0" tabpos="0">
+		<Cursor position="0" topLine="66" />
+	</File>
+	<File name="../../../../src/jfpx/x86/jfContact_x86.cpp" open="0" top="0" tabpos="0">
+		<Cursor position="2521" topLine="81" />
+	</File>
+	<File name="../../../../src/jfpx/x86/jfIntersectionTester_x86.cpp" open="1" top="0" tabpos="0">
+		<Cursor position="0" topLine="0" />
+	</File>
+	<File name="../../../../src/jfpx/x86/jfRigidBody_x86.cpp" open="0" top="0" tabpos="0">
+		<Cursor position="2416" topLine="80" />
+	</File>
+	<File name="../../../unit/jfCollisionDetector_x86Test.cpp" open="0" top="0" tabpos="0">
+		<Cursor position="1537" topLine="39" />
+	</File>
+	<File name="../../../unit/jfContactResolver_x86Test.cpp" open="0" top="0" tabpos="0">
+		<Cursor position="2851" topLine="66" />
+	</File>
+</CodeBlocks_layout_file>

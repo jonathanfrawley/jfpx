@@ -1,0 +1,20 @@
+#include <jfSimulation/jfSimulation.h>
+#include <jfClient/jfBoxesAndBalls/x86/jfBoxesAndBallsSimulation_x86.h>
+
+int main(int argc, char **argv)
+{
+    jfSimulation* simulation = new jfBoxesAndBallsSimulation_x86();
+
+    if(simulation->init())
+    {
+	    simulation->run();
+    }
+    else
+    {
+	    std::cout << "Simulation init failed! Not running..." << std::endl;
+    }
+
+    delete simulation;
+
+    return 0;
+}

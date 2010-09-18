@@ -1,0 +1,328 @@
+<?xml version="1.0" encoding = "Windows-1252"?>
+<VisualStudioProject
+	ProjectType="Visual C++"
+	Version="9.00"
+	Name="jfBigBallistic_x86"
+	ProjectGUID="{1205C995-2C32-4329-B37C-4AA690A8D9DD}"
+	Keyword="Win32Proj">
+	<Platforms>
+		<Platform
+			Name="Win32"/>
+	</Platforms>
+	<Configurations>
+		<Configuration
+			Name="Debug|Win32"
+			OutputDirectory="Debug"
+			IntermediateDirectory="jfBigBallistic_x86.dir\Debug"
+			ConfigurationType="1"
+			UseOfMFC="0"
+			ATLMinimizesCRunTimeLibraryUsage="FALSE"
+			CharacterSet="2">
+			<Tool
+				Name="VCCLCompilerTool"
+				AdditionalOptions=" /Zm1000"
+				AdditionalIncludeDirectories="D:\code\fyp\alpha\src\.;D:\code\fyp\alpha\src\..\lib\SDL\include;C:\CUDA\include;"
+				BasicRuntimeChecks="3"
+				CompileAs="2"
+				DebugInformationFormat="3"
+				ExceptionHandling="1"
+				InlineFunctionExpansion="0"
+				Optimization="0"
+				RuntimeLibrary="3"
+				RuntimeTypeInfo="TRUE"
+				WarningLevel="3"
+				PreprocessorDefinitions="WIN32,_WINDOWS,_DEBUG,CMAKE_INTDIR=\&quot;Debug\&quot;"
+				AssemblerListingLocation="Debug"
+				ObjectFile="$(IntDir)\"
+				ProgramDataBaseFileName="D:\code\fyp\alpha\bin\win\Debug/jfBigBallistic_x86.pdb"
+/>
+			<Tool
+				Name="VCCustomBuildTool"/>
+			<Tool
+				Name="VCResourceCompilerTool"
+				AdditionalIncludeDirectories="D:\code\fyp\alpha\src\.;D:\code\fyp\alpha\src\..\lib\SDL\include;C:\CUDA\include;"
+				PreprocessorDefinitions="WIN32,_WINDOWS,_DEBUG,CMAKE_INTDIR=\&quot;Debug\&quot;"/>
+			<Tool
+				Name="VCMIDLTool"
+				PreprocessorDefinitions="WIN32,_WINDOWS,_DEBUG,CMAKE_INTDIR=\&quot;Debug\&quot;"
+				MkTypLibCompatible="FALSE"
+				TargetEnvironment="1"
+				GenerateStublessProxies="TRUE"
+				TypeLibraryName="$(InputName).tlb"
+				OutputDirectory="$(IntDir)"
+				HeaderFileName="$(InputName).h"
+				DLLDataFileName=""
+				InterfaceIdentifierFileName="$(InputName)_i.c"
+				ProxyFileName="$(InputName)_p.c"/>
+			<Tool
+				Name="VCPreBuildEventTool"/>
+			<Tool
+				Name="VCPreLinkEventTool"/>
+			<Tool
+				Name="VCPostBuildEventTool"/>
+			<Tool
+				Name="VCLinkerTool"
+				LinkLibraryDependencies="false"
+				AdditionalOptions=" /STACK:10000000 /machine:X86 /debug"
+				AdditionalDependencies="$(NOINHERIT) kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib  opengl32.lib sdl.lib sdlmain.lib glu32.lib Debug\jfCore_x86.lib "
+				OutputFile="D:\code\fyp\alpha\bin\win\Debug\jfBigBallistic_x86.exe"
+				Version="0.0"
+				LinkIncremental="2"
+				AdditionalLibraryDirectories="..\lib\SDL\lib\$(OutDir),..\lib\SDL\lib"
+				ProgramDataBaseFile="D:\code\fyp\alpha\bin\win\Debug/jfBigBallistic_x86.pdb"
+				GenerateDebugInformation="TRUE"
+				SubSystem="1"
+				ImportLibrary="D:\code\fyp\alpha\bin\win\Debug\jfBigBallistic_x86.lib"/>
+		</Configuration>
+		<Configuration
+			Name="Release|Win32"
+			OutputDirectory="Release"
+			IntermediateDirectory="jfBigBallistic_x86.dir\Release"
+			ConfigurationType="1"
+			UseOfMFC="0"
+			ATLMinimizesCRunTimeLibraryUsage="FALSE"
+			CharacterSet="2">
+			<Tool
+				Name="VCCLCompilerTool"
+				AdditionalOptions=" /Zm1000"
+				AdditionalIncludeDirectories="D:\code\fyp\alpha\src\.;D:\code\fyp\alpha\src\..\lib\SDL\include;C:\CUDA\include;"
+				CompileAs="2"
+				ExceptionHandling="1"
+				InlineFunctionExpansion="2"
+				Optimization="2"
+				RuntimeLibrary="2"
+				RuntimeTypeInfo="TRUE"
+				WarningLevel="3"
+				PreprocessorDefinitions="WIN32,_WINDOWS,NDEBUG,CMAKE_INTDIR=\&quot;Release\&quot;"
+				AssemblerListingLocation="Release"
+				ObjectFile="$(IntDir)\"
+				ProgramDataBaseFileName="D:\code\fyp\alpha\bin\win\Release/jfBigBallistic_x86.pdb"
+/>
+			<Tool
+				Name="VCCustomBuildTool"/>
+			<Tool
+				Name="VCResourceCompilerTool"
+				AdditionalIncludeDirectories="D:\code\fyp\alpha\src\.;D:\code\fyp\alpha\src\..\lib\SDL\include;C:\CUDA\include;"
+				PreprocessorDefinitions="WIN32,_WINDOWS,NDEBUG,CMAKE_INTDIR=\&quot;Release\&quot;"/>
+			<Tool
+				Name="VCMIDLTool"
+				PreprocessorDefinitions="WIN32,_WINDOWS,NDEBUG,CMAKE_INTDIR=\&quot;Release\&quot;"
+				MkTypLibCompatible="FALSE"
+				TargetEnvironment="1"
+				GenerateStublessProxies="TRUE"
+				TypeLibraryName="$(InputName).tlb"
+				OutputDirectory="$(IntDir)"
+				HeaderFileName="$(InputName).h"
+				DLLDataFileName=""
+				InterfaceIdentifierFileName="$(InputName)_i.c"
+				ProxyFileName="$(InputName)_p.c"/>
+			<Tool
+				Name="VCPreBuildEventTool"/>
+			<Tool
+				Name="VCPreLinkEventTool"/>
+			<Tool
+				Name="VCPostBuildEventTool"/>
+			<Tool
+				Name="VCLinkerTool"
+				LinkLibraryDependencies="false"
+				AdditionalOptions=" /STACK:10000000 /machine:X86"
+				AdditionalDependencies="$(NOINHERIT) kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib  opengl32.lib sdl.lib sdlmain.lib glu32.lib Release\jfCore_x86.lib "
+				OutputFile="D:\code\fyp\alpha\bin\win\Release\jfBigBallistic_x86.exe"
+				Version="0.0"
+				LinkIncremental="1"
+				AdditionalLibraryDirectories="..\lib\SDL\lib\$(OutDir),..\lib\SDL\lib"
+				ProgramDataBaseFile="D:\code\fyp\alpha\bin\win\Release/jfBigBallistic_x86.pdb"
+				SubSystem="1"
+				ImportLibrary="D:\code\fyp\alpha\bin\win\Release\jfBigBallistic_x86.lib"/>
+		</Configuration>
+		<Configuration
+			Name="MinSizeRel|Win32"
+			OutputDirectory="MinSizeRel"
+			IntermediateDirectory="jfBigBallistic_x86.dir\MinSizeRel"
+			ConfigurationType="1"
+			UseOfMFC="0"
+			ATLMinimizesCRunTimeLibraryUsage="FALSE"
+			CharacterSet="2">
+			<Tool
+				Name="VCCLCompilerTool"
+				AdditionalOptions=" /Zm1000"
+				AdditionalIncludeDirectories="D:\code\fyp\alpha\src\.;D:\code\fyp\alpha\src\..\lib\SDL\include;C:\CUDA\include;"
+				CompileAs="2"
+				ExceptionHandling="1"
+				InlineFunctionExpansion="1"
+				Optimization="1"
+				RuntimeLibrary="2"
+				RuntimeTypeInfo="TRUE"
+				WarningLevel="3"
+				PreprocessorDefinitions="WIN32,_WINDOWS,NDEBUG,CMAKE_INTDIR=\&quot;MinSizeRel\&quot;"
+				AssemblerListingLocation="MinSizeRel"
+				ObjectFile="$(IntDir)\"
+				ProgramDataBaseFileName="D:\code\fyp\alpha\bin\win\MinSizeRel/jfBigBallistic_x86.pdb"
+/>
+			<Tool
+				Name="VCCustomBuildTool"/>
+			<Tool
+				Name="VCResourceCompilerTool"
+				AdditionalIncludeDirectories="D:\code\fyp\alpha\src\.;D:\code\fyp\alpha\src\..\lib\SDL\include;C:\CUDA\include;"
+				PreprocessorDefinitions="WIN32,_WINDOWS,NDEBUG,CMAKE_INTDIR=\&quot;MinSizeRel\&quot;"/>
+			<Tool
+				Name="VCMIDLTool"
+				PreprocessorDefinitions="WIN32,_WINDOWS,NDEBUG,CMAKE_INTDIR=\&quot;MinSizeRel\&quot;"
+				MkTypLibCompatible="FALSE"
+				TargetEnvironment="1"
+				GenerateStublessProxies="TRUE"
+				TypeLibraryName="$(InputName).tlb"
+				OutputDirectory="$(IntDir)"
+				HeaderFileName="$(InputName).h"
+				DLLDataFileName=""
+				InterfaceIdentifierFileName="$(InputName)_i.c"
+				ProxyFileName="$(InputName)_p.c"/>
+			<Tool
+				Name="VCPreBuildEventTool"/>
+			<Tool
+				Name="VCPreLinkEventTool"/>
+			<Tool
+				Name="VCPostBuildEventTool"/>
+			<Tool
+				Name="VCLinkerTool"
+				LinkLibraryDependencies="false"
+				AdditionalOptions=" /STACK:10000000 /machine:X86"
+				AdditionalDependencies="$(NOINHERIT) kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib  opengl32.lib sdl.lib sdlmain.lib glu32.lib MinSizeRel\jfCore_x86.lib "
+				OutputFile="D:\code\fyp\alpha\bin\win\MinSizeRel\jfBigBallistic_x86.exe"
+				Version="0.0"
+				LinkIncremental="1"
+				AdditionalLibraryDirectories="..\lib\SDL\lib\$(OutDir),..\lib\SDL\lib"
+				ProgramDataBaseFile="D:\code\fyp\alpha\bin\win\MinSizeRel/jfBigBallistic_x86.pdb"
+				SubSystem="1"
+				ImportLibrary="D:\code\fyp\alpha\bin\win\MinSizeRel\jfBigBallistic_x86.lib"/>
+		</Configuration>
+		<Configuration
+			Name="RelWithDebInfo|Win32"
+			OutputDirectory="RelWithDebInfo"
+			IntermediateDirectory="jfBigBallistic_x86.dir\RelWithDebInfo"
+			ConfigurationType="1"
+			UseOfMFC="0"
+			ATLMinimizesCRunTimeLibraryUsage="FALSE"
+			CharacterSet="2">
+			<Tool
+				Name="VCCLCompilerTool"
+				AdditionalOptions=" /Zm1000"
+				AdditionalIncludeDirectories="D:\code\fyp\alpha\src\.;D:\code\fyp\alpha\src\..\lib\SDL\include;C:\CUDA\include;"
+				CompileAs="2"
+				DebugInformationFormat="3"
+				ExceptionHandling="1"
+				InlineFunctionExpansion="1"
+				Optimization="2"
+				RuntimeLibrary="2"
+				RuntimeTypeInfo="TRUE"
+				WarningLevel="3"
+				PreprocessorDefinitions="WIN32,_WINDOWS,NDEBUG,CMAKE_INTDIR=\&quot;RelWithDebInfo\&quot;"
+				AssemblerListingLocation="RelWithDebInfo"
+				ObjectFile="$(IntDir)\"
+				ProgramDataBaseFileName="D:\code\fyp\alpha\bin\win\RelWithDebInfo/jfBigBallistic_x86.pdb"
+/>
+			<Tool
+				Name="VCCustomBuildTool"/>
+			<Tool
+				Name="VCResourceCompilerTool"
+				AdditionalIncludeDirectories="D:\code\fyp\alpha\src\.;D:\code\fyp\alpha\src\..\lib\SDL\include;C:\CUDA\include;"
+				PreprocessorDefinitions="WIN32,_WINDOWS,NDEBUG,CMAKE_INTDIR=\&quot;RelWithDebInfo\&quot;"/>
+			<Tool
+				Name="VCMIDLTool"
+				PreprocessorDefinitions="WIN32,_WINDOWS,NDEBUG,CMAKE_INTDIR=\&quot;RelWithDebInfo\&quot;"
+				MkTypLibCompatible="FALSE"
+				TargetEnvironment="1"
+				GenerateStublessProxies="TRUE"
+				TypeLibraryName="$(InputName).tlb"
+				OutputDirectory="$(IntDir)"
+				HeaderFileName="$(InputName).h"
+				DLLDataFileName=""
+				InterfaceIdentifierFileName="$(InputName)_i.c"
+				ProxyFileName="$(InputName)_p.c"/>
+			<Tool
+				Name="VCPreBuildEventTool"/>
+			<Tool
+				Name="VCPreLinkEventTool"/>
+			<Tool
+				Name="VCPostBuildEventTool"/>
+			<Tool
+				Name="VCLinkerTool"
+				LinkLibraryDependencies="false"
+				AdditionalOptions=" /STACK:10000000 /machine:X86 /debug"
+				AdditionalDependencies="$(NOINHERIT) kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib  opengl32.lib sdl.lib sdlmain.lib glu32.lib RelWithDebInfo\jfCore_x86.lib "
+				OutputFile="D:\code\fyp\alpha\bin\win\RelWithDebInfo\jfBigBallistic_x86.exe"
+				Version="0.0"
+				LinkIncremental="2"
+				AdditionalLibraryDirectories="..\lib\SDL\lib\$(OutDir),..\lib\SDL\lib"
+				ProgramDataBaseFile="D:\code\fyp\alpha\bin\win\RelWithDebInfo/jfBigBallistic_x86.pdb"
+				GenerateDebugInformation="TRUE"
+				SubSystem="1"
+				ImportLibrary="D:\code\fyp\alpha\bin\win\RelWithDebInfo\jfBigBallistic_x86.lib"/>
+		</Configuration>
+	</Configurations>
+	<Files>
+			<File
+				RelativePath="D:\code\fyp\alpha\src\CMakeLists.txt">
+				<FileConfiguration
+					Name="Debug|Win32">
+					<Tool
+					Name="VCCustomBuildTool"
+					Description="Building Custom Rule D:/code/fyp/alpha/src/CMakeLists.txt"
+					CommandLine="&quot;C:\Program Files (x86)\CMake 2.8\bin\cmake.exe&quot; -HD:/code/fyp/alpha/src -BD:/code/fyp/alpha/bin/win --check-stamp-file CMakeFiles/generate.stamp"
+					AdditionalDependencies="D:\code\fyp\alpha\src\CMakeLists.txt;D:\code\fyp\alpha\bin\win\CMakeFiles\CMakeSystem.cmake;D:\code\fyp\alpha\bin\win\CMakeFiles\CMakeCCompiler.cmake;D:\code\fyp\alpha\bin\win\CMakeFiles\CMakeCXXCompiler.cmake;&quot;C:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\CMakeSystemSpecificInformation.cmake&quot;;&quot;C:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\CMakeGenericSystem.cmake&quot;;&quot;C:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\Platform\Windows.cmake&quot;;&quot;C:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\Platform\WindowsPaths.cmake&quot;;&quot;C:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\CMakeCInformation.cmake&quot;;&quot;C:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\Platform\Windows-cl.cmake&quot;;D:\code\fyp\alpha\bin\win\CMakeFiles\CMakeCPlatform.cmake;D:\code\fyp\alpha\bin\win\CMakeFiles\CMakeCXXPlatform.cmake;&quot;C:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\Platform\cl.cmake&quot;;D:\code\fyp\alpha\bin\win\CMakeFiles\CMakeRCCompiler.cmake;&quot;C:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\CMakeRCInformation.cmake&quot;;&quot;C:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\CMakeCommonLanguageInclude.cmake&quot;;&quot;C:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\CMakeCXXInformation.cmake&quot;;&quot;C:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\CMakeCommonLanguageInclude.cmake&quot;;D:\code\fyp\alpha\src\CMake\cuda\FindCUDA.cmake;&quot;C:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\FindPackageHandleStandardArgs.cmake&quot;;&quot;C:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\FindPackageMessage.cmake&quot;;D:\code\fyp\alpha\bin\win\CMakeFiles\jfCore_cuda_generated_jfCollisionDetectorKernel_cuda.cu.obj.depend;&quot;C:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\FindCUDA\run_nvcc.cmake&quot;;D:\code\fyp\alpha\src\CMakeLists.txt;"
+					Outputs="CMakeFiles\generate.stamp"/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32">
+					<Tool
+					Name="VCCustomBuildTool"
+					Description="Building Custom Rule D:/code/fyp/alpha/src/CMakeLists.txt"
+					CommandLine="&quot;C:\Program Files (x86)\CMake 2.8\bin\cmake.exe&quot; -HD:/code/fyp/alpha/src -BD:/code/fyp/alpha/bin/win --check-stamp-file CMakeFiles/generate.stamp"
+					AdditionalDependencies="D:\code\fyp\alpha\src\CMakeLists.txt;D:\code\fyp\alpha\bin\win\CMakeFiles\CMakeSystem.cmake;D:\code\fyp\alpha\bin\win\CMakeFiles\CMakeCCompiler.cmake;D:\code\fyp\alpha\bin\win\CMakeFiles\CMakeCXXCompiler.cmake;&quot;C:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\CMakeSystemSpecificInformation.cmake&quot;;&quot;C:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\CMakeGenericSystem.cmake&quot;;&quot;C:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\Platform\Windows.cmake&quot;;&quot;C:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\Platform\WindowsPaths.cmake&quot;;&quot;C:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\CMakeCInformation.cmake&quot;;&quot;C:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\Platform\Windows-cl.cmake&quot;;D:\code\fyp\alpha\bin\win\CMakeFiles\CMakeCPlatform.cmake;D:\code\fyp\alpha\bin\win\CMakeFiles\CMakeCXXPlatform.cmake;&quot;C:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\Platform\cl.cmake&quot;;D:\code\fyp\alpha\bin\win\CMakeFiles\CMakeRCCompiler.cmake;&quot;C:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\CMakeRCInformation.cmake&quot;;&quot;C:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\CMakeCommonLanguageInclude.cmake&quot;;&quot;C:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\CMakeCXXInformation.cmake&quot;;&quot;C:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\CMakeCommonLanguageInclude.cmake&quot;;D:\code\fyp\alpha\src\CMake\cuda\FindCUDA.cmake;&quot;C:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\FindPackageHandleStandardArgs.cmake&quot;;&quot;C:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\FindPackageMessage.cmake&quot;;D:\code\fyp\alpha\bin\win\CMakeFiles\jfCore_cuda_generated_jfCollisionDetectorKernel_cuda.cu.obj.depend;&quot;C:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\FindCUDA\run_nvcc.cmake&quot;;D:\code\fyp\alpha\src\CMakeLists.txt;"
+					Outputs="CMakeFiles\generate.stamp"/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="MinSizeRel|Win32">
+					<Tool
+					Name="VCCustomBuildTool"
+					Description="Building Custom Rule D:/code/fyp/alpha/src/CMakeLists.txt"
+					CommandLine="&quot;C:\Program Files (x86)\CMake 2.8\bin\cmake.exe&quot; -HD:/code/fyp/alpha/src -BD:/code/fyp/alpha/bin/win --check-stamp-file CMakeFiles/generate.stamp"
+					AdditionalDependencies="D:\code\fyp\alpha\src\CMakeLists.txt;D:\code\fyp\alpha\bin\win\CMakeFiles\CMakeSystem.cmake;D:\code\fyp\alpha\bin\win\CMakeFiles\CMakeCCompiler.cmake;D:\code\fyp\alpha\bin\win\CMakeFiles\CMakeCXXCompiler.cmake;&quot;C:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\CMakeSystemSpecificInformation.cmake&quot;;&quot;C:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\CMakeGenericSystem.cmake&quot;;&quot;C:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\Platform\Windows.cmake&quot;;&quot;C:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\Platform\WindowsPaths.cmake&quot;;&quot;C:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\CMakeCInformation.cmake&quot;;&quot;C:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\Platform\Windows-cl.cmake&quot;;D:\code\fyp\alpha\bin\win\CMakeFiles\CMakeCPlatform.cmake;D:\code\fyp\alpha\bin\win\CMakeFiles\CMakeCXXPlatform.cmake;&quot;C:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\Platform\cl.cmake&quot;;D:\code\fyp\alpha\bin\win\CMakeFiles\CMakeRCCompiler.cmake;&quot;C:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\CMakeRCInformation.cmake&quot;;&quot;C:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\CMakeCommonLanguageInclude.cmake&quot;;&quot;C:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\CMakeCXXInformation.cmake&quot;;&quot;C:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\CMakeCommonLanguageInclude.cmake&quot;;D:\code\fyp\alpha\src\CMake\cuda\FindCUDA.cmake;&quot;C:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\FindPackageHandleStandardArgs.cmake&quot;;&quot;C:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\FindPackageMessage.cmake&quot;;D:\code\fyp\alpha\bin\win\CMakeFiles\jfCore_cuda_generated_jfCollisionDetectorKernel_cuda.cu.obj.depend;&quot;C:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\FindCUDA\run_nvcc.cmake&quot;;D:\code\fyp\alpha\src\CMakeLists.txt;"
+					Outputs="CMakeFiles\generate.stamp"/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="RelWithDebInfo|Win32">
+					<Tool
+					Name="VCCustomBuildTool"
+					Description="Building Custom Rule D:/code/fyp/alpha/src/CMakeLists.txt"
+					CommandLine="&quot;C:\Program Files (x86)\CMake 2.8\bin\cmake.exe&quot; -HD:/code/fyp/alpha/src -BD:/code/fyp/alpha/bin/win --check-stamp-file CMakeFiles/generate.stamp"
+					AdditionalDependencies="D:\code\fyp\alpha\src\CMakeLists.txt;D:\code\fyp\alpha\bin\win\CMakeFiles\CMakeSystem.cmake;D:\code\fyp\alpha\bin\win\CMakeFiles\CMakeCCompiler.cmake;D:\code\fyp\alpha\bin\win\CMakeFiles\CMakeCXXCompiler.cmake;&quot;C:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\CMakeSystemSpecificInformation.cmake&quot;;&quot;C:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\CMakeGenericSystem.cmake&quot;;&quot;C:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\Platform\Windows.cmake&quot;;&quot;C:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\Platform\WindowsPaths.cmake&quot;;&quot;C:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\CMakeCInformation.cmake&quot;;&quot;C:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\Platform\Windows-cl.cmake&quot;;D:\code\fyp\alpha\bin\win\CMakeFiles\CMakeCPlatform.cmake;D:\code\fyp\alpha\bin\win\CMakeFiles\CMakeCXXPlatform.cmake;&quot;C:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\Platform\cl.cmake&quot;;D:\code\fyp\alpha\bin\win\CMakeFiles\CMakeRCCompiler.cmake;&quot;C:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\CMakeRCInformation.cmake&quot;;&quot;C:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\CMakeCommonLanguageInclude.cmake&quot;;&quot;C:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\CMakeCXXInformation.cmake&quot;;&quot;C:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\CMakeCommonLanguageInclude.cmake&quot;;D:\code\fyp\alpha\src\CMake\cuda\FindCUDA.cmake;&quot;C:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\FindPackageHandleStandardArgs.cmake&quot;;&quot;C:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\FindPackageMessage.cmake&quot;;D:\code\fyp\alpha\bin\win\CMakeFiles\jfCore_cuda_generated_jfCollisionDetectorKernel_cuda.cu.obj.depend;&quot;C:\Program Files (x86)\CMake 2.8\share\cmake-2.8\Modules\FindCUDA\run_nvcc.cmake&quot;;D:\code\fyp\alpha\src\CMakeLists.txt;"
+					Outputs="CMakeFiles\generate.stamp"/>
+				</FileConfiguration>
+			</File>
+		<Filter
+			Name="Source Files"
+			Filter="">
+			<File
+				RelativePath="D:\code\fyp\alpha\src\jfClient\jfBigBallistic\x86\jfAmmoRound_x86.cpp">
+			</File>
+			<File
+				RelativePath="D:\code\fyp\alpha\src\jfClient\jfBigBallistic\x86\jfBigBallistic3DGraphicsHandler_x86.cpp">
+			</File>
+			<File
+				RelativePath="D:\code\fyp\alpha\src\jfClient\jfBigBallistic\x86\jfBigBallisticEventHandler_x86.cpp">
+			</File>
+			<File
+				RelativePath="D:\code\fyp\alpha\src\jfClient\jfBigBallistic\x86\jfBigBallisticSimulation_x86.cpp">
+			</File>
+			<File
+				RelativePath="D:\code\fyp\alpha\src\jfClient\jfBigBallistic\x86\jfBox_x86.cpp">
+			</File>
+			<File
+				RelativePath="D:\code\fyp\alpha\src\jfClient\jfBigBallistic\x86\main.cpp">
+			</File>
+		</Filter>
+	</Files>
+	<Globals>
+	</Globals>
+</VisualStudioProject>

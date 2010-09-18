@@ -1,0 +1,24 @@
+# CMake generation dependency list for this directory.
+D:/code/fyp/alpha/src/CMakeLists.txt
+D:/code/fyp/alpha/bin/win/CMakeFiles/CMakeSystem.cmake
+D:/code/fyp/alpha/bin/win/CMakeFiles/CMakeCCompiler.cmake
+D:/code/fyp/alpha/bin/win/CMakeFiles/CMakeCXXCompiler.cmake
+C:/Program Files (x86)/CMake 2.8/share/cmake-2.8/Modules/CMakeSystemSpecificInformation.cmake
+C:/Program Files (x86)/CMake 2.8/share/cmake-2.8/Modules/CMakeGenericSystem.cmake
+C:/Program Files (x86)/CMake 2.8/share/cmake-2.8/Modules/Platform/Windows.cmake
+C:/Program Files (x86)/CMake 2.8/share/cmake-2.8/Modules/Platform/WindowsPaths.cmake
+C:/Program Files (x86)/CMake 2.8/share/cmake-2.8/Modules/CMakeCInformation.cmake
+C:/Program Files (x86)/CMake 2.8/share/cmake-2.8/Modules/Platform/Windows-cl.cmake
+D:/code/fyp/alpha/bin/win/CMakeFiles/CMakeCPlatform.cmake
+D:/code/fyp/alpha/bin/win/CMakeFiles/CMakeCXXPlatform.cmake
+C:/Program Files (x86)/CMake 2.8/share/cmake-2.8/Modules/Platform/cl.cmake
+D:/code/fyp/alpha/bin/win/CMakeFiles/CMakeRCCompiler.cmake
+C:/Program Files (x86)/CMake 2.8/share/cmake-2.8/Modules/CMakeRCInformation.cmake
+C:/Program Files (x86)/CMake 2.8/share/cmake-2.8/Modules/CMakeCommonLanguageInclude.cmake
+C:/Program Files (x86)/CMake 2.8/share/cmake-2.8/Modules/CMakeCXXInformation.cmake
+C:/Program Files (x86)/CMake 2.8/share/cmake-2.8/Modules/CMakeCommonLanguageInclude.cmake
+D:/code/fyp/alpha/src/CMake/cuda/FindCUDA.cmake
+C:/Program Files (x86)/CMake 2.8/share/cmake-2.8/Modules/FindPackageHandleStandardArgs.cmake
+C:/Program Files (x86)/CMake 2.8/share/cmake-2.8/Modules/FindPackageMessage.cmake
+D:/code/fyp/alpha/bin/win/CMakeFiles/jfCore_cuda_generated_jfCollisionDetectorKernel_cuda.cu.obj.depend
+C:/Program Files (x86)/CMake 2.8/share/cmake-2.8/Modules/FindCUDA/run_nvcc.cmake

@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="Jphysics_cuda" />
+		<Option pch_mode="2" />
+		<Option compiler="nvidia_nvcc_cuda_compiler" />
+		<Build>
+			<Target title="Debug">
+				<Option output="../../bin/Debug/jfpxBallistic_unix_cuda" prefix_auto="1" extension_auto="1" />
+				<Option object_output="../../obj/Debug/" />
+				<Option type="1" />
+				<Option compiler="nvidia_nvcc_cuda_compiler" />
+			</Target>
+			<Target title="Release">
+				<Option output="../../bin/Release/jfpxBallistic_unix_cuda" prefix_auto="1" extension_auto="1" />
+				<Option object_output="../../obj/Release/" />
+				<Option type="0" />
+				<Option compiler="nvidia_nvcc_cuda_compiler" />
+				<Compiler>
+					<Add option="-O2" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="--host-compilation C++" />
+			<Add directory="../../../src" />
+		</Compiler>
+		<Linker>
+			<Add library="SDL" />
+			<Add library="GL" />
+			<Add library="GLU" />
+		</Linker>
+		<Unit filename="../../../src/jfClient/jfBallistic/cuda/jfAmmoRound.cpp" />
+		<Unit filename="../../../src/jfClient/jfBallistic/cuda/jfAmmoRound.h" />
+		<Unit filename="../../../src/jfClient/jfBallistic/cuda/jfBallisticEventHandler.cpp" />
+		<Unit filename="../../../src/jfClient/jfBallistic/cuda/jfBallisticEventHandler.h" />
+		<Unit filename="../../../src/jfClient/jfBallistic/cuda/jfBallisticSDLGL3DGraphicsHandler.cpp" />
+		<Unit filename="../../../src/jfClient/jfBallistic/cuda/jfBallisticSDLGL3DGraphicsHandler.h" />
+		<Unit filename="../../../src/jfClient/jfBallistic/cuda/jfBallisticSimulation.cpp" />
+		<Unit filename="../../../src/jfClient/jfBallistic/cuda/jfBallisticSimulation.h" />
+		<Unit filename="../../../src/jfClient/jfSimulation.cpp" />
+		<Unit filename="../../../src/jfClient/main.cpp" />
+		<Unit filename="../../../src/jfEvent/jfEvent.cpp" />
+		<Unit filename="../../../src/jfEvent/jfEvent.h" />
+		<Unit filename="../../../src/jfEvent/jfEventHandler.cpp" />
+		<Unit filename="../../../src/jfEvent/jfEventHandler.h" />
+		<Unit filename="../../../src/jfGraphics/jf3DGraphics/jf3DGraphicsHandler.cpp" />
+		<Unit filename="../../../src/jfGraphics/jf3DGraphics/jf3DGraphicsHandler.h" />
+		<Unit filename="../../../src/jfGraphics/jf3DGraphics/jf3DObject/jf3DObject.cpp" />
+		<Unit filename="../../../src/jfGraphics/jf3DGraphics/jf3DObject/jf3DObject.h" />
+		<Unit filename="../../../src/jfGraphics/jf3DGraphics/jfSDLGL/jfSDLGL3DGraphicsHandler.cpp" />
+		<Unit filename="../../../src/jfGraphics/jf3DGraphics/jfSDLGL/jfSDLGL3DGraphicsHandler.h" />
+		<Unit filename="../../../src/jfGraphics/jfWindowManager/jfSDL/jfSDL.cpp" />
+		<Unit filename="../../../src/jfGraphics/jfWindowManager/jfSDL/jfSDL.h" />
+		<Unit filename="../../../src/jfGraphics/jfWindowManager/jfWindowManager.h" />
+		<Unit filename="../../../src/jfTimer/jfTimer.cpp" />
+		<Unit filename="../../../src/jfTimer/jfTimer.h" />
+		<Unit filename="../../../src/jfpx/cuda/jfParticle_cuda.cpp" />
+		<Unit filename="../../../src/jfpx/cuda/jfParticle_cuda.h" />
+		<Unit filename="../../../src/jfpx/cuda/jfParticle_cuda_integrator.cu">
+			<Option compile="1" />
+			<Option link="1" />
+		</Unit>
+		<Unit filename="../../../src/jfpx/cuda/jfParticle_cuda_integrator_kernel.cu">
+			<Option compile="1" />
+			<Option link="1" />
+		</Unit>
+		<Unit filename="../../../src/jfpx/cuda/jfVector3_cuda.cpp" />
+		<Unit filename="../../../src/jfpx/cuda/jfVector3_cuda.h" />
+		<Unit filename="../../../src/jfpx/jfParticle.cpp" />
+		<Unit filename="../../../src/jfpx/jfParticle.h" />
+		<Unit filename="../../../src/jfpx/jfPrecision.h" />
+		<Unit filename="../../../src/jfpx/jfVector3.cpp" />
+		<Unit filename="../../../src/jfpx/jfVector3.h" />
+		<Unit filename="../../../src/jfpx/jfpxCore.h" />
+		<Unit filename="../../../src/jfpx/x86/jfParticle_x86.cpp" />
+		<Unit filename="../../../src/jfpx/x86/jfParticle_x86.h" />
+		<Unit filename="../../../src/jfpx/x86/jfVector3_x86.cpp" />
+		<Unit filename="../../../src/jfpx/x86/jfVector3_x86.h" />
+		<Extensions>
+			<code_completion />
+			<debugger />
+			<envvars />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>

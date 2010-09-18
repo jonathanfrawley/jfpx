@@ -1,0 +1,26 @@
+#ifndef JFSDLGL3DGRAPHICSHANDLER_H
+#define JFSDLGL3DGRAPHICSHANDLER_H
+
+#include <jfGraphics/jf3DGraphics/jf3DGraphicsHandler.h>
+
+#include <windows.h>
+#include <SDL/SDL.h>
+#include <SDL/SDL_opengl.h>
+#include <GL/gl.h>
+#include <GL/glu.h>
+
+class jfSDLGL3DGraphicsHandler : public jf3DGraphicsHandler
+{
+    public:
+        jfSDLGL3DGraphicsHandler();
+        virtual ~jfSDLGL3DGraphicsHandler();
+        void init();
+        /* Interface */
+        virtual void initObjects() = 0;
+        virtual void drawObjects() const = 0;
+        void draw();
+    protected:
+    private:
+};
+
+#endif // JFSDLGL3DGRAPHICSHANDLER_H

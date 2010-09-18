@@ -1,0 +1,35 @@
+#ifndef JFQUATERNION_X86_H
+#define JFQUATERNION_X86_H
+
+#include <jfpx/jfQuaternion.h>
+
+class jfQuaternion_x86 : public jfQuaternion
+{
+	public:
+        jfQuaternion_x86();
+
+        jfQuaternion_x86(jfReal r
+                            ,jfReal i
+                            ,jfReal j
+                            ,jfReal k);
+
+        jfQuaternion_x86( const jfQuaternion& other );
+
+        virtual ~jfQuaternion_x86();
+
+
+        /*-----------------------------------------------------------------------------
+         *  Inherited methods
+         *-----------------------------------------------------------------------------*/
+        void normalize();
+
+        void operator*=(const jfQuaternion& other);
+
+        void rotateByVector(const jfVector3& vec);
+
+        void addScaledVector(const jfVector3& vec, jfReal scale) ;
+	protected:
+
+};
+
+#endif //JFQUATERNION_X86_H

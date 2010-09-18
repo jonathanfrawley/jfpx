@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_layout_file>
+	<ActiveTarget name="Debug" />
+	<File name="..\..\..\src\jfClient\jfBoxesAndBalls\x86\jfBoxesAndBallsSimulation_x86.cpp" open="0" top="0" tabpos="0">
+		<Cursor position="1072" topLine="57" />
+	</File>
+	<File name="..\..\..\src\jfClient\jfBoxesAndBalls\x86\jfBoxesAndBallsSimulation_x86.h" open="0" top="0" tabpos="0">
+		<Cursor position="1349" topLine="30" />
+	</File>
+	<File name="..\..\..\src\jfClient\jfBoxesAndBalls\x86\main.cpp" open="0" top="0" tabpos="0">
+		<Cursor position="125" topLine="0" />
+	</File>
+	<File name="..\..\..\src\jfGraphics\jf3DGraphics\jfSDLGL\jfSDLGL3DGraphicsHandler.h" open="0" top="0" tabpos="0">
+		<Cursor position="496" topLine="0" />
+	</File>
+	<File name="..\..\..\src\jfpx\jfRigidBody.h" open="0" top="0" tabpos="0">
+		<Cursor position="5200" topLine="118" />
+	</File>
+</CodeBlocks_layout_file>

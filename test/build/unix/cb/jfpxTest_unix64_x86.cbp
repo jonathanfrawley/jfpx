@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="jfpxTest_unix64" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Debug">
+				<Option output="../../../../bin/test/unix64/Debug/bin" prefix_auto="1" extension_auto="1" />
+				<Option object_output="../../../../obj/test/unix64/Debug" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-g" />
+				</Compiler>
+			</Target>
+			<Target title="Release">
+				<Option output="../../../../bin/test/unix64/Release/bin" prefix_auto="1" extension_auto="1" />
+				<Option object_output="../../../../obj/test/unix64/Release" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-O2" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-Wall" />
+			<Add option="-fexceptions" />
+			<Add directory="../../../../lib/UnitTest++/src" />
+			<Add directory="../../../../src" />
+			<Add directory="/usr/include/octave-3.2.3/octave" />
+		</Compiler>
+		<Linker>
+			<Add library="../../../../lib/UnitTest++/unix64/libUnitTest++.a" />
+			<Add library="octave" />
+			<Add directory="/usr/lib/octave-3.2.3" />
+			<Add directory="../../../../lib/UnitTest++/unix/" />
+		</Linker>
+		<Unit filename="../../../../src/jfpx/jfAeroControlForceGenerator.cpp" />
+		<Unit filename="../../../../src/jfpx/jfAeroControlForceGenerator.h" />
+		<Unit filename="../../../../src/jfpx/jfAeroForceGenerator.cpp" />
+		<Unit filename="../../../../src/jfpx/jfAeroForceGenerator.h" />
+		<Unit filename="../../../../src/jfpx/jfBVHNode.cpp" />
+		<Unit filename="../../../../src/jfpx/jfBVHNode.h" />
+		<Unit filename="../../../../src/jfpx/jfBoundingSphere.cpp" />
+		<Unit filename="../../../../src/jfpx/jfBoundingSphere.h" />
+		<Unit filename="../../../../src/jfpx/jfBoundingVolume.cpp" />
+		<Unit filename="../../../../src/jfpx/jfBoundingVolume.h" />
+		<Unit filename="../../../../src/jfpx/jfCollisionBox.cpp" />
+		<Unit filename="../../../../src/jfpx/jfCollisionBox.h" />
+		<Unit filename="../../../../src/jfpx/jfCollisionData.cpp" />
+		<Unit filename="../../../../src/jfpx/jfCollisionData.h" />
+		<Unit filename="../../../../src/jfpx/jfCollisionDetector.h" />
+		<Unit filename="../../../../src/jfpx/jfCollisionPlane.cpp" />
+		<Unit filename="../../../../src/jfpx/jfCollisionPlane.h" />
+		<Unit filename="../../../../src/jfpx/jfCollisionPrimitive.cpp" />
+		<Unit filename="../../../../src/jfpx/jfCollisionPrimitive.h" />
+		<Unit filename="../../../../src/jfpx/jfCollisionSphere.cpp" />
+		<Unit filename="../../../../src/jfpx/jfCollisionSphere.h" />
+		<Unit filename="../../../../src/jfpx/jfConstants.h" />
+		<Unit filename="../../../../src/jfpx/jfContact.cpp" />
+		<Unit filename="../../../../src/jfpx/jfContact.h" />
+		<Unit filename="../../../../src/jfpx/jfContactGenerator.h" />
+		<Unit filename="../../../../src/jfpx/jfContactResolver.cpp" />
+		<Unit filename="../../../../src/jfpx/jfContactResolver.h" />
+		<Unit filename="../../../../src/jfpx/jfConversion.h" />
+		<Unit filename="../../../../src/jfpx/jfForceGenerator.cpp" />
+		<Unit filename="../../../../src/jfpx/jfForceGenerator.h" />
+		<Unit filename="../../../../src/jfpx/jfForceRegistry.cpp" />
+		<Unit filename="../../../../src/jfpx/jfForceRegistry.h" />
+		<Unit filename="../../../../src/jfpx/jfGravityForceGenerator.cpp" />
+		<Unit filename="../../../../src/jfpx/jfGravityForceGenerator.h" />
+		<Unit filename="../../../../src/jfpx/jfIntersectionTester.cpp" />
+		<Unit filename="../../../../src/jfpx/jfIntersectionTester.h" />
+		<Unit filename="../../../../src/jfpx/jfIntersectionTests.h" />
+		<Unit filename="../../../../src/jfpx/jfMatrix3.cpp" />
+		<Unit filename="../../../../src/jfpx/jfMatrix3.h" />
+		<Unit filename="../../../../src/jfpx/jfMatrix4.cpp" />
+		<Unit filename="../../../../src/jfpx/jfMatrix4.h" />
+		<Unit filename="../../../../src/jfpx/jfParticle.cpp" />
+		<Unit filename="../../../../src/jfpx/jfParticle.h" />
+		<Unit filename="../../../../src/jfpx/jfParticleContact.h" />
+		<Unit filename="../../../../src/jfpx/jfPrecision.h" />
+		<Unit filename="../../../../src/jfpx/jfQuaternion.cpp" />
+		<Unit filename="../../../../src/jfpx/jfQuaternion.h" />
+		<Unit filename="../../../../src/jfpx/jfRigidBody.cpp" />
+		<Unit filename="../../../../src/jfpx/jfRigidBody.h" />
+		<Unit filename="../../../../src/jfpx/jfSpringForceGenerator.cpp" />
+		<Unit filename="../../../../src/jfpx/jfSpringForceGenerator.h" />
+		<Unit filename="../../../../src/jfpx/jfVector3.cpp" />
+		<Unit filename="../../../../src/jfpx/jfVector3.h" />
+		<Unit filename="../../../../src/jfpx/jfWorld.cpp" />
+		<Unit filename="../../../../src/jfpx/jfWorld.h" />
+		<Unit filename="../../../../src/jfpx/jfpxCore.h" />
+		<Unit filename="../../../../src/jfpx/x86/jfAeroControlForceGenerator_x86.cpp" />
+		<Unit filename="../../../../src/jfpx/x86/jfAeroControlForceGenerator_x86.h" />
+		<Unit filename="../../../../src/jfpx/x86/jfAeroForceGenerator_x86.cpp" />
+		<Unit filename="../../../../src/jfpx/x86/jfAeroForceGenerator_x86.h" />
+		<Unit filename="../../../../src/jfpx/x86/jfBVHNode_x86.cpp" />
+		<Unit filename="../../../../src/jfpx/x86/jfBVHNode_x86.h" />
+		<Unit filename="../../../../src/jfpx/x86/jfBoundingSphere_x86.cpp" />
+		<Unit filename="../../../../src/jfpx/x86/jfBoundingSphere_x86.h" />
+		<Unit filename="../../../../src/jfpx/x86/jfCollisionBox_x86.cpp" />
+		<Unit filename="../../../../src/jfpx/x86/jfCollisionBox_x86.h" />
+		<Unit filename="../../../../src/jfpx/x86/jfCollisionDetector_x86.cpp" />
+		<Unit filename="../../../../src/jfpx/x86/jfCollisionDetector_x86.h" />
+		<Unit filename="../../../../src/jfpx/x86/jfCollisionPlane_x86.cpp" />
+		<Unit filename="../../../../src/jfpx/x86/jfCollisionPlane_x86.h" />
+		<Unit filename="../../../../src/jfpx/x86/jfCollisionPrimitive_x86.cpp" />
+		<Unit filename="../../../../src/jfpx/x86/jfCollisionPrimitive_x86.h" />
+		<Unit filename="../../../../src/jfpx/x86/jfCollisionSphere_x86.cpp" />
+		<Unit filename="../../../../src/jfpx/x86/jfCollisionSphere_x86.h" />
+		<Unit filename="../../../../src/jfpx/x86/jfContactResolver_x86.cpp" />
+		<Unit filename="../../../../src/jfpx/x86/jfContactResolver_x86.h" />
+		<Unit filename="../../../../src/jfpx/x86/jfContact_x86.cpp" />
+		<Unit filename="../../../../src/jfpx/x86/jfContact_x86.h" />
+		<Unit filename="../../../../src/jfpx/x86/jfConversion_x86.h" />
+		<Unit filename="../../../../src/jfpx/x86/jfForceRegistry_x86.cpp" />
+		<Unit filename="../../../../src/jfpx/x86/jfForceRegistry_x86.h" />
+		<Unit filename="../../../../src/jfpx/x86/jfGravityForceGenerator_x86.cpp" />
+		<Unit filename="../../../../src/jfpx/x86/jfGravityForceGenerator_x86.h" />
+		<Unit filename="../../../../src/jfpx/x86/jfIntersectionTester_x86.cpp" />
+		<Unit filename="../../../../src/jfpx/x86/jfIntersectionTester_x86.h" />
+		<Unit filename="../../../../src/jfpx/x86/jfMatrix3_x86.h" />
+		<Unit filename="../../../../src/jfpx/x86/jfMatrix4_x86.cpp" />
+		<Unit filename="../../../../src/jfpx/x86/jfMatrix4_x86.h" />
+		<Unit filename="../../../../src/jfpx/x86/jfParticle_x86.cpp" />
+		<Unit filename="../../../../src/jfpx/x86/jfParticle_x86.h" />
+		<Unit filename="../../../../src/jfpx/x86/jfQuaternion_x86.cpp" />
+		<Unit filename="../../../../src/jfpx/x86/jfQuaternion_x86.h" />
+		<Unit filename="../../../../src/jfpx/x86/jfRigidBody_x86.cpp" />
+		<Unit filename="../../../../src/jfpx/x86/jfRigidBody_x86.h" />
+		<Unit filename="../../../../src/jfpx/x86/jfSpringForceGenerator_x86.cpp" />
+		<Unit filename="../../../../src/jfpx/x86/jfSpringForceGenerator_x86.h" />
+		<Unit filename="../../../../src/jfpx/x86/jfVector3_x86.cpp" />
+		<Unit filename="../../../../src/jfpx/x86/jfVector3_x86.h" />
+		<Unit filename="../../../../src/jfpx/x86/jfWorld_x86.cpp" />
+		<Unit filename="../../../../src/jfpx/x86/jfWorld_x86.h" />
+		<Unit filename="../../../unit/jfAeroControlForceGenerator_x86Test.cpp" />
+		<Unit filename="../../../unit/jfAeroForceGenerator_x86Test.cpp" />
+		<Unit filename="../../../unit/jfCollisionDetector_x86Test.cpp" />
+		<Unit filename="../../../unit/jfCollisionSphere_x86Test.cpp" />
+		<Unit filename="../../../unit/jfContactResolver_x86Test.cpp" />
+		<Unit filename="../../../unit/jfForceRegistry_x86Test.cpp" />
+		<Unit filename="../../../unit/jfMatrix3_x86Test.cpp" />
+		<Unit filename="../../../unit/jfMatrix4_x86Test.cpp" />
+		<Unit filename="../../../unit/jfQuaternion_x86Test.cpp" />
+		<Unit filename="../../../unit/jfRigidBody_x86Test.cpp" />
+		<Unit filename="../../../unit/jfVector3_x86Test.cpp" />
+		<Unit filename="../../../unit/main.cpp" />
+		<Extensions>
+			<envvars />
+			<code_completion />
+			<lib_finder disable_auto="1" />
+			<debugger />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>
