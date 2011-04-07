@@ -18,7 +18,11 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #ifndef TIMER_H
 #define TIMER_H
 
+#define __WIN32__
+
+#ifndef __WIN32__
 #define __linux__ //Change to platform we are running on
+#endif
 
 #ifdef __WIN32__
 #include <windows.h>
@@ -28,9 +32,10 @@ typedef struct {
 } stopWatch;
 #endif
 
-#ifdef __linux__
+#ifndef __WIN32__
 #include <sys/time.h>
 #endif
+
 
 /*
  * =====================================================================================
@@ -58,9 +63,11 @@ class jfPerformanceTimer
 		stopWatch timer;
         LARGE_INTEGER frequency;
 #endif
-#ifdef __linux__
+
+#ifndef __WIN32__
 		timeval startTime, endTime;
 #endif
+
     private:
 };
 

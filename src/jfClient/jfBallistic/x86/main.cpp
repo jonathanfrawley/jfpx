@@ -18,7 +18,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include <jfSimulation/jfSimulation.h>
 #include <jfClient/jfBallistic/x86/jfBallisticSimulation.h>
 
-#undef main
+//#undef main
 int main(int argc, char **argv)
 {
     jfSimulation* simulation = new jfBallisticSimulation();

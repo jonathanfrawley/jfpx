@@ -8,7 +8,7 @@ find_package(CUDA)
 ### Set include dirs
 if(WIN32)
 	INCLUDE_DIRECTORIES(./ ../lib/SDL/include)
-	LINK_DIRECTORIES(../lib/SDL/lib) 
+	LINK_DIRECTORIES(../../lib/SDL/lib) 
 else()
 	set(CMAKE_INCLUDE_CURRENT_DIR ON)
 	INCLUDE_DIRECTORIES(./)
@@ -16,7 +16,7 @@ endif()
 
 ### Set common libs
 if(WIN32)
-	SET(jfCommonClientLib opengl32 sdl sdlmain glu32)
+	SET(jfCommonClientLib opengl32 SDL SDLmain glu32)
 else()
 	SET(jfCommonClientLib GL GLU SDL)
 endif()
@@ -55,8 +55,9 @@ cuda_add_library(jfCore_cuda ${jfpx_cuda_cpp} ${jfpx_cuda_cu} ${jfCoreCommon_cpp
 add_executable (jfBoxesAndBalls_x86 ${jfBoxesAndBalls_x86_cpp})
 target_link_libraries(jfBoxesAndBalls_x86 ${jfCommonClientLib} jfCore_x86)
 
-add_executable (jfBallistic_x86 ${jfBallistic_x86_cpp})
-target_link_libraries(jfBallistic_x86 ${jfCommonClientLib} jfCore_x86)
+#TODO : Does not work on windows, GL.h issue
+#add_executable (jfBallistic_x86 ${jfBallistic_x86_cpp})
+#target_link_libraries(jfBallistic_x86 ${jfCommonClientLib} jfCore_x86)
 
 add_executable (jfFlight_x86 ${jfFlight_x86_cpp})
 target_link_libraries(jfFlight_x86 ${jfCommonClientLib} jfCore_x86)

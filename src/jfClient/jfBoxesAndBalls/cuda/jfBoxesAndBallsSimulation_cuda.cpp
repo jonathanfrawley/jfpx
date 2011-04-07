@@ -311,7 +311,7 @@ void jfBoxesAndBallsSimulation_cuda::run()
                                             m_CollisionData->getContactCount(),
                                             timeStep);
                                             */
-        //m_3DGraphicsHandler->draw();
+        m_3DGraphicsHandler->draw();
 
         //drawDebug();
     }

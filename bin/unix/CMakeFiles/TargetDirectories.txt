@@ -1,6 +1,0 @@
-/mnt/data/college/college_svn/4th_year/fyp/code/alpha/bin/unix/CMakeFiles/jfBallistic_x86.dir
-/mnt/data/college/college_svn/4th_year/fyp/code/alpha/bin/unix/CMakeFiles/jfBoxesAndBalls_cuda.dir
-/mnt/data/college/college_svn/4th_year/fyp/code/alpha/bin/unix/CMakeFiles/jfBoxesAndBalls_x86.dir
-/mnt/data/college/college_svn/4th_year/fyp/code/alpha/bin/unix/CMakeFiles/jfCore_cuda.dir
-/mnt/data/college/college_svn/4th_year/fyp/code/alpha/bin/unix/CMakeFiles/jfCore_x86.dir
-/mnt/data/college/college_svn/4th_year/fyp/code/alpha/bin/unix/CMakeFiles/jfFlight_x86.dir
