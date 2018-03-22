@@ -1,5 +1,5 @@
 /**
-jfpx - A cross platform physics engine using CUDA    
+jfpx - A cross platform physics engine using CUDA
 Copyright (C) 2010 Jonathan Frawley
 
 This program is free software: you can redistribute it and/or modify
@@ -16,8 +16,8 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 **/
 
-#ifndef  JFFACTORY_CUDA_H
-#define  JFFACTORY_CUDA_H
+#ifndef JFFACTORY_CUDA_H
+#define JFFACTORY_CUDA_H
 
 #include <jfpx/jfFactory.h>
 
@@ -31,14 +31,14 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *  Description: Factory for cuda-optimised physics classes.
  * =====================================================================================
  */
-class jfFactory_cuda : public jfFactory_x86
-{
-	public:
-		jfFactory_cuda();
+class jfFactory_cuda : public jfFactory_x86 {
+public:
+    jfFactory_cuda();
 
-		virtual jfCollisionDetector* makeCollisionDetector() const;
-	protected:
-	private:
+    virtual jfCollisionDetector* makeCollisionDetector() const;
+
+protected:
+private:
 };
 
-#endif   // JFFACTORY_CUDA_H
+#endif // JFFACTORY_CUDA_H

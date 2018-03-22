@@ -1,5 +1,5 @@
 /**
-jfpx - A cross platform physics engine using CUDA    
+jfpx - A cross platform physics engine using CUDA
 Copyright (C) 2010 Jonathan Frawley
 
 This program is free software: you can redistribute it and/or modify
@@ -22,7 +22,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //#define N_SPHERES 256
 #define N_SPHERES 448
 //#define N_CONTACTS 256
-const unsigned N_CONTACTS = (((N_SPHERES-1)*(N_SPHERES-1)) + (N_SPHERES-1)) / 2;
+const unsigned N_CONTACTS = (((N_SPHERES - 1) * (N_SPHERES - 1)) + (N_SPHERES - 1)) / 2;
 //#define BLOCK_SIZE 256
 //#define BLOCK_SIZE 256
 #define BLOCK_SIZE 32
@@ -31,8 +31,7 @@ const unsigned N_CONTACTS = (((N_SPHERES-1)*(N_SPHERES-1)) + (N_SPHERES-1)) / 2;
 //#define N_SPHERES 256
 //#define N_SPHERES_PER_BATCH 256
 
-
-//const unsigned TOTAL_N_CONTACTS = (((N_SPHERES-1)*(N_SPHERES-1)) + (N_SPHERES-1)) / 2;
-
+// const unsigned TOTAL_N_CONTACTS = (((N_SPHERES-1)*(N_SPHERES-1)) +
+// (N_SPHERES-1)) / 2;
 
 #endif

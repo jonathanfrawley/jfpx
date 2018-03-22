@@ -1,5 +1,5 @@
 /**
-jfpx - A cross platform physics engine using CUDA    
+jfpx - A cross platform physics engine using CUDA
 Copyright (C) 2010 Jonathan Frawley
 
 This program is free software: you can redistribute it and/or modify
@@ -20,30 +20,31 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include <jfpx/x86/jfCollisionDetector_x86.h>
 
-#include <jfpx/cuda/jfCudaConstants.h>
-#include <jfpx/cuda/jfVector3_cuda.h>
 #include <jfpx/cuda/jfCollisionSphere_cuda.h>
 #include <jfpx/cuda/jfContact_cuda.h>
+#include <jfpx/cuda/jfCudaConstants.h>
+#include <jfpx/cuda/jfVector3_cuda.h>
 
 extern "C" void
 sphereSphereCollisionTiled(jfCollisionSphereStruct* sphereStructs,
-                                jfContactStruct* contactStructs);
+    jfContactStruct* contactStructs);
 
-class jfCollisionDetector_cuda : public jfCollisionDetector_x86
-{
-    public:
-        jfCollisionDetector_cuda();
+class jfCollisionDetector_cuda : public jfCollisionDetector_x86 {
+public:
+    jfCollisionDetector_cuda();
 
-        virtual ~jfCollisionDetector_cuda();
+    virtual ~jfCollisionDetector_cuda();
 
-        virtual unsigned sphereAndSphereBatch(vector<jfBall*>& spheres,
-                                                            jfCollisionData* collisionData) const;
+    virtual unsigned sphereAndSphereBatch(vector<jfBall*>& spheres,
+        jfCollisionData* collisionData) const;
 
-		virtual void assignStruct(jfCollisionSphereStruct* collisionSphere_cuda,jfCollisionSphere_x86* collisionSphere_x86) const;
+    virtual void assignStruct(jfCollisionSphereStruct* collisionSphere_cuda,
+        jfCollisionSphere_x86* collisionSphere_x86) const;
 
-		virtual unsigned computeContactNumCols(unsigned sphere_row) const;
-    protected:
-    private:
+    virtual unsigned computeContactNumCols(unsigned sphere_row) const;
+
+protected:
+private:
 };
 
 #endif // JFCOLLISIONDETECTOR_CUDA_H

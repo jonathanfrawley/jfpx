@@ -1,5 +1,5 @@
 /**
-jfpx - A cross platform physics engine using CUDA    
+jfpx - A cross platform physics engine using CUDA
 Copyright (C) 2010 Jonathan Frawley
 
 This program is free software: you can redistribute it and/or modify
@@ -18,16 +18,15 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include "jfCollisionDetector_cuda.h"
 
 jfCollisionDetector_cuda::jfCollisionDetector_cuda()
-    :
-        jfCollisionDetector_x86()
+    : jfCollisionDetector_x86()
 {
 }
 
-jfCollisionDetector_cuda::~jfCollisionDetector_cuda()
-{
-}
+jfCollisionDetector_cuda::~jfCollisionDetector_cuda() {}
 
-void jfCollisionDetector_cuda::assignStruct(jfCollisionSphereStruct* collisionSphere_cuda,jfCollisionSphere_x86* collisionSphere_x86) const
+void jfCollisionDetector_cuda::assignStruct(
+    jfCollisionSphereStruct* collisionSphere_cuda,
+    jfCollisionSphere_x86* collisionSphere_x86) const
 {
     jfVector3_x86 centre;
     collisionSphere_x86->getAxisVector(3, &centre);
@@ -37,49 +36,49 @@ void jfCollisionDetector_cuda::assignStruct(jfCollisionSphereStruct* collisionSp
     collisionSphere_cuda->m_Radius = collisionSphere_x86->getRadius();
 }
 
-unsigned jfCollisionDetector_cuda::computeContactNumCols(unsigned sphere_row) const
+unsigned
+jfCollisionDetector_cuda::computeContactNumCols(unsigned sphere_row) const
 {
-    return ((N_SPHERES-1)-sphere_row);
+    return ((N_SPHERES - 1) - sphere_row);
 }
 
-unsigned jfCollisionDetector_cuda::sphereAndSphereBatch(vector<jfBall*>& spheres,
-                                                            jfCollisionData* collisionData) const
+unsigned jfCollisionDetector_cuda::sphereAndSphereBatch(
+    vector<jfBall*>& spheres, jfCollisionData* collisionData) const
 {
     unsigned contactCount = 0;
 
-	//Allocate sphere memory based on number of spheres as we will need them all.
-	jfCollisionSphereStruct* sphereStructs;
-	sphereStructs = (jfCollisionSphereStruct*)malloc(sizeof(jfCollisionSphereStruct) * spheres.size());
+    // Allocate sphere memory based on number of spheres as we will need them all.
+    jfCollisionSphereStruct* sphereStructs;
+    sphereStructs = (jfCollisionSphereStruct*)malloc(
+        sizeof(jfCollisionSphereStruct) * spheres.size());
 
-    //Load spheres here
+    // Load spheres here
     unsigned copyIdx;
-    for(copyIdx=0; copyIdx<spheres.size() ; copyIdx++)
-    {
+    for (copyIdx = 0; copyIdx < spheres.size(); copyIdx++) {
         assignStruct(&(sphereStructs[copyIdx]), spheres[copyIdx]);
     }
 
     jfContactStruct contactResultsStruct[N_CONTACTS];
-	sphereSphereCollisionTiled(sphereStructs,
-								contactResultsStruct);
+    sphereSphereCollisionTiled(sphereStructs, contactResultsStruct);
 
-	int contactIdx_I;
-	//Copy contacts back
-    for(contactIdx_I=0; contactIdx_I<N_CONTACTS ; contactIdx_I++)
-    {
-		if(contactResultsStruct[contactIdx_I].m_Valid == 1)
-        {
-			jfContact_x86 contact;
-			contact.setPenetration(contactResultsStruct[contactIdx_I].m_Penetration);
-			contact.setBodyData(spheres[contactResultsStruct[contactIdx_I].m_Body1Idx]->getBody(),
-											spheres[contactResultsStruct[contactIdx_I].m_Body2Idx]->getBody(),
-											collisionData->getFriction(),
-											collisionData->getRestitution());
-			contact.setContactNormal(copyToJfVector3_x86(contactResultsStruct[contactIdx_I].m_ContactNormal));
-			contact.setContactPoint(copyToJfVector3_x86(contactResultsStruct[contactIdx_I].m_ContactPoint));
-			collisionData->addContact(contact);
-			contactCount++;
-		}
-	}
+    int contactIdx_I;
+    // Copy contacts back
+    for (contactIdx_I = 0; contactIdx_I < N_CONTACTS; contactIdx_I++) {
+        if (contactResultsStruct[contactIdx_I].m_Valid == 1) {
+            jfContact_x86 contact;
+            contact.setPenetration(contactResultsStruct[contactIdx_I].m_Penetration);
+            contact.setBodyData(
+                spheres[contactResultsStruct[contactIdx_I].m_Body1Idx]->getBody(),
+                spheres[contactResultsStruct[contactIdx_I].m_Body2Idx]->getBody(),
+                collisionData->getFriction(), collisionData->getRestitution());
+            contact.setContactNormal(copyToJfVector3_x86(
+                contactResultsStruct[contactIdx_I].m_ContactNormal));
+            contact.setContactPoint(copyToJfVector3_x86(
+                contactResultsStruct[contactIdx_I].m_ContactPoint));
+            collisionData->addContact(contact);
+            contactCount++;
+        }
+    }
 
-	return contactCount;
+    return contactCount;
 }

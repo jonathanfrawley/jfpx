@@ -1,5 +1,5 @@
 /**
-jfpx - A cross platform physics engine using CUDA    
+jfpx - A cross platform physics engine using CUDA
 Copyright (C) 2010 Jonathan Frawley
 
 This program is free software: you can redistribute it and/or modify
@@ -28,12 +28,11 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include <stdio.h>
 
-typedef struct
-{
-        jfReal m_X;
-        jfReal m_Y;
-        jfReal m_Z;
-        jfReal m_Pad; //To ensure 4-word alignment
+typedef struct {
+    jfReal m_X;
+    jfReal m_Y;
+    jfReal m_Z;
+    jfReal m_Pad; // To ensure 4-word alignment
 } jfVector3Struct;
 
 inline jfVector3_x86 copyToJfVector3_x86(jfVector3Struct s)

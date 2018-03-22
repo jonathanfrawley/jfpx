@@ -1,5 +1,5 @@
 /**
-jfpx - A cross platform physics engine using CUDA    
+jfpx - A cross platform physics engine using CUDA
 Copyright (C) 2010 Jonathan Frawley
 
 This program is free software: you can redistribute it and/or modify
@@ -18,17 +18,16 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #ifndef JFCONTACT_CUDA_H
 #define JFCONTACT_CUDA_H
 
-#include <jfpx/jfCore.h>
 #include <jfpx/cuda/jfVector3_cuda.h>
+#include <jfpx/jfCore.h>
 
-typedef struct
-{
+typedef struct {
     jfVector3Struct m_ContactPoint;
     jfVector3Struct m_ContactNormal;
     jfReal m_Penetration;
     bool m_Valid;
-	int m_Body1Idx;
-	int m_Body2Idx;
+    int m_Body1Idx;
+    int m_Body2Idx;
 } jfContactStruct;
 
 #endif // JFCONTACT_CUDA_H
