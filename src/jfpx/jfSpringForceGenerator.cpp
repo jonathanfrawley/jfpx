@@ -17,21 +17,22 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 **/
 #include "jfSpringForceGenerator.h"
 
-jfSpringForceGenerator::jfSpringForceGenerator() : m_ConnectionPoint(0)
+jfSpringForceGenerator::jfSpringForceGenerator()
+    : m_ConnectionPoint(0)
 {
 }
 
 jfSpringForceGenerator::jfSpringForceGenerator(jfVector3* connectionPoint,
-												jfRigidBody* other,
-												jfVector3* otherConnectionPoint,
-												jfReal springConstant,
-												jfReal restLength) 
-												: m_ConnectionPoint(connectionPoint),
-													m_OtherConnectionPoint(otherConnectionPoint),
-													m_Other(other),
-													m_SpringConstant(springConstant),
-													m_RestLength(restLength)
-																			
+    jfRigidBody* other,
+    jfVector3* otherConnectionPoint,
+    jfReal springConstant,
+    jfReal restLength)
+    : m_ConnectionPoint(connectionPoint)
+    , m_OtherConnectionPoint(otherConnectionPoint)
+    , m_Other(other)
+    , m_SpringConstant(springConstant)
+    , m_RestLength(restLength)
+
 {
 }
 

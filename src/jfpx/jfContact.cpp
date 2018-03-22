@@ -18,18 +18,17 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include "jfContact.h"
 
 jfContact::jfContact()
-	:
-        m_BodyZero(NULL),
-        m_BodyOne(NULL),
-		m_Friction(0),
-		m_Restitution(0),
-		m_ContactPoint(0),
-		m_ContactNormal(0),
-		m_Penetration(0),
-		m_ContactToWorld(0),
-		m_ContactVelocity(0),
-		m_DesiredDeltaVelocity(0),
-		m_RelativeContactPosition(NULL)
+    : m_BodyZero(NULL)
+    , m_BodyOne(NULL)
+    , m_Friction(0)
+    , m_Restitution(0)
+    , m_ContactPoint(0)
+    , m_ContactNormal(0)
+    , m_Penetration(0)
+    , m_ContactToWorld(0)
+    , m_ContactVelocity(0)
+    , m_DesiredDeltaVelocity(0)
+    , m_RelativeContactPosition(NULL)
 {
 }
 
@@ -46,4 +45,3 @@ jfContact::jfContact(const jfContact& other)
 jfContact::~jfContact()
 {
 }
-

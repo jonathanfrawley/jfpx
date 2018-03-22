@@ -16,13 +16,13 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 **/
 
-#ifndef  JFCOLLISIONDETECTOR_H
-#define  JFCOLLISIONDETECTOR_H
+#ifndef JFCOLLISIONDETECTOR_H
+#define JFCOLLISIONDETECTOR_H
 
-#include <jfpx/jfCollisionPlane.h>
-#include <jfpx/jfCollisionSphere.h>
 #include <jfpx/jfCollisionBox.h>
 #include <jfpx/jfCollisionData.h>
+#include <jfpx/jfCollisionPlane.h>
+#include <jfpx/jfCollisionSphere.h>
 
 #include <jfShape/jfBall.h>
 #include <jfShape/jfBox.h>
@@ -38,32 +38,28 @@ using namespace std;
  *   it returns the number of contacts it finds.
  *  =====================================================================================
  */
-class jfCollisionDetector
-{
-	public:
-        jfCollisionDetector();
+class jfCollisionDetector {
+public:
+    jfCollisionDetector();
 
-        virtual ~jfCollisionDetector();
+    virtual ~jfCollisionDetector();
 
-        virtual unsigned sphereAndHalfSpace(const jfCollisionSphere& sphere,
-												const jfCollisionPlane& plane,
-												jfCollisionData* data
-												) const = 0;
+    virtual unsigned sphereAndHalfSpace(const jfCollisionSphere& sphere,
+        const jfCollisionPlane& plane,
+        jfCollisionData* data) const = 0;
 
-        virtual unsigned sphereAndTruePlane(const jfCollisionSphere& sphere,
-											const jfCollisionPlane& plane,
-											jfCollisionData* data
-											) const = 0;
+    virtual unsigned sphereAndTruePlane(const jfCollisionSphere& sphere,
+        const jfCollisionPlane& plane,
+        jfCollisionData* data) const = 0;
 
-        virtual unsigned sphereAndSphere(const jfCollisionSphere& one,
-											const jfCollisionSphere& two,
-											jfCollisionData* data
-											) const = 0;
+    virtual unsigned sphereAndSphere(const jfCollisionSphere& one,
+        const jfCollisionSphere& two,
+        jfCollisionData* data) const = 0;
 
-        virtual unsigned sphereAndSphereBatch(vector<jfBall*>& spheres,
-                                                jfCollisionData* collisionData) const = 0;
+    virtual unsigned sphereAndSphereBatch(vector<jfBall*>& spheres,
+        jfCollisionData* collisionData) const = 0;
 
-		/*
+    /*
 		 * ===  FUNCTION  ======================================================================
 		 *         Name:  boxAndHalfSpace
 		 *  Description:  Does a collision test on a collision box and a plane representing
@@ -71,39 +67,33 @@ class jfCollisionDetector
 		 *  points out of the half-space).
 		 * =====================================================================================
 		 */
-        virtual unsigned boxAndHalfSpace(const jfCollisionBox& box,
-											const jfCollisionPlane& plane,
-											jfCollisionData* data
-											) const = 0;
+    virtual unsigned boxAndHalfSpace(const jfCollisionBox& box,
+        const jfCollisionPlane& plane,
+        jfCollisionData* data) const = 0;
 
-        virtual unsigned boxAndBox(const jfCollisionBox& one,
-										const jfCollisionBox& two,
-										jfCollisionData* data
-										) const = 0;
-		/*
+    virtual unsigned boxAndBox(const jfCollisionBox& one,
+        const jfCollisionBox& two,
+        jfCollisionData* data) const = 0;
+    /*
 		 * ===  FUNCTION  ======================================================================
 		 *         Name:  boxAndBoxBatch
 		 *  Description:  Finds the collisions between each pair of boxes in the passed in
 		 *  array.
 		 * =====================================================================================
 		 */
-        virtual unsigned boxAndBoxBatch(vector<jfBox*>& boxes,
-                                        jfCollisionData* collisionData) const = 0;
+    virtual unsigned boxAndBoxBatch(vector<jfBox*>& boxes,
+        jfCollisionData* collisionData) const = 0;
 
-        virtual unsigned boxAndPoint(const jfCollisionBox& box,
-										const jfVector3& point,
-										jfCollisionData* data
-										) const = 0;
+    virtual unsigned boxAndPoint(const jfCollisionBox& box,
+        const jfVector3& point,
+        jfCollisionData* data) const = 0;
 
-        virtual unsigned boxAndSphere(const jfCollisionBox& box,
-										const jfCollisionSphere& sphere,
-										jfCollisionData* data
-										) const = 0;
-	protected:
+    virtual unsigned boxAndSphere(const jfCollisionBox& box,
+        const jfCollisionSphere& sphere,
+        jfCollisionData* data) const = 0;
 
-
-	private:
+protected:
+private:
 };
 
-
-#endif   // JFCOLLISIONDETECTOR_H
+#endif // JFCOLLISIONDETECTOR_H

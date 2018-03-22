@@ -35,13 +35,13 @@ void jfBallisticSDLGL3DGraphicsHandler::drawSphere(float radius, int subdivision
 {
     gluQuadricNormals(m_SphereQuadric, GLU_SMOOTH);
     glPushMatrix();
-        gluSphere(m_SphereQuadric, radius, subdivisions, subdivisions);
+    gluSphere(m_SphereQuadric, radius, subdivisions, subdivisions);
     glPopMatrix();
 }
 
 void jfBallisticSDLGL3DGraphicsHandler::drawObjects() const
 {
-    gluLookAt(-15.0, 8.0, -15.0,  0.0, 5.0, 22.0,  0.0, 1.0, 0.0);
+    gluLookAt(-15.0, 8.0, -15.0, 0.0, 5.0, 22.0, 0.0, 1.0, 0.0);
 
     // Draw a sphere at the firing point, and add a shadow projected
     // onto the ground plane.
@@ -58,8 +58,7 @@ void jfBallisticSDLGL3DGraphicsHandler::drawObjects() const
     // Draw some scale lines
     glColor3f(0.75f, 0.75f, 0.75f);
     glBegin(GL_LINES);
-    for (unsigned i = 0; i < 200; i += 10)
-    {
+    for (unsigned i = 0; i < 200; i += 10) {
         glVertex3f(-5.0f, 0.0f, i);
         glVertex3f(5.0f, 0.0f, i);
     }
@@ -67,10 +66,8 @@ void jfBallisticSDLGL3DGraphicsHandler::drawObjects() const
 
     vector<jfAmmoRound*>::iterator it;
     // Render each particle in turn
-    for (it = m_Ammo->begin(); it!=m_Ammo->end(); ++it)
-    {
-        if ((*it)->getType() != UNUSED)
-        {
+    for (it = m_Ammo->begin(); it != m_Ammo->end(); ++it) {
+        if ((*it)->getType() != UNUSED) {
             (*it)->render();
         }
     }

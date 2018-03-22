@@ -18,42 +18,41 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #ifndef JFAEROFORCEGENERATOR_H
 #define JFAEROFORCEGENERATOR_H
 
-#include <jfpx/jfForceGenerator.h>
-#include <jfpx/jfRigidBody.h>
 #include <jfpx/jfCore.h>
-#include <jfpx/jfVector3.h>
+#include <jfpx/jfForceGenerator.h>
 #include <jfpx/jfMatrix3.h>
+#include <jfpx/jfRigidBody.h>
+#include <jfpx/jfVector3.h>
 
-class jfAeroForceGenerator : public jfForceGenerator
-{
-    public:
-        jfAeroForceGenerator();
-        jfAeroForceGenerator(jfVector3* windSpeed);
-        virtual ~jfAeroForceGenerator();
+class jfAeroForceGenerator : public jfForceGenerator {
+public:
+    jfAeroForceGenerator();
+    jfAeroForceGenerator(jfVector3* windSpeed);
+    virtual ~jfAeroForceGenerator();
 
-
-		/*-----------------------------------------------------------------------------
+    /*-----------------------------------------------------------------------------
 		 *  Implemented Methods
 		 *-----------------------------------------------------------------------------*/
 
-		/*
+    /*
 		 * ===  FUNCTION  ======================================================================
 		 *         Name:  updateForceFromTensor
 		 *  Description:  Updates the Force acting on the rigid body using an explicit tensor.
 		 * =====================================================================================
 		 */
-		virtual void updateForceFromTensor(jfRigidBody* body,
-												jfReal timeStep,
-												jfMatrix3& tensor) const = 0;
-		/*-----------------------------------------------------------------------------
+    virtual void updateForceFromTensor(jfRigidBody* body,
+        jfReal timeStep,
+        jfMatrix3& tensor) const = 0;
+    /*-----------------------------------------------------------------------------
 		 *  Interface
 		 *-----------------------------------------------------------------------------*/
-        virtual void updateForce(jfRigidBody* body, jfReal timeStep) const = 0;
-    protected:
-        jfMatrix3* m_Tensor;
-        jfVector3* m_Pos;
-        jfVector3* m_WindSpeed; //Not allocated by us.
-    private:
+    virtual void updateForce(jfRigidBody* body, jfReal timeStep) const = 0;
+
+protected:
+    jfMatrix3* m_Tensor;
+    jfVector3* m_Pos;
+    jfVector3* m_WindSpeed; //Not allocated by us.
+private:
 };
 
 #endif // JFAEROFORCEGENERATOR_H

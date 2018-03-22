@@ -38,10 +38,8 @@ void jfForceRegistry_x86::add(jfRigidBody* body, jfForceGenerator* forceGen)
 void jfForceRegistry_x86::remove(jfRigidBody* body, jfForceGenerator* forceGen)
 {
     vector<jfBodyForceGen>::iterator it;
-    for (it = m_BodyForceGens.begin(); it != m_BodyForceGens.end(); it++)
-    {
-        if((body == (*it).body) && (forceGen == (*it).forceGen))
-        {
+    for (it = m_BodyForceGens.begin(); it != m_BodyForceGens.end(); it++) {
+        if ((body == (*it).body) && (forceGen == (*it).forceGen)) {
             m_BodyForceGens.erase(it);
             return;
         }
@@ -56,9 +54,7 @@ void jfForceRegistry_x86::clear()
 void jfForceRegistry_x86::updateForces(jfReal timeStep)
 {
     vector<jfBodyForceGen>::iterator it;
-    for (it = m_BodyForceGens.begin(); it != m_BodyForceGens.end(); it++)
-    {
+    for (it = m_BodyForceGens.begin(); it != m_BodyForceGens.end(); it++) {
         (*it).forceGen->updateForce((*it).body, timeStep);
     }
-
 }

@@ -16,8 +16,8 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 **/
 
-#ifndef  JFBVHNODE_X86_H
-#define  JFBVHNODE_X86_H
+#ifndef JFBVHNODE_X86_H
+#define JFBVHNODE_X86_H
 
 #include <jfpx/jfBVHNode.h>
 
@@ -27,31 +27,30 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *  Description:
  * =====================================================================================
  */
-class jfBVHNode_x86 : public jfBVHNode
-{
-	public:
-		jfBVHNode_x86(jfBVHNode* parent,
-                        const jfBoundingVolume& volume,
-                        jfRigidBody* body=0);
+class jfBVHNode_x86 : public jfBVHNode {
+public:
+    jfBVHNode_x86(jfBVHNode* parent,
+        const jfBoundingVolume& volume,
+        jfRigidBody* body = 0);
 
-		/*-----------------------------------------------------------------------------
+    /*-----------------------------------------------------------------------------
 		 *  Inherited Methods
 		 *-----------------------------------------------------------------------------*/
-        virtual unsigned getPotentialContacts(jfPotentialContact* contacts,
-												  unsigned limit) const;
+    virtual unsigned getPotentialContacts(jfPotentialContact* contacts,
+        unsigned limit) const;
 
-		virtual void insert(jfRigidBody* newBody, const jfBoundingVolume& newVolume);
+    virtual void insert(jfRigidBody* newBody, const jfBoundingVolume& newVolume);
 
-        virtual bool overlaps(const jfBVHNode& other) const;
+    virtual bool overlaps(const jfBVHNode& other) const;
 
-        virtual unsigned getPotentialContactsWith(const jfBVHNode* other,
-														jfPotentialContact* contacts,
-														unsigned limit) const;
+    virtual unsigned getPotentialContactsWith(const jfBVHNode* other,
+        jfPotentialContact* contacts,
+        unsigned limit) const;
 
-		virtual void recalculateBoundingVolume(bool recurse=true);
+    virtual void recalculateBoundingVolume(bool recurse = true);
 
-	protected:
-	private:
+protected:
+private:
 };
 
-#endif   // JFBVHNODE_X86_H
+#endif // JFBVHNODE_X86_H

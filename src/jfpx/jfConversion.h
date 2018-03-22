@@ -48,5 +48,4 @@ jfVector3* worldCoordToLocalDirn(jfVector3& worldCoord, Matrix4& transformMatrix
     return transformMatrix.transformInverseDirection(worldCoord);
 }
 
-
 #endif //JFCONVERSION_H

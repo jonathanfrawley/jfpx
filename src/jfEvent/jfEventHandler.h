@@ -19,32 +19,32 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #ifndef JF_EVENT_HANDLER_H
 #define JF_EVENT_HANDLER_H
 
-#include <jfGraphics/jfWindowManager/jfWindowManager.h>
 #include <jfEvent/jfEvent.h>
+#include <jfGraphics/jfWindowManager/jfWindowManager.h>
 
-#include <vector>
 #include <iostream>
+#include <vector>
 
 using namespace std;
 
-const int INIT_EVENT_VEC_SIZE=0;
+const int INIT_EVENT_VEC_SIZE = 0;
 
-class jfEventHandler
-{
-	public:
-		jfEventHandler();
-		~jfEventHandler();
-		void addWmEvents(jfWindowManager* windowManager);
-		bool handleEvents();
-		bool handleEvent(jfEvent event);
-        jfKey isKeyPressed(int i=0);
-        void setWindowManager(jfWindowManager* windowManager);
-        jfEvent getMouseEvent();
-	private:
-		vector<jfEvent>* events;
-		int keys[JF_MAX_KEY_VALUE];
-		jfEvent tempEvent;
-		jfWindowManager* m_WindowManager;
+class jfEventHandler {
+public:
+    jfEventHandler();
+    ~jfEventHandler();
+    void addWmEvents(jfWindowManager* windowManager);
+    bool handleEvents();
+    bool handleEvent(jfEvent event);
+    jfKey isKeyPressed(int i = 0);
+    void setWindowManager(jfWindowManager* windowManager);
+    jfEvent getMouseEvent();
+
+private:
+    vector<jfEvent>* events;
+    int keys[JF_MAX_KEY_VALUE];
+    jfEvent tempEvent;
+    jfWindowManager* m_WindowManager;
 };
 
 #endif

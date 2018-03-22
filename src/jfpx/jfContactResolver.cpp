@@ -18,38 +18,29 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include "jfContactResolver.h"
 
 jfContactResolver::jfContactResolver()
-    :
-        m_MaxVelocityIterations(0),
-        m_MaxPositionIterations(0),
-        m_VelocityEpsilon(0),
-        m_PositionEpsilon(0)
+    : m_MaxVelocityIterations(0)
+    , m_MaxPositionIterations(0)
+    , m_VelocityEpsilon(0)
+    , m_PositionEpsilon(0)
 {
 }
 
-jfContactResolver::jfContactResolver(unsigned iterations
-										, jfReal velocityEpsilon
-										, jfReal positionEpsilon)
-	:
-        m_MaxVelocityIterations(iterations),
-        m_MaxPositionIterations(iterations),
-        m_VelocityEpsilon(velocityEpsilon),
-        m_PositionEpsilon(positionEpsilon)
+jfContactResolver::jfContactResolver(unsigned iterations, jfReal velocityEpsilon, jfReal positionEpsilon)
+    : m_MaxVelocityIterations(iterations)
+    , m_MaxPositionIterations(iterations)
+    , m_VelocityEpsilon(velocityEpsilon)
+    , m_PositionEpsilon(positionEpsilon)
 {
 }
 
-jfContactResolver::jfContactResolver(unsigned velocityIterations
-										, unsigned positionIterations
-										, jfReal velocityEpsilon
-										, jfReal positionEpsilon)
-	:
-        m_MaxVelocityIterations(velocityIterations),
-        m_MaxPositionIterations(positionIterations),
-        m_VelocityEpsilon(velocityEpsilon),
-        m_PositionEpsilon(positionEpsilon)
+jfContactResolver::jfContactResolver(unsigned velocityIterations, unsigned positionIterations, jfReal velocityEpsilon, jfReal positionEpsilon)
+    : m_MaxVelocityIterations(velocityIterations)
+    , m_MaxPositionIterations(positionIterations)
+    , m_VelocityEpsilon(velocityEpsilon)
+    , m_PositionEpsilon(positionEpsilon)
 {
 }
 
-jfContactResolver::~jfContactResolver ()
+jfContactResolver::~jfContactResolver()
 {
 }
-

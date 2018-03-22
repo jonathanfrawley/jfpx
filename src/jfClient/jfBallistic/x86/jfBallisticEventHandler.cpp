@@ -17,7 +17,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 **/
 #include "jfBallisticEventHandler.h"
 
-jfBallisticEventHandler::jfBallisticEventHandler():m_CurrentShotType(LASER)
+jfBallisticEventHandler::jfBallisticEventHandler()
+    : m_CurrentShotType(LASER)
 {
 }
 
@@ -33,27 +34,25 @@ ShotType jfBallisticEventHandler::getCurrentShotType()
 void jfBallisticEventHandler::handleKeyEvents()
 {
     jfKey keyNum = isKeyPressed();
-    while(keyNum != JFK_NULL)
-    {
-        switch (keyNum)
-        {
-            case JFK_1:
-                m_CurrentShotType = PISTOL;
-                break;
-            case JFK_2:
-                m_CurrentShotType = ARTILLERY;
-                break;
-            case JFK_3:
-                m_CurrentShotType = FIREBALL;
-                break;
-            case JFK_4:
-                m_CurrentShotType = LASER;
-                break;
-            case JFK_NULL:
-                break;
-            default:
-                break;
+    while (keyNum != JFK_NULL) {
+        switch (keyNum) {
+        case JFK_1:
+            m_CurrentShotType = PISTOL;
+            break;
+        case JFK_2:
+            m_CurrentShotType = ARTILLERY;
+            break;
+        case JFK_3:
+            m_CurrentShotType = FIREBALL;
+            break;
+        case JFK_4:
+            m_CurrentShotType = LASER;
+            break;
+        case JFK_NULL:
+            break;
+        default:
+            break;
         }
-        keyNum = isKeyPressed(keyNum+1);
+        keyNum = isKeyPressed(keyNum + 1);
     }
 }

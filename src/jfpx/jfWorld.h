@@ -18,37 +18,37 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #ifndef JFWORLD_H
 #define JFWORLD_H
 
-#include <jfpx/jfRigidBody.h>
 #include <jfpx/jfCore.h>
+#include <jfpx/jfRigidBody.h>
 #include <vector>
 
 using namespace std;
 
-class jfWorld
-{
-    public:
-        jfWorld();
-        virtual ~jfWorld();
+class jfWorld {
+public:
+    jfWorld();
+    virtual ~jfWorld();
 
-
-	   /* 
+    /* 
 		* ===  FUNCTION  ======================================================================
 		*         Name:  startFrame
 		*  Description:  Called at the start of each frame to initialise physics data.
 		* =====================================================================================
 		*/
-        virtual void startFrame() = 0;
+    virtual void startFrame() = 0;
 
-		/* 
+    /* 
 		 * ===  FUNCTION  ======================================================================
 		 *         Name:  step
 		 *  Description:  Resolves forces acting on all bodies and moves them based on their accel.
 		 * =====================================================================================
 		 */
-        virtual void step(jfReal timeStep) = 0;
-    protected:
-        vector<jfRigidBody*> m_Bodies;
-    private:
+    virtual void step(jfReal timeStep) = 0;
+
+protected:
+    vector<jfRigidBody*> m_Bodies;
+
+private:
 };
 
 #endif // JFWORLD_H

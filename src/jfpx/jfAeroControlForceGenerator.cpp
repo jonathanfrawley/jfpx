@@ -17,16 +17,16 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 **/
 #include "jfAeroControlForceGenerator.h"
 
-jfAeroControlForceGenerator::jfAeroControlForceGenerator(): m_MaxTensor(0),
-                                                            m_MinTensor(0)
+jfAeroControlForceGenerator::jfAeroControlForceGenerator()
+    : m_MaxTensor(0)
+    , m_MinTensor(0)
 {
     m_ControlSetting = 0.0f;
 }
 jfAeroControlForceGenerator::jfAeroControlForceGenerator(jfVector3* windSpeed)
-                                                            :
-                                                            jfAeroForceGenerator(windSpeed),
-															m_MaxTensor(0),
-                                                            m_MinTensor(0)
+    : jfAeroForceGenerator(windSpeed)
+    , m_MaxTensor(0)
+    , m_MinTensor(0)
 {
     m_ControlSetting = 0.0f;
 }

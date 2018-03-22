@@ -33,7 +33,7 @@ void jfAmmoRound::drawSphere(float radius, int subdivisions)
 {
     gluQuadricNormals(m_SphereQuadric, GLU_SMOOTH);
     glPushMatrix();
-        gluSphere(m_SphereQuadric, radius, subdivisions, subdivisions);
+    gluSphere(m_SphereQuadric, radius, subdivisions, subdivisions);
     glPopMatrix();
 }
 

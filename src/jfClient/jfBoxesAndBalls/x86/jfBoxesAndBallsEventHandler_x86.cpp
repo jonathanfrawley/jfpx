@@ -28,53 +28,49 @@ jfBoxesAndBallsEventHandler_x86::~jfBoxesAndBallsEventHandler_x86()
 void jfBoxesAndBallsEventHandler_x86::handleKeyEvents()
 {
     jfKey keyNum = isKeyPressed();
-    while(keyNum != JFK_NULL)
-    {
-        switch (keyNum)
-        {
-            case JFK_w:
-                cam->strafeForward();
-                break;
-            case JFK_s:
-                cam->strafeBackward();
-                break;
-            case JFK_a:
-                cam->strafeLeft();
-                break;
-            case JFK_d:
-                cam->strafeRight();
-                break;
-            case JFK_NULL:
-                break;
-            default:
-                break;
+    while (keyNum != JFK_NULL) {
+        switch (keyNum) {
+        case JFK_w:
+            cam->strafeForward();
+            break;
+        case JFK_s:
+            cam->strafeBackward();
+            break;
+        case JFK_a:
+            cam->strafeLeft();
+            break;
+        case JFK_d:
+            cam->strafeRight();
+            break;
+        case JFK_NULL:
+            break;
+        default:
+            break;
         }
-        keyNum = isKeyPressed(keyNum+1);
+        keyNum = isKeyPressed(keyNum + 1);
     }
 }
 
 void jfBoxesAndBallsEventHandler_x86::handleMouseEvents()
 {
-    int x,y;
-    if(SDL_GetMouseState(&x, &y) & SDL_BUTTON(1))
-    {
-        if(! m_WasMouse1Pressed)
-        {
+    int x, y;
+    if (SDL_GetMouseState(&x, &y) & SDL_BUTTON(1)) {
+        if (!m_WasMouse1Pressed) {
             m_LastX = x;
             m_LastY = y;
             m_WasMouse1Pressed = true;
         }
-        int diffx= x-m_LastX;
-        int diffy= y-m_LastY;
-        m_LastX=x;
-        m_LastY=y;
+        int diffx = x - m_LastX;
+        int diffy = y - m_LastY;
+        m_LastX = x;
+        m_LastY = y;
         jfVector3_x86 camRot, yRot, xRot;
         cam->getRot(&camRot);
-        camRot.add(jfVector3_x86((float) diffy, 0.0, 0.0), &xRot);
-        camRot.add(jfVector3_x86(0.0, (float) diffx, 0.0), &yRot);
+        camRot.add(jfVector3_x86((float)diffy, 0.0, 0.0), &xRot);
+        camRot.add(jfVector3_x86(0.0, (float)diffx, 0.0), &yRot);
         cam->setRot(xRot);
         cam->setRot(yRot);
-    }else{
+    } else {
         m_WasMouse1Pressed = false;
     }
 }

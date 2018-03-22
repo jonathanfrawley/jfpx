@@ -26,49 +26,48 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *  Description:  Used to control an object using aero forces.
  * =====================================================================================
  */
-class jfAeroControlForceGenerator : public jfAeroForceGenerator
-{
-    public:
-        jfAeroControlForceGenerator();
-        jfAeroControlForceGenerator(jfVector3* windSpeed);
-        virtual ~jfAeroControlForceGenerator();
+class jfAeroControlForceGenerator : public jfAeroForceGenerator {
+public:
+    jfAeroControlForceGenerator();
+    jfAeroControlForceGenerator(jfVector3* windSpeed);
+    virtual ~jfAeroControlForceGenerator();
 
-		/*-----------------------------------------------------------------------------
+    /*-----------------------------------------------------------------------------
 		 *  Interface
 		 *-----------------------------------------------------------------------------*/
-		/*-----------------------------------------------------------------------------
+    /*-----------------------------------------------------------------------------
 		 *  Inherited methods
 		 *-----------------------------------------------------------------------------*/
-        virtual void updateForce(jfRigidBody* body, jfReal timeStep) const = 0;
-        virtual void updateForceFromTensor(jfRigidBody* body,
-                                            jfReal timeStep,
-                                            jfMatrix3& tensor) const = 0;
+    virtual void updateForce(jfRigidBody* body, jfReal timeStep) const = 0;
+    virtual void updateForceFromTensor(jfRigidBody* body,
+        jfReal timeStep,
+        jfMatrix3& tensor) const = 0;
 
-		/*-----------------------------------------------------------------------------
+    /*-----------------------------------------------------------------------------
 		 *  Own Functions
 		 *-----------------------------------------------------------------------------*/
-		/*
+    /*
 		 * ===  FUNCTION  ======================================================================
 		 *         Name:  getTensor
 		 *  Description:  Decides on which tensor value to use and if none appropriate, it uses the
 		 *  two most suitable values available.
 		 * =====================================================================================
 		 */
-        virtual void getTensor(jfMatrix3* result) const = 0;
+    virtual void getTensor(jfMatrix3* result) const = 0;
 
-		/*-----------------------------------------------------------------------------
+    /*-----------------------------------------------------------------------------
 		 *  Getters and Setters
 		 *-----------------------------------------------------------------------------*/
-        virtual void setControl(jfReal val)
-		{
-			m_ControlSetting = val;
-		}
+    virtual void setControl(jfReal val)
+    {
+        m_ControlSetting = val;
+    }
 
-    protected:
-        jfMatrix3* m_MaxTensor;
-        jfMatrix3* m_MinTensor;
-        jfReal m_ControlSetting; //Goes from -1 to 0 to 1 and chooses appropriate tensor to use (Millington p.219)
-    private:
+protected:
+    jfMatrix3* m_MaxTensor;
+    jfMatrix3* m_MinTensor;
+    jfReal m_ControlSetting; //Goes from -1 to 0 to 1 and chooses appropriate tensor to use (Millington p.219)
+private:
 };
 
 #endif // JFAEROCONTROLFORCEGENERATOR_H

@@ -17,27 +17,29 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 **/
 #include "jfQuaternion.h"
 
-jfQuaternion::jfQuaternion() : m_R(0),m_I(0),m_J(0),m_K(0)
+jfQuaternion::jfQuaternion()
+    : m_R(0)
+    , m_I(0)
+    , m_J(0)
+    , m_K(0)
 {
 }
 
-jfQuaternion::jfQuaternion(jfReal r
-									,jfReal i
-									,jfReal j
-									,jfReal k) : m_R(r),m_I(i),m_J(j),m_K(k)
+jfQuaternion::jfQuaternion(jfReal r, jfReal i, jfReal j, jfReal k)
+    : m_R(r)
+    , m_I(i)
+    , m_J(j)
+    , m_K(k)
 {
 }
 
-jfQuaternion::jfQuaternion( const jfQuaternion& other )
-									:
-									m_R(other.getR()),
-									m_I(other.getI()),
-									m_J(other.getJ()),
-									m_K(other.getK())
+jfQuaternion::jfQuaternion(const jfQuaternion& other)
+    : m_R(other.getR())
+    , m_I(other.getI())
+    , m_J(other.getJ())
+    , m_K(other.getK())
 {
 }
-
-
 
 jfQuaternion::~jfQuaternion()
 {

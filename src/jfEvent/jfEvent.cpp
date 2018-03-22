@@ -17,11 +17,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 **/
 #include <jfEvent/jfEvent.h>
 
-jfEvent::jfEvent():
-	m_Status(EVENT_NULL),
-	m_KeyNum(KEY_NULL)
+jfEvent::jfEvent()
+    : m_Status(EVENT_NULL)
+    , m_KeyNum(KEY_NULL)
 {
-
 }
 
 jfEvent::jfEvent(int type)
@@ -31,37 +30,36 @@ jfEvent::jfEvent(int type)
 
 jfEvent::~jfEvent()
 {
-
 }
 
 void jfEvent::nullEvent()
 {
-	m_Status=EVENT_NULL;
+    m_Status = EVENT_NULL;
 }
 
 void jfEvent::quitEvent()
 {
-	m_Status=EVENT_QUIT;
+    m_Status = EVENT_QUIT;
 }
 
 void jfEvent::doneEvent()
 {
-    m_Status=EVENT_DONE;
+    m_Status = EVENT_DONE;
 }
 
 void jfEvent::noEvent()
 {
-    m_Status=EVENT_NONE;
+    m_Status = EVENT_NONE;
 }
 
 void jfEvent::keyDownEvent(int keyNum)
 {
-	m_Status=EVENT_KEYDOWN;
-	m_KeyNum=keyNum;
+    m_Status = EVENT_KEYDOWN;
+    m_KeyNum = keyNum;
 }
 
 void jfEvent::keyUpEvent(int keyNum)
 {
-	m_Status=EVENT_KEYUP;
-	m_KeyNum=keyNum;
+    m_Status = EVENT_KEYUP;
+    m_KeyNum = keyNum;
 }

@@ -20,29 +20,27 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include <jfpx/jfForceGenerator.h>
 
-class jfSpringForceGenerator : public jfForceGenerator
-{
-	public:
-		jfSpringForceGenerator();
-		jfSpringForceGenerator(jfVector3* connectionPoint,
-								jfRigidBody* other,
-								jfVector3* otherConnectionPoint,
-								jfReal springConstant,
-								jfReal restLength);
-		virtual ~jfSpringForceGenerator();
+class jfSpringForceGenerator : public jfForceGenerator {
+public:
+    jfSpringForceGenerator();
+    jfSpringForceGenerator(jfVector3* connectionPoint,
+        jfRigidBody* other,
+        jfVector3* otherConnectionPoint,
+        jfReal springConstant,
+        jfReal restLength);
+    virtual ~jfSpringForceGenerator();
 
-		/* Interface */
-		virtual void updateForce(jfRigidBody* body, jfReal duration) = 0;
+    /* Interface */
+    virtual void updateForce(jfRigidBody* body, jfReal duration) = 0;
 
-	protected:
-		jfVector3* m_ConnectionPoint; //local coords
-		jfVector3* m_OtherConnectionPoint; //local coords
-		jfRigidBody* m_Other;
-		jfReal m_SpringConstant; //k
-		jfReal m_RestLength;
-	private:
+protected:
+    jfVector3* m_ConnectionPoint; //local coords
+    jfVector3* m_OtherConnectionPoint; //local coords
+    jfRigidBody* m_Other;
+    jfReal m_SpringConstant; //k
+    jfReal m_RestLength;
 
-
+private:
 };
 
 #endif

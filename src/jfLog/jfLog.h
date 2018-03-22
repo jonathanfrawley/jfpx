@@ -18,8 +18,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #ifndef JFLOG_H
 #define JFLOG_H
 
-#include <iostream>
 #include <fstream>
+#include <iostream>
 using namespace std;
 
 void logToFile(const char* buffer, const char* filename = "log.txt");

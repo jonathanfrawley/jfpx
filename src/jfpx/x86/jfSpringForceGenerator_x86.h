@@ -21,20 +21,20 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include <jfpx/jfSpringForceGenerator.h>
 #include <jfpx/x86/jfVector3_x86.h>
 
-class jfSpringForceGenerator_x86 : public jfSpringForceGenerator
-{
-	public:
-		jfSpringForceGenerator_x86();
-		jfSpringForceGenerator_x86(jfVector3* connectionPoint,
-				jfRigidBody* other,
-				jfVector3* otherConnectionPoint,
-				jfReal springConstant,
-				jfReal restLength);
-		virtual ~jfSpringForceGenerator_x86();
+class jfSpringForceGenerator_x86 : public jfSpringForceGenerator {
+public:
+    jfSpringForceGenerator_x86();
+    jfSpringForceGenerator_x86(jfVector3* connectionPoint,
+        jfRigidBody* other,
+        jfVector3* otherConnectionPoint,
+        jfReal springConstant,
+        jfReal restLength);
+    virtual ~jfSpringForceGenerator_x86();
 
-		/* Implemented Methods from Superclass */
-		virtual void updateForce(jfRigidBody* body, jfReal duration);
-	protected:
+    /* Implemented Methods from Superclass */
+    virtual void updateForce(jfRigidBody* body, jfReal duration);
+
+protected:
 };
 
 #endif

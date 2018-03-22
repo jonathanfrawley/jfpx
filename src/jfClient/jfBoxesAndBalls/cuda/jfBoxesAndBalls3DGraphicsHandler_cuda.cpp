@@ -26,11 +26,11 @@ jfBoxesAndBalls3DGraphicsHandler_cuda::~jfBoxesAndBalls3DGraphicsHandler_cuda()
 }
 
 void jfBoxesAndBalls3DGraphicsHandler_cuda::drawSphere(float radius,
-                                                        int subdivisions) const
+    int subdivisions) const
 {
     gluQuadricNormals(m_SphereQuadric, GLU_SMOOTH);
     glPushMatrix();
-        gluSphere(m_SphereQuadric, radius, subdivisions, subdivisions);
+    gluSphere(m_SphereQuadric, radius, subdivisions, subdivisions);
     glPopMatrix();
 }
 
@@ -40,36 +40,33 @@ int jfBoxesAndBalls3DGraphicsHandler_cuda::loadGLTextures()
 
     SDL_Surface* textureImage[2];
 
-	textureImage[0] = SDL_LoadBMP("../../../media/textures/box.bmp");
-	textureImage[1] = SDL_LoadBMP("../../../media/textures/ball.bmp");
+    textureImage[0] = SDL_LoadBMP("../../../media/textures/box.bmp");
+    textureImage[1] = SDL_LoadBMP("../../../media/textures/ball.bmp");
 
-    if ( ( textureImage[0] && textureImage[1]) ) 
-    {
-        cout<<"Loading texture...";
-	    status = 0;
-	    glGenTextures(2, &m_Textures[0] );
-	    glBindTexture( GL_TEXTURE_2D, m_Textures[0] );
-	    glTexParameteri( GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR );
-	    glTexParameteri( GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR );
-	    glTexImage2D( GL_TEXTURE_2D, 0, 3, textureImage[0]->w,
-			  textureImage[0]->h, 0, GL_BGR,
-			  GL_UNSIGNED_BYTE, textureImage[0]->pixels );
+    if ((textureImage[0] && textureImage[1])) {
+        cout << "Loading texture...";
+        status = 0;
+        glGenTextures(2, &m_Textures[0]);
+        glBindTexture(GL_TEXTURE_2D, m_Textures[0]);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+        glTexImage2D(GL_TEXTURE_2D, 0, 3, textureImage[0]->w,
+            textureImage[0]->h, 0, GL_BGR,
+            GL_UNSIGNED_BYTE, textureImage[0]->pixels);
 
-		glBindTexture( GL_TEXTURE_2D, m_Textures[1] );
-	    glTexParameteri( GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR );
-	    glTexParameteri( GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR );
-	    glTexImage2D( GL_TEXTURE_2D, 0, 3, textureImage[1]->w,
-			  textureImage[1]->h, 0, GL_BGR,
-			  GL_UNSIGNED_BYTE, textureImage[1]->pixels );
+        glBindTexture(GL_TEXTURE_2D, m_Textures[1]);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+        glTexImage2D(GL_TEXTURE_2D, 0, 3, textureImage[1]->w,
+            textureImage[1]->h, 0, GL_BGR,
+            GL_UNSIGNED_BYTE, textureImage[1]->pixels);
     }
 
-    if ( textureImage[0] )
-    {
-	    SDL_FreeSurface( textureImage[0] );
+    if (textureImage[0]) {
+        SDL_FreeSurface(textureImage[0]);
     }
-	if ( textureImage[1] )
-    {
-	    SDL_FreeSurface( textureImage[1] );
+    if (textureImage[1]) {
+        SDL_FreeSurface(textureImage[1]);
     }
     return status;
 }
@@ -87,9 +84,9 @@ void jfBoxesAndBalls3DGraphicsHandler_cuda::drawObjects() const
     jfVector3_x86 camRot, camPos;
     cam->getRot(&camRot);
     cam->getPos(&camPos);
-    glRotatef(camRot.getX(),1.0,0.0,0.0);
-    glRotatef(camRot.getY(),0.0,1.0,0.0);
-    glRotatef(camRot.getZ(),0.0,0.0,1.0);
+    glRotatef(camRot.getX(), 1.0, 0.0, 0.0);
+    glRotatef(camRot.getY(), 0.0, 1.0, 0.0);
+    glRotatef(camRot.getZ(), 0.0, 0.0, 1.0);
 
     GLfloat xtrans = -(camPos.getX());
     GLfloat ytrans = -(camPos.getY());
@@ -111,8 +108,7 @@ void jfBoxesAndBalls3DGraphicsHandler_cuda::drawObjects() const
     // Draw some scale lines
     glColor3f(0.75f, 0.75f, 0.75f);
     glBegin(GL_LINES);
-    for (unsigned i = 0; i < 200; i += 3)
-    {
+    for (unsigned i = 0; i < 200; i += 3) {
         glVertex3f(-50.0f, 0.0f, i);
         glVertex3f(50.0f, 0.0f, i);
     }
@@ -120,28 +116,24 @@ void jfBoxesAndBalls3DGraphicsHandler_cuda::drawObjects() const
 
     vector<jfBall*>::iterator ball;
     // Render each ball in turn
-    for (ball = m_Balls->begin(); ball != m_Balls->end(); ball++)
-    {        
-		glEnable( GL_TEXTURE_2D );
-		//glEnable(GL_COLOR_MATERIAL);
-		//glColor3f(0.1f, 0.1f, 0.1f);
-        glBindTexture( GL_TEXTURE_2D, m_Textures[1] );
-        if ((*ball)->getType() != JF_BALL_UNUSED)
-        {
+    for (ball = m_Balls->begin(); ball != m_Balls->end(); ball++) {
+        glEnable(GL_TEXTURE_2D);
+        //glEnable(GL_COLOR_MATERIAL);
+        //glColor3f(0.1f, 0.1f, 0.1f);
+        glBindTexture(GL_TEXTURE_2D, m_Textures[1]);
+        if ((*ball)->getType() != JF_BALL_UNUSED) {
             (*ball)->render();
         }
-		glDisable( GL_TEXTURE_2D );
+        glDisable(GL_TEXTURE_2D);
     }
     vector<jfBox*>::iterator box;
-    for (box = m_Boxes->begin(); box != m_Boxes->end() ; box++)
-    {
-        glEnable( GL_TEXTURE_2D );
-        glBindTexture( GL_TEXTURE_2D, m_Textures[0] );
-        if((*box)->getType()!= JF_BOX_UNUSED)
-        {
+    for (box = m_Boxes->begin(); box != m_Boxes->end(); box++) {
+        glEnable(GL_TEXTURE_2D);
+        glBindTexture(GL_TEXTURE_2D, m_Textures[0]);
+        if ((*box)->getType() != JF_BOX_UNUSED) {
             (*box)->render();
         }
-        glDisable( GL_TEXTURE_2D );
+        glDisable(GL_TEXTURE_2D);
     }
 }
 
@@ -150,16 +142,15 @@ void jfBoxesAndBalls3DGraphicsHandler_cuda::drawDebug(vector<jfContact*> contact
     // Render the contacts, if required
     vector<jfContact*>::iterator contact;
     glBegin(GL_LINES);
-    for (contact = contacts.begin(); contact!=contacts.end() ; contact++)
-    {
+    for (contact = contacts.begin(); contact != contacts.end(); contact++) {
         jfVector3_x86 vec;
         jfVector3_x86 contactNormal;
 
         // Interbody contacts are in green, floor contacts are red.
         if ((*contact)->getBody(1)) {
-            glColor3f(0,1,0);
+            glColor3f(0, 1, 0);
         } else {
-            glColor3f(1,0,0);
+            glColor3f(1, 0, 0);
         }
 
         (*contact)->getContactPoint(&vec);

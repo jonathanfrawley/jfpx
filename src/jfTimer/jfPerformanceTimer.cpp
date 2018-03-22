@@ -20,9 +20,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 jfPerformanceTimer::jfPerformanceTimer()
 {
 #ifdef __WIN32__
-	timer.start.QuadPart=0;
-	timer.stop.QuadPart=0;
-	QueryPerformanceFrequency( &frequency );
+    timer.start.QuadPart = 0;
+    timer.stop.QuadPart = 0;
+    QueryPerformanceFrequency(&frequency);
 #endif
 }
 
@@ -33,7 +33,7 @@ jfPerformanceTimer::~jfPerformanceTimer()
 void jfPerformanceTimer::start()
 {
 #ifdef __WIN32__
-	QueryPerformanceCounter(&timer.start);
+    QueryPerformanceCounter(&timer.start);
 #endif
 #ifdef __linux__
     gettimeofday(&startTime, 0);
@@ -43,7 +43,7 @@ void jfPerformanceTimer::start()
 void jfPerformanceTimer::stop()
 {
 #ifdef __WIN32__
-	QueryPerformanceCounter(&timer.stop);
+    QueryPerformanceCounter(&timer.stop);
 #endif
 #ifdef __linux__
     gettimeofday(&endTime, 0);
@@ -53,33 +53,32 @@ void jfPerformanceTimer::stop()
 double jfPerformanceTimer::getCurrentTime()
 {
 #ifdef __WIN32__
-	LARGE_INTEGER time;
-	LARGE_INTEGER frequency;
-	QueryPerformanceFrequency(&frequency);
-	QueryPerformanceCounter(&time);
-	return ((double)time.QuadPart/frequency.QuadPart);
+    LARGE_INTEGER time;
+    LARGE_INTEGER frequency;
+    QueryPerformanceFrequency(&frequency);
+    QueryPerformanceCounter(&time);
+    return ((double)time.QuadPart / frequency.QuadPart);
 #endif
 #ifdef __linux__
-	gettimeofday(&endTime, 0);
+    gettimeofday(&endTime, 0);
     double elapsedTime;
-	elapsedTime = (endTime.tv_sec - startTime.tv_sec);
-	elapsedTime += (endTime.tv_usec - startTime.tv_usec) / 1000000.0;
-	return elapsedTime;
+    elapsedTime = (endTime.tv_sec - startTime.tv_sec);
+    elapsedTime += (endTime.tv_usec - startTime.tv_usec) / 1000000.0;
+    return elapsedTime;
 #endif
-
 }
 
 double jfPerformanceTimer::getElapsedTime()
 {
 #ifdef __WIN32__
-	LARGE_INTEGER time;
-	time.QuadPart = timer.stop.QuadPart - timer.start.QuadPart;
-	return ((double)time.QuadPart /(double)frequency.QuadPart) ;
+    LARGE_INTEGER time;
+    time.QuadPart = timer.stop.QuadPart - timer.start.QuadPart;
+    return ((double)time.QuadPart / (double)frequency.QuadPart);
 #endif
 #ifdef __linux__
     double elapsedTime;
-	elapsedTime = (endTime.tv_sec - startTime.tv_sec);
-	elapsedTime += (endTime.tv_usec - startTime.tv_usec) / 1000000.0;
-	return elapsedTime;
+    elapsedTime = (endTime.tv_sec - startTime.tv_sec);
+    elapsedTime += (endTime.tv_usec - startTime.tv_usec) / 1000000.0;
+    return elapsedTime;
 #endif
 }

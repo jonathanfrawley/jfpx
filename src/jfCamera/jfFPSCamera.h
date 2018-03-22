@@ -18,31 +18,27 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #ifndef JFFPSCAMERA_H
 #define JFFPSCAMERA_H
 
-#include <jfpx/x86/jfVector3_x86.h>
 #include <jfCamera/jfCamera.h>
+#include <jfpx/x86/jfVector3_x86.h>
 
 const float PI_OVER_180 = 0.0174532925f;
 
-class jfFPSCamera : public jfCamera
-{
-    public:
-        jfFPSCamera();
+class jfFPSCamera : public jfCamera {
+public:
+    jfFPSCamera();
 
-        ~jfFPSCamera();
+    ~jfFPSCamera();
 
-        void strafeLeft();
+    void strafeLeft();
 
-        void strafeRight();
+    void strafeRight();
 
-        void strafeForward();
+    void strafeForward();
 
-        void strafeBackward();
+    void strafeBackward();
 
-
-    private:
-        float m_Speed;
-
+private:
+    float m_Speed;
 };
-
 
 #endif

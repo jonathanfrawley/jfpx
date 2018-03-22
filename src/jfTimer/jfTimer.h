@@ -20,24 +20,23 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include <SDL/SDL.h>
 
-class jfTimer
-{
-    public:
-        jfTimer();
-        ~jfTimer();
-        void start();
-        void stop();
-        void pause();
-        void unPause();
-        unsigned getTicks();
-        bool isStarted();
-        bool isPaused();
-    private:
-        unsigned m_StartTicks;
-        unsigned m_PausedTicks;
-        bool m_IsPaused;
-        bool m_IsStarted;
+class jfTimer {
+public:
+    jfTimer();
+    ~jfTimer();
+    void start();
+    void stop();
+    void pause();
+    void unPause();
+    unsigned getTicks();
+    bool isStarted();
+    bool isPaused();
+
+private:
+    unsigned m_StartTicks;
+    unsigned m_PausedTicks;
+    bool m_IsPaused;
+    bool m_IsStarted;
 };
 
 #endif
-

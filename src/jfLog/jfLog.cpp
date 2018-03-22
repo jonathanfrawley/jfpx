@@ -20,12 +20,12 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 void logToFile(const char* buffer, const char* filename)
 {
     ofstream myfile;
-    myfile.open (filename, ios::app);
+    myfile.open(filename, ios::app);
     myfile << buffer;
     myfile.close();
 }
 
 void log(const char* buffer)
 {
-    cout<<buffer<<endl;
+    cout << buffer << endl;
 }

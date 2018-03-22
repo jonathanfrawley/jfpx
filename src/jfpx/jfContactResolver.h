@@ -30,120 +30,112 @@ using namespace std;
  *  Description:
  * =====================================================================================
  */
-class jfContactResolver
-{
-	public:
-		jfContactResolver ();
+class jfContactResolver {
+public:
+    jfContactResolver();
 
-		jfContactResolver(unsigned iterations
-                            , jfReal velocityEpsilion=(jfReal)0.01
-                            , jfReal positionEpsilon=(jfReal)0.01);
+    jfContactResolver(unsigned iterations, jfReal velocityEpsilion = (jfReal)0.01, jfReal positionEpsilon = (jfReal)0.01);
 
-		jfContactResolver(unsigned velocityIterations
-                            , unsigned positionIterations
-                            , jfReal velocityEpsilion=(jfReal)0.01
-                            , jfReal positionEpsilon=(jfReal)0.01);
+    jfContactResolver(unsigned velocityIterations, unsigned positionIterations, jfReal velocityEpsilion = (jfReal)0.01, jfReal positionEpsilon = (jfReal)0.01);
 
-		virtual ~jfContactResolver ();
+    virtual ~jfContactResolver();
 
-		/*
+    /*
 		 * ===  FUNCTION  ======================================================================
 		 *         Name:  isValid
 		 *  Description:  Returns whether the resolver has valid settings or not.
 		 * =====================================================================================
 		 */
-		virtual bool isValid() const
-		{
-			return ( (m_MaxVelocityIterations > 0)
-					&& (m_MaxPositionIterations > 0)
-					&& (m_VelocityEpsilon >= 0.0f)
-					&& (m_PositionEpsilon >= 0.0f)
-					);
-		}
+    virtual bool isValid() const
+    {
+        return ((m_MaxVelocityIterations > 0)
+            && (m_MaxPositionIterations > 0)
+            && (m_VelocityEpsilon >= 0.0f)
+            && (m_PositionEpsilon >= 0.0f));
+    }
 
-		/*
+    /*
 		 * ===  FUNCTION  ======================================================================
 		 *         Name:  resolveContacts
 		 *  Description:  Resolves a set of contacts for both penetration and velocity.
 		 * =====================================================================================
 		 */
-		virtual void resolveContacts(vector<jfContact*>& contacts,
-										jfReal timeStep) = 0;
+    virtual void resolveContacts(vector<jfContact*>& contacts,
+        jfReal timeStep)
+        = 0;
 
-
-		/*
+    /*
 		 * ===  FUNCTION  ======================================================================
 		 *         Name:  prepareContacts
 		 *  Description:  Sets up contacts for processing.
 		 * =====================================================================================
 		 */
-		virtual void prepareContacts(vector<jfContact*>& contacts,
-										jfReal timeStep) const = 0;
+    virtual void prepareContacts(vector<jfContact*>& contacts,
+        jfReal timeStep) const = 0;
 
-
-		/*
+    /*
 		 * ===  FUNCTION  ======================================================================
 		 *         Name:  adjustVelocities
 		 *  Description:  Resolves the velocity issues for the given contacts
 		 * =====================================================================================
 		 */
-		virtual void adjustVelocities(vector<jfContact*>& contacts,
-										jfReal timeStep) = 0;
+    virtual void adjustVelocities(vector<jfContact*>& contacts,
+        jfReal timeStep)
+        = 0;
 
-
-		/*
+    /*
 		 * ===  FUNCTION  ======================================================================
 		 *         Name:  adjustPositions
 		 *  Description:  Resolves the positional issues for the given contacts.
 		 * =====================================================================================
 		 */
-		virtual void adjustPositions(vector<jfContact*>& contacts,
-										jfReal timeStep) = 0;
+    virtual void adjustPositions(vector<jfContact*>& contacts,
+        jfReal timeStep)
+        = 0;
 
-		/*-----------------------------------------------------------------------------
+    /*-----------------------------------------------------------------------------
 		 *  Getters and Setters
 		 *-----------------------------------------------------------------------------*/
-		void setVelocityIterations(unsigned val) { m_VelocityIterationsUsed = val; }
+    void setVelocityIterations(unsigned val) { m_VelocityIterationsUsed = val; }
 
-		void setPositionIterations(unsigned val) { m_PositionIterationsUsed = val; }
+    void setPositionIterations(unsigned val) { m_PositionIterationsUsed = val; }
 
-		void setIterations(unsigned iterations)
-		{
-			m_VelocityIterationsUsed = iterations;
-			m_PositionIterationsUsed = iterations;
-		}
+    void setIterations(unsigned iterations)
+    {
+        m_VelocityIterationsUsed = iterations;
+        m_PositionIterationsUsed = iterations;
+    }
 
-		void setEpsilons(jfReal velocityEpsilon,
-							jfReal positionEpsilon)
-		{
-			m_VelocityEpsilon = velocityEpsilon;
-			m_PositionEpsilon = positionEpsilon;
-		}
+    void setEpsilons(jfReal velocityEpsilon,
+        jfReal positionEpsilon)
+    {
+        m_VelocityEpsilon = velocityEpsilon;
+        m_PositionEpsilon = positionEpsilon;
+    }
 
-	protected:
-		/* Max number of iterations when resolving velocity */
-		unsigned m_MaxVelocityIterations;
+protected:
+    /* Max number of iterations when resolving velocity */
+    unsigned m_MaxVelocityIterations;
 
-		/* Max number of iterations when resolving position */
-		unsigned m_MaxPositionIterations;
+    /* Max number of iterations when resolving position */
+    unsigned m_MaxPositionIterations;
 
-		/* Velocities smaller than this are considered to be zero for stability purposes */
-		jfReal m_VelocityEpsilon;
+    /* Velocities smaller than this are considered to be zero for stability purposes */
+    jfReal m_VelocityEpsilon;
 
-		/* Penetrations smaller than this are considered to be not penetrating for stability purposes */
-		jfReal m_PositionEpsilon;
+    /* Penetrations smaller than this are considered to be not penetrating for stability purposes */
+    jfReal m_PositionEpsilon;
 
-		/* Number of velocity iterations used in last call to resolve contacts */
-		unsigned m_VelocityIterationsUsed;
+    /* Number of velocity iterations used in last call to resolve contacts */
+    unsigned m_VelocityIterationsUsed;
 
-		/* Number of position iterations used in last call to resolve contacts */
-		unsigned m_PositionIterationsUsed;
+    /* Number of position iterations used in last call to resolve contacts */
+    unsigned m_PositionIterationsUsed;
 
-        /* Keeps track of whether the internal settings are valid */
-		bool m_ValidSettings;
+    /* Keeps track of whether the internal settings are valid */
+    bool m_ValidSettings;
 
-	private:
-
+private:
 }; /* -----  end of class jfContactResolver  ----- */
 
 #endif //JFCONTACTRESOLVER_H

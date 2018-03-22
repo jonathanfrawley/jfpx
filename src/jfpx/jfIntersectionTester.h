@@ -18,79 +18,80 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #ifndef JFINTERSECTIONTESTER_H
 #define JFINTERSECTIONTESTER_H
 
-#include <jfpx/jfVector3.h>
-#include <jfpx/jfCollisionSphere.h>
 #include <jfpx/jfCollisionBox.h>
 #include <jfpx/jfCollisionPlane.h>
+#include <jfpx/jfCollisionSphere.h>
+#include <jfpx/jfVector3.h>
 
+class jfIntersectionTester {
+public:
+    jfIntersectionTester();
 
-class jfIntersectionTester
-{
-    public:
-        jfIntersectionTester();
+    virtual ~jfIntersectionTester();
 
-        virtual ~jfIntersectionTester();
-
-		/* 
+    /* 
 		 * ===  FUNCTION  ======================================================================
 		 *         Name:  sphereAndHalfSpace
 		 *  Description:  Returns true if the given sphere is intersecting with the halfspace.
 		 * =====================================================================================
 		 */
-        virtual bool sphereAndHalfSpace(const jfCollisionSphere& sphere,
-										const jfCollisionPlane& plane) = 0;
+    virtual bool sphereAndHalfSpace(const jfCollisionSphere& sphere,
+        const jfCollisionPlane& plane)
+        = 0;
 
-
-	   /* 
+    /* 
 		* ===  FUNCTION  ======================================================================
 		*         Name:  sphereAndSphere
 		*  Description:  Returns true if the two spheres are intersecting
 		* =====================================================================================
 		*/
-        virtual bool sphereAndSphere(const jfCollisionSphere& one,
-										const jfCollisionSphere& two) = 0;
+    virtual bool sphereAndSphere(const jfCollisionSphere& one,
+        const jfCollisionSphere& two)
+        = 0;
 
-		/* 
+    /* 
 		 * ===  FUNCTION  ======================================================================
 		 *         Name:  boxAndBox
 		 *  Description:  Returns true if the two boxes are intersecting.
 		 * =====================================================================================
 		 */
-        virtual bool boxAndBox(const jfCollisionBox& one,
-								const jfCollisionBox& two) = 0;
+    virtual bool boxAndBox(const jfCollisionBox& one,
+        const jfCollisionBox& two)
+        = 0;
 
-		/* 
+    /* 
 		 * ===  FUNCTION  ======================================================================
 		 *         Name:  boxAndHalfSpace
 		 *  Description:  Returns true if the box is intersecting the half space.
 		 * =====================================================================================
 		 */
-        virtual bool boxAndHalfSpace(const jfCollisionBox& box,
-										const jfCollisionPlane& plane) = 0;
-		/* 
+    virtual bool boxAndHalfSpace(const jfCollisionBox& box,
+        const jfCollisionPlane& plane)
+        = 0;
+    /* 
 		 * ===  FUNCTION  ======================================================================
 		 *         Name:  transformToAxis
 		 *  Description:  Transforms the box to the axis vector.
 		 * =====================================================================================
 		 */
-		virtual jfReal transformToAxis(const jfCollisionBox& box,
-										const jfVector3& axis) = 0;
+    virtual jfReal transformToAxis(const jfCollisionBox& box,
+        const jfVector3& axis)
+        = 0;
 
-	protected:
-
-
-		/* 
+protected:
+    /* 
 		 * ===  FUNCTION  ======================================================================
 		 *         Name: overlapOnAxis 
 		 *  Description: Returns true if the two boxes overlap on the given axis.
 		 * =====================================================================================
 		 */
-		virtual bool overlapOnAxis(const jfCollisionBox& one,
-									const jfCollisionBox& two,
-									const jfVector3& axis,
-									const jfVector3& toCentre
-									) = 0;
-    private:
+    virtual bool overlapOnAxis(const jfCollisionBox& one,
+        const jfCollisionBox& two,
+        const jfVector3& axis,
+        const jfVector3& toCentre)
+        = 0;
+
+private:
 };
 
 #endif // JFINTERSECTIONTESTER_H

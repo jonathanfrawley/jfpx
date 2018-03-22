@@ -16,13 +16,13 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 **/
 
-#ifndef  JFCONTACT_X86_H
-#define  JFCONTACT_X86_H
+#ifndef JFCONTACT_X86_H
+#define JFCONTACT_X86_H
 
 #include <jfpx/jfContact.h>
-#include <jfpx/x86/jfVector3_x86.h>
 #include <jfpx/x86/jfMatrix3_x86.h>
 #include <jfpx/x86/jfRigidBody_x86.h>
+#include <jfpx/x86/jfVector3_x86.h>
 
 #include <assert.h>
 
@@ -32,50 +32,49 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *  Description:
  * =====================================================================================
  */
-class jfContact_x86 : public jfContact
-{
-	public:
-		jfContact_x86();
+class jfContact_x86 : public jfContact {
+public:
+    jfContact_x86();
 
-        jfContact_x86(const jfContact_x86& other);
+    jfContact_x86(const jfContact_x86& other);
 
-        virtual jfContact_x86* clone() const
-        {
-            return new jfContact_x86(*this);
-        }
+    virtual jfContact_x86* clone() const
+    {
+        return new jfContact_x86(*this);
+    }
 
-		virtual ~jfContact_x86();
+    virtual ~jfContact_x86();
 
-		/*-----------------------------------------------------------------------------
+    /*-----------------------------------------------------------------------------
 		 *  Inherited methods
 		 *-----------------------------------------------------------------------------*/
-		virtual void calculateInternals(jfReal timeStep);
+    virtual void calculateInternals(jfReal timeStep);
 
-		virtual void swapBodies();
+    virtual void swapBodies();
 
-		virtual void calculateDesiredDeltaVelocity(jfReal timeStep);
+    virtual void calculateDesiredDeltaVelocity(jfReal timeStep);
 
-		virtual void calculateLocalVelocity(unsigned bodyIndex,
-                                                    jfReal timeStep,
-                                                    jfVector3* result);
+    virtual void calculateLocalVelocity(unsigned bodyIndex,
+        jfReal timeStep,
+        jfVector3* result);
 
-		virtual void calculateContactBasis();
+    virtual void calculateContactBasis();
 
-		virtual void applyVelocityChange(jfVector3* velocityChange,
-											jfVector3* rotationChange);
+    virtual void applyVelocityChange(jfVector3* velocityChange,
+        jfVector3* rotationChange);
 
-		virtual void applyPositionChange(jfVector3* linearChange,
-                                            jfVector3* angularChange,
-                                            jfReal penetration);
+    virtual void applyPositionChange(jfVector3* linearChange,
+        jfVector3* angularChange,
+        jfReal penetration);
 
-		virtual void calculateFrictionlessImpulse(jfMatrix3* inverseInertiaTensor,
-                                                    jfVector3* result);
+    virtual void calculateFrictionlessImpulse(jfMatrix3* inverseInertiaTensor,
+        jfVector3* result);
 
-		virtual void calculateFrictionImpulse(jfMatrix3* inverseInertiaTensor,
-                                                    jfVector3* result);
+    virtual void calculateFrictionImpulse(jfMatrix3* inverseInertiaTensor,
+        jfVector3* result);
 
-	protected:
-	private:
+protected:
+private:
 };
 
-#endif   // JFCONTACT_X86_H
+#endif // JFCONTACT_X86_H

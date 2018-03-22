@@ -27,26 +27,27 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *  Description:
  * =====================================================================================
  */
-class jfGravityForceGenerator : public jfForceGenerator
-{
-	public:
-		jfGravityForceGenerator ();
-		jfGravityForceGenerator (jfVector3* gravity);
-		virtual ~jfGravityForceGenerator ();
+class jfGravityForceGenerator : public jfForceGenerator {
+public:
+    jfGravityForceGenerator();
+    jfGravityForceGenerator(jfVector3* gravity);
+    virtual ~jfGravityForceGenerator();
 
-		/* Interface */
-		virtual void updateForce(jfRigidBody* body, jfReal duration) = 0;
+    /* Interface */
+    virtual void updateForce(jfRigidBody* body, jfReal duration) = 0;
 
-		/* Accessors */
-		void setGravity(jfVector3* val) { delete m_Gravity; m_Gravity = val; }
-		jfVector3* getGravity(jfVector3* val) { return m_Gravity; }
+    /* Accessors */
+    void setGravity(jfVector3* val)
+    {
+        delete m_Gravity;
+        m_Gravity = val;
+    }
+    jfVector3* getGravity(jfVector3* val) { return m_Gravity; }
 
-	protected:
-		jfVector3* m_Gravity;
+protected:
+    jfVector3* m_Gravity;
 
-	private:
+private:
 };
 
-
 #endif //JFGRAVITYFORCEGENERATOR_H
-

@@ -18,10 +18,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include "jfCollisionData.h"
 
 jfCollisionData::jfCollisionData()
-    :
-        m_Friction(0),
-        m_Restitution(0),
-        m_Tolerance(0)
+    : m_Friction(0)
+    , m_Restitution(0)
+    , m_Tolerance(0)
 {
 }
 

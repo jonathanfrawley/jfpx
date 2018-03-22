@@ -17,21 +17,20 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 **/
 #include "jfSpringForceGenerator_x86.h"
 
-
 jfSpringForceGenerator_x86::jfSpringForceGenerator_x86()
 {
 }
 
 jfSpringForceGenerator_x86::jfSpringForceGenerator_x86(jfVector3* connectionPoint,
-														jfRigidBody* other,
-														jfVector3* otherConnectionPoint,
-														jfReal springConstant,
-														jfReal restLength)
-														: jfSpringForceGenerator(connectionPoint,
-																					other,
-																					otherConnectionPoint,
-																					springConstant,
-																					restLength)
+    jfRigidBody* other,
+    jfVector3* otherConnectionPoint,
+    jfReal springConstant,
+    jfReal restLength)
+    : jfSpringForceGenerator(connectionPoint,
+          other,
+          otherConnectionPoint,
+          springConstant,
+          restLength)
 {
 }
 
@@ -41,21 +40,21 @@ jfSpringForceGenerator_x86::~jfSpringForceGenerator_x86()
 
 void jfSpringForceGenerator_x86::updateForce(jfRigidBody* body, jfReal duration)
 {
-	//Millington p.210
-	//2 ends
-	jfVector3_x86 end0;
-	jfVector3_x86 end1;
+    //Millington p.210
+    //2 ends
+    jfVector3_x86 end0;
+    jfVector3_x86 end1;
     jfVector3_x86 force;
 
-	body->getPointInWorldSpace(*m_ConnectionPoint, &end0);
-	m_Other->getPointInWorldSpace(*m_OtherConnectionPoint, &end1);
+    body->getPointInWorldSpace(*m_ConnectionPoint, &end0);
+    m_Other->getPointInWorldSpace(*m_OtherConnectionPoint, &end1);
     end0.subtract(end1, &force);
 
-	jfReal magnitude = force.magnitude();
-	magnitude = jfRealAbs(magnitude - m_RestLength);
-	magnitude *= m_SpringConstant;
+    jfReal magnitude = force.magnitude();
+    magnitude = jfRealAbs(magnitude - m_RestLength);
+    magnitude *= m_SpringConstant;
 
-	force.normalize();
-	force *= (- magnitude);
-	body->addForceAtPoint(force, end0);
+    force.normalize();
+    force *= (-magnitude);
+    body->addForceAtPoint(force, end0);
 }

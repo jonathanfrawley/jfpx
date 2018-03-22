@@ -20,15 +20,14 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 jfMatrix4::jfMatrix4()
 {
     //Create Identity Matrix
-	int i;
-	for(i=0;i<16;i++)
-	{
-		m_Elems[i] = (jfReal)0.0;
-	}
-	m_Elems[0] = 1;
-	m_Elems[5] = 1;
-	m_Elems[10] = 1;
-	m_Elems[15] = 1;
+    int i;
+    for (i = 0; i < 16; i++) {
+        m_Elems[i] = (jfReal)0.0;
+    }
+    m_Elems[0] = 1;
+    m_Elems[5] = 1;
+    m_Elems[10] = 1;
+    m_Elems[15] = 1;
 }
 
 jfMatrix4::jfMatrix4(const jfMatrix4& other)
@@ -50,8 +49,7 @@ jfMatrix4::~jfMatrix4()
 void jfMatrix4::copyHere(const jfMatrix4& other)
 {
     unsigned i;
-    for(i=0;i<16;i++)
-    {
+    for (i = 0; i < 16; i++) {
         m_Elems[i] = other.getElem(i);
     }
 }

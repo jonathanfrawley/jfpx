@@ -20,31 +20,30 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include <jfEvent/jfEventHandler.h>
 
+#include <jfpx/jfRigidBody.h>
 #include <jfpx/x86/jfQuaternion_x86.h>
 #include <jfpx/x86/jfVector3_x86.h>
-#include <jfpx/jfRigidBody.h>
 
-class jfFlightEventHandler_x86 : public jfEventHandler
-{
-    public:
-        jfFlightEventHandler_x86();
-        virtual ~jfFlightEventHandler_x86();
-        /* Inherited methods */
-        virtual void handleKeyEvents();
+class jfFlightEventHandler_x86 : public jfEventHandler {
+public:
+    jfFlightEventHandler_x86();
+    virtual ~jfFlightEventHandler_x86();
+    /* Inherited methods */
+    virtual void handleKeyEvents();
 
-		void resetAircraft();
+    void resetAircraft();
 
-        /* Getters and setters */
-        void setAircraft(jfRigidBody* val) { aircraft = val; }
-        void setRudderControl(jfReal* val) { rudderControl = val; }
-        void setLeftWingControl(jfReal* val) { leftWingControl = val; }
-        void setRightWingControl(jfReal* val) { rightWingControl = val; }
-    protected:
-        jfRigidBody* aircraft; //Reference only
-        jfReal* rudderControl; //Reference only
-        jfReal* leftWingControl; //Reference only
-        jfReal* rightWingControl; //Reference only
-    private:
+    /* Getters and setters */
+    void setAircraft(jfRigidBody* val) { aircraft = val; }
+    void setRudderControl(jfReal* val) { rudderControl = val; }
+    void setLeftWingControl(jfReal* val) { leftWingControl = val; }
+    void setRightWingControl(jfReal* val) { rightWingControl = val; }
+protected:
+    jfRigidBody* aircraft; //Reference only
+    jfReal* rudderControl; //Reference only
+    jfReal* leftWingControl; //Reference only
+    jfReal* rightWingControl; //Reference only
+private:
 };
 
 #endif // JFFLIGHTEVENTHANDLER_X86_H

@@ -18,33 +18,33 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #ifndef JFBALLISTICSDLGL3DGRAPHICSHANDLER_H
 #define JFBALLISTICSDLGL3DGRAPHICSHANDLER_H
 
-#include <jfGraphics/jf3DGraphics/jfSDLGL/jfSDLGL3DGraphicsHandler.h>
 #include <jfClient/jfBigBallistic/x86/jfAmmoRound_x86.h>
 #include <jfClient/jfBigBallistic/x86/jfBox_x86.h>
+#include <jfGraphics/jf3DGraphics/jfSDLGL/jfSDLGL3DGraphicsHandler.h>
 #include <jfpx/jfContact.h>
 #include <jfpx/x86/jfVector3_x86.h>
 
 #include <vector>
 using namespace std;
 
-class jfBigBallistic3DGraphicsHandler_x86 : public jfSDLGL3DGraphicsHandler
-{
-    public:
-        jfBigBallistic3DGraphicsHandler_x86();
-        virtual ~jfBigBallistic3DGraphicsHandler_x86();
-        virtual void initObjects();
-        virtual int loadGLTextures();
-        void drawSphere(float radius, int subdivisions) const;
-        virtual void drawObjects() const;
-        void setAmmo(vector<jfAmmoRound_x86*>* ammo) { m_Ammo = ammo; }
-        void setBoxes(vector<jfBox_x86*>* boxes) { m_Boxes = boxes; }
-        void drawDebug(vector<jfContact*> contacts);
-    protected:
-    private:
-        GLUquadricObj* m_SphereQuadric;
-        vector<jfAmmoRound_x86*>* m_Ammo;
-        vector<jfBox_x86*>* m_Boxes;
-        GLuint m_Textures[1];
+class jfBigBallistic3DGraphicsHandler_x86 : public jfSDLGL3DGraphicsHandler {
+public:
+    jfBigBallistic3DGraphicsHandler_x86();
+    virtual ~jfBigBallistic3DGraphicsHandler_x86();
+    virtual void initObjects();
+    virtual int loadGLTextures();
+    void drawSphere(float radius, int subdivisions) const;
+    virtual void drawObjects() const;
+    void setAmmo(vector<jfAmmoRound_x86*>* ammo) { m_Ammo = ammo; }
+    void setBoxes(vector<jfBox_x86*>* boxes) { m_Boxes = boxes; }
+    void drawDebug(vector<jfContact*> contacts);
+
+protected:
+private:
+    GLUquadricObj* m_SphereQuadric;
+    vector<jfAmmoRound_x86*>* m_Ammo;
+    vector<jfBox_x86*>* m_Boxes;
+    GLuint m_Textures[1];
 };
 
 #endif // JFBALLISTICSDLGL3DGRAPHICSHANDLER_H

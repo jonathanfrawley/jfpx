@@ -18,8 +18,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #ifndef JFFORCEREGISTRY_H
 #define JFFORCEREGISTRY_H
 
-#include <jfpx/jfRigidBody.h>
 #include <jfpx/jfForceGenerator.h>
+#include <jfpx/jfRigidBody.h>
 
 #include <vector>
 using namespace std;
@@ -27,35 +27,33 @@ using namespace std;
 /*-----------------------------------------------------------------------------
  *  Struct to hold body and forceGen duo
  *-----------------------------------------------------------------------------*/
-typedef struct jfBodyForceGen
-{
-	jfRigidBody* body;
-	jfForceGenerator* forceGen;
+typedef struct jfBodyForceGen {
+    jfRigidBody* body;
+    jfForceGenerator* forceGen;
 } jfBodyForceGen;
 
+class jfForceRegistry {
+public:
+    jfForceRegistry();
+    virtual ~jfForceRegistry();
 
-class jfForceRegistry
-{
-    public:
-        jfForceRegistry();
-        virtual ~jfForceRegistry();
-
-	   /*-----------------------------------------------------------------------------
+    /*-----------------------------------------------------------------------------
 		*  Interface
 		*-----------------------------------------------------------------------------*/
-        virtual void add(jfRigidBody* body, jfForceGenerator* forceGen) = 0;
-        virtual void remove(jfRigidBody* body, jfForceGenerator* forceGen) = 0;
-        virtual void clear() = 0;
-        virtual void updateForces(jfReal timeStep) = 0;
+    virtual void add(jfRigidBody* body, jfForceGenerator* forceGen) = 0;
+    virtual void remove(jfRigidBody* body, jfForceGenerator* forceGen) = 0;
+    virtual void clear() = 0;
+    virtual void updateForces(jfReal timeStep) = 0;
 
-		/*-----------------------------------------------------------------------------
+    /*-----------------------------------------------------------------------------
 		 *  Getters and Setters
 		 *-----------------------------------------------------------------------------*/
-		vector<jfBodyForceGen> getForceGens() { return m_BodyForceGens; }
+    vector<jfBodyForceGen> getForceGens() { return m_BodyForceGens; }
 
-    protected:
-        vector<jfBodyForceGen> m_BodyForceGens;
-    private:
+protected:
+    vector<jfBodyForceGen> m_BodyForceGens;
+
+private:
 };
 
 #endif // JFFORCEREGISTRY_H

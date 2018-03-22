@@ -17,12 +17,13 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 **/
 #include "jfParticle.h"
 
-jfParticle::jfParticle() : m_Pos(0),
-                            m_Vel(0),
-                            m_Accel(0),
-                            m_ForceAccum(0),
-                            m_Damping(0),
-                            m_InverseMass(0)
+jfParticle::jfParticle()
+    : m_Pos(0)
+    , m_Vel(0)
+    , m_Accel(0)
+    , m_ForceAccum(0)
+    , m_Damping(0)
+    , m_InverseMass(0)
 {
 }
 

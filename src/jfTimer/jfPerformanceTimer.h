@@ -36,39 +36,37 @@ typedef struct {
 #include <sys/time.h>
 #endif
 
-
 /*
  * =====================================================================================
  *        Class: jfPerformanceTimer
  *  Description: Cross-platform, microsecond accurate timer
  * =====================================================================================
  */
-class jfPerformanceTimer
-{
-    public:
-        jfPerformanceTimer();
+class jfPerformanceTimer {
+public:
+    jfPerformanceTimer();
 
-        virtual ~jfPerformanceTimer();
+    virtual ~jfPerformanceTimer();
 
-        void start();
+    void start();
 
-        void stop();
+    void stop();
 
-        double getElapsedTime();
+    double getElapsedTime();
 
-        double getCurrentTime();
+    double getCurrentTime();
 
-    protected:
+protected:
 #ifdef __WIN32__
-		stopWatch timer;
-        LARGE_INTEGER frequency;
+    stopWatch timer;
+    LARGE_INTEGER frequency;
 #endif
 
 #ifndef __WIN32__
-		timeval startTime, endTime;
+    timeval startTime, endTime;
 #endif
 
-    private:
+private:
 };
 
-#endif 
+#endif

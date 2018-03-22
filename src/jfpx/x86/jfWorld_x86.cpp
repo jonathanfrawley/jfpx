@@ -17,7 +17,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 **/
 #include "jfWorld_x86.h"
 
-
 jfWorld_x86::jfWorld_x86()
 {
 }
@@ -28,21 +27,19 @@ jfWorld_x86::~jfWorld_x86()
 
 void jfWorld_x86::startFrame()
 {
-	//@REF: Millington p.215
-	vector<jfRigidBody*>::iterator it;
-	for (it=m_Bodies.begin();it!=m_Bodies.end();it++)
-	{
-		(*it)->clearAccumulators();
-		(*it)->calculateDerivedData();
-	}
+    //@REF: Millington p.215
+    vector<jfRigidBody*>::iterator it;
+    for (it = m_Bodies.begin(); it != m_Bodies.end(); it++) {
+        (*it)->clearAccumulators();
+        (*it)->calculateDerivedData();
+    }
 }
 
 void jfWorld_x86::step(jfReal timeStep)
 {
-	//@REF: Millington p.215
-	vector<jfRigidBody*>::iterator it;
-	for (it=m_Bodies.begin();it!=m_Bodies.end();it++)
-	{
-		(*it)->integrate(timeStep);
-	}
+    //@REF: Millington p.215
+    vector<jfRigidBody*>::iterator it;
+    for (it = m_Bodies.begin(); it != m_Bodies.end(); it++) {
+        (*it)->integrate(timeStep);
+    }
 }

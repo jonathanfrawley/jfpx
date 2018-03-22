@@ -15,21 +15,18 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 **/
-#include <jfSimulation/jfSimulation.h>
 #include <jfClient/jfBallistic/x86/jfBallisticSimulation.h>
+#include <jfSimulation/jfSimulation.h>
 
 //#undef main
-int main(int argc, char **argv)
+int main(int argc, char** argv)
 {
     jfSimulation* simulation = new jfBallisticSimulation();
 
-    if(simulation->init())
-    {
-	    simulation->run();
-    }
-    else
-    {
-	    std::cout << "Simulation init failed! Not running..." << std::endl;
+    if (simulation->init()) {
+        simulation->run();
+    } else {
+        std::cout << "Simulation init failed! Not running..." << std::endl;
     }
 
     delete simulation;

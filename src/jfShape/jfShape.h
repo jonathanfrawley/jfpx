@@ -16,8 +16,8 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 **/
 
-#ifndef  JFSHAPE_H
-#define  JFSHAPE_H
+#ifndef JFSHAPE_H
+#define JFSHAPE_H
 
 /*
  * =====================================================================================
@@ -25,22 +25,20 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *  Description: Prototype for Shape classes
  * =====================================================================================
  */
-class jfShape
-{
-	public:
-		jfShape();
+class jfShape {
+public:
+    jfShape();
 
-
-		/*
+    /*
 		 * ===  FUNCTION  ======================================================================
 		 *         Name:  render
 		 *  Description:  Renders the current shape.
 		 * =====================================================================================
 		 */
-        virtual void render() const = 0;
+    virtual void render() const = 0;
 
-	protected:
-	private:
+protected:
+private:
 };
 
-#endif   // JFSHAPE_H
+#endif // JFSHAPE_H

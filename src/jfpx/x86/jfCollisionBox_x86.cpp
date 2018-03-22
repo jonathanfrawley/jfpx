@@ -18,8 +18,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include "jfCollisionBox_x86.h"
 
 jfCollisionBox_x86::jfCollisionBox_x86()
-    :
-        jfCollisionBox()
+    : jfCollisionBox()
 {
     m_HalfSize = new jfVector3_x86();
     m_Body = new jfRigidBody_x86();
@@ -31,13 +30,13 @@ jfCollisionBox_x86::~jfCollisionBox_x86()
 {
     delete m_HalfSize;
     delete m_Body;
-	delete m_Offset;
-	delete m_Transform;
+    delete m_Offset;
+    delete m_Transform;
 }
 
 void jfCollisionBox_x86::calculateInternals()
 {
-	jfMatrix4_x86 bodyTransform;
-	m_Body->getTransformMatrix(&bodyTransform);
-	bodyTransform.multiply((*m_Offset), m_Transform);
+    jfMatrix4_x86 bodyTransform;
+    m_Body->getTransformMatrix(&bodyTransform);
+    bodyTransform.multiply((*m_Offset), m_Transform);
 }

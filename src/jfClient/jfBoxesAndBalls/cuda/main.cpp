@@ -15,27 +15,24 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 **/
-#include <jfSimulation/jfSimulation.h>
 #include <jfClient/jfBoxesAndBalls/cuda/jfBoxesAndBallsSimulation_cuda.h>
+#include <jfSimulation/jfSimulation.h>
 
 #undef main
-int main(int argc, char **argv)
+int main(int argc, char** argv)
 {
     jfSimulation* simulation = new jfBoxesAndBallsSimulation_cuda();
 
-    if(simulation->init())
-    {
-	    simulation->run();
-    }
-    else
-    {
-	    std::cout << "Simulation init failed! Not running..." << std::endl;
+    if (simulation->init()) {
+        simulation->run();
+    } else {
+        std::cout << "Simulation init failed! Not running..." << std::endl;
     }
 
     delete simulation;
 
-//	char c;
-//	scanf("%c",&c);
+    //	char c;
+    //	scanf("%c",&c);
 
     return 0;
 }

@@ -16,23 +16,23 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 **/
 
-#ifndef  JFFACTORY_X86_H
-#define  JFFACTORY_X86_H
+#ifndef JFFACTORY_X86_H
+#define JFFACTORY_X86_H
 
 #include <jfpx/jfFactory.h>
 
-#include <jfpx/x86/jfVector3_x86.h>
+#include <jfpx/x86/jfCollisionBox_x86.h>
+#include <jfpx/x86/jfCollisionDetector_x86.h>
+#include <jfpx/x86/jfCollisionPlane_x86.h>
+#include <jfpx/x86/jfCollisionSphere_x86.h>
+#include <jfpx/x86/jfContactResolver_x86.h>
+#include <jfpx/x86/jfContact_x86.h>
+#include <jfpx/x86/jfIntersectionTester_x86.h>
 #include <jfpx/x86/jfMatrix3_x86.h>
 #include <jfpx/x86/jfMatrix4_x86.h>
 #include <jfpx/x86/jfQuaternion_x86.h>
 #include <jfpx/x86/jfRigidBody_x86.h>
-#include <jfpx/x86/jfCollisionDetector_x86.h>
-#include <jfpx/x86/jfContactResolver_x86.h>
-#include <jfpx/x86/jfCollisionPlane_x86.h>
-#include <jfpx/x86/jfCollisionBox_x86.h>
-#include <jfpx/x86/jfCollisionSphere_x86.h>
-#include <jfpx/x86/jfContact_x86.h>
-#include <jfpx/x86/jfIntersectionTester_x86.h>
+#include <jfpx/x86/jfVector3_x86.h>
 
 /*
  * =====================================================================================
@@ -40,40 +40,37 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *  Description: Factory for x86 physics classes.
  * =====================================================================================
  */
-class jfFactory_x86 : public jfFactory
-{
-	public:
-		jfFactory_x86();
+class jfFactory_x86 : public jfFactory {
+public:
+    jfFactory_x86();
 
-		virtual jfVector3* makeVector3() const;
+    virtual jfVector3* makeVector3() const;
 
-		virtual jfMatrix3* makeMatrix3() const;
+    virtual jfMatrix3* makeMatrix3() const;
 
-		virtual jfMatrix4* makeMatrix4() const;
+    virtual jfMatrix4* makeMatrix4() const;
 
-		virtual jfQuaternion* makeQuaternion() const;
+    virtual jfQuaternion* makeQuaternion() const;
 
-		virtual jfRigidBody* makeRigidBody() const;
+    virtual jfRigidBody* makeRigidBody() const;
 
-		virtual jfCollisionDetector* makeCollisionDetector() const;
+    virtual jfCollisionDetector* makeCollisionDetector() const;
 
-		virtual jfContactResolver* makeContactResolver() const;
-        virtual jfContactResolver* makeContactResolver(unsigned iterations
-                , jfReal velocityEpsilion=(jfReal)0.01
-                , jfReal positionEpsilon=(jfReal)0.01) const;
+    virtual jfContactResolver* makeContactResolver() const;
+    virtual jfContactResolver* makeContactResolver(unsigned iterations, jfReal velocityEpsilion = (jfReal)0.01, jfReal positionEpsilon = (jfReal)0.01) const;
 
-		virtual jfCollisionPlane* makeCollisionPlane() const;
+    virtual jfCollisionPlane* makeCollisionPlane() const;
 
-		virtual jfCollisionBox* makeCollisionBox() const;
+    virtual jfCollisionBox* makeCollisionBox() const;
 
-		virtual jfCollisionSphere* makeCollisionSphere() const;
+    virtual jfCollisionSphere* makeCollisionSphere() const;
 
-		virtual jfContact* makeContact() const;
+    virtual jfContact* makeContact() const;
 
-		virtual jfIntersectionTester* makeIntersectionTester() const;
+    virtual jfIntersectionTester* makeIntersectionTester() const;
 
-	protected:
-	private:
+protected:
+private:
 };
 
-#endif   // JFFACTORY_X86_H
+#endif // JFFACTORY_X86_H

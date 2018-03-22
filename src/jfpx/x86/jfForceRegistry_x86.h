@@ -20,20 +20,19 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include <jfpx/jfForceRegistry.h>
 
+class jfForceRegistry_x86 : public jfForceRegistry {
+public:
+    jfForceRegistry_x86();
+    virtual ~jfForceRegistry_x86();
 
-class jfForceRegistry_x86 : public jfForceRegistry
-{
-    public:
-        jfForceRegistry_x86();
-        virtual ~jfForceRegistry_x86();
+    /* Inherited methods */
+    virtual void add(jfRigidBody* body, jfForceGenerator* forceGen);
+    virtual void remove(jfRigidBody* body, jfForceGenerator* forceGen);
+    virtual void clear();
+    virtual void updateForces(jfReal timeStep);
 
-        /* Inherited methods */
-        virtual void add(jfRigidBody* body, jfForceGenerator* forceGen);
-        virtual void remove(jfRigidBody* body, jfForceGenerator* forceGen);
-        virtual void clear();
-        virtual void updateForces(jfReal timeStep);
-    protected:
-    private:
+protected:
+private:
 };
 
 #endif // JFFORCEREGISTRY_X86_H

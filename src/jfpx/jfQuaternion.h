@@ -18,69 +18,64 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #ifndef JFQUATERNION_H
 #define JFQUATERNION_H
 
-#include <jfpx/jfVector3.h>
 #include <jfpx/jfCore.h>
+#include <jfpx/jfVector3.h>
 
-class jfQuaternion
-{
-    public:
-        jfQuaternion();
+class jfQuaternion {
+public:
+    jfQuaternion();
 
-        jfQuaternion(jfReal r
-                        ,jfReal i
-                        ,jfReal j
-                        ,jfReal k);
+    jfQuaternion(jfReal r, jfReal i, jfReal j, jfReal k);
 
-		jfQuaternion( const jfQuaternion& other );
+    jfQuaternion(const jfQuaternion& other);
 
-        virtual ~jfQuaternion();
+    virtual ~jfQuaternion();
 
-		/*-----------------------------------------------------------------------------
+    /*-----------------------------------------------------------------------------
 		 *  Interface
 		 *-----------------------------------------------------------------------------*/
 
-		/*
+    /*
 		 * ===  FUNCTION  ======================================================================
 		 *         Name:  normalize
 		 *  Description:  Makes this a unit length quaternion.
 		 * =====================================================================================
 		 */
-        virtual void normalize() = 0;
+    virtual void normalize() = 0;
 
-		/*
+    /*
 		 * ===  FUNCTION  ======================================================================
 		 *         Name:  operator*=
 		 *  Description:  Multiplies this quaternion by the one passed in.
 		 * =====================================================================================
 		 */
-        virtual void operator*=(const jfQuaternion& other) = 0;
+    virtual void operator*=(const jfQuaternion& other) = 0;
 
-		/*
+    /*
 		 * ===  FUNCTION  ======================================================================
 		 *         Name:  rotateByVector
 		 *  Description:  Rotates the quaternion by the passed in vector.
 		 * =====================================================================================
 		 */
-        virtual void rotateByVector(const jfVector3& vec) = 0;
+    virtual void rotateByVector(const jfVector3& vec) = 0;
 
-
-		/*
+    /*
 		 * ===  FUNCTION  ======================================================================
 		 *         Name:  addScaledVector
 		 *  Description:  Adds the vector scaled to this quaternion.
 		 * =====================================================================================
 		 */
-        virtual void addScaledVector(const jfVector3& vec, jfReal scale) = 0;
+    virtual void addScaledVector(const jfVector3& vec, jfReal scale) = 0;
 
-		/*-----------------------------------------------------------------------------
+    /*-----------------------------------------------------------------------------
 		 *  Getters and Setters
 		 *-----------------------------------------------------------------------------*/
-		virtual jfReal getR() const { return m_R; }
-        virtual jfReal getI() const { return m_I; }
-        virtual jfReal getJ() const { return m_J; }
-        virtual jfReal getK() const { return m_K; }
-    protected:
-        jfReal m_R,m_I,m_J,m_K;
+    virtual jfReal getR() const { return m_R; }
+    virtual jfReal getI() const { return m_I; }
+    virtual jfReal getJ() const { return m_J; }
+    virtual jfReal getK() const { return m_K; }
+protected:
+    jfReal m_R, m_I, m_J, m_K;
 };
 
 #endif // JFQUATERNION_H

@@ -19,13 +19,13 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #ifndef JFPRECISION_H
 #define JFPRECISION_H
 
-#include <math.h>
 #include <float.h>
+#include <math.h>
 
 //Double or single precision
 typedef float jfReal;
 #define jfRealSqrt(x) sqrtf(x)
-#define jfRealPow(x,y) powf(x,y)
+#define jfRealPow(x, y) powf(x, y)
 #define jfRealAbs(x) fabs(x)
 
 const float JF_REAL_MAX = FLT_MAX;

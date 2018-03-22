@@ -17,10 +17,11 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 **/
 #include "jfTimer.h"
 
-jfTimer::jfTimer():m_StartTicks(0),
-                    m_PausedTicks(0),
-                    m_IsPaused(false),
-                    m_IsStarted(false)
+jfTimer::jfTimer()
+    : m_StartTicks(0)
+    , m_PausedTicks(0)
+    , m_IsPaused(false)
+    , m_IsStarted(false)
 {
 }
 
@@ -43,16 +44,14 @@ void jfTimer::stop()
 
 void jfTimer::pause()
 {
-    if( m_IsStarted && ! m_IsPaused )
-    {
+    if (m_IsStarted && !m_IsPaused) {
         m_IsPaused = true;
         m_PausedTicks = SDL_GetTicks() - m_StartTicks;
     }
 }
 void jfTimer::unPause()
 {
-    if(m_IsPaused)
-    {
+    if (m_IsPaused) {
         m_IsPaused = false;
         m_StartTicks = SDL_GetTicks() - m_PausedTicks;
         m_PausedTicks = 0;
@@ -61,14 +60,10 @@ void jfTimer::unPause()
 
 unsigned jfTimer::getTicks()
 {
-    if(m_IsStarted)
-    {
-        if(m_IsPaused)
-        {
+    if (m_IsStarted) {
+        if (m_IsPaused) {
             return m_PausedTicks;
-        }
-        else
-        {
+        } else {
             return SDL_GetTicks() - m_StartTicks;
         }
     }

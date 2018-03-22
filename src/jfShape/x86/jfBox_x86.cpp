@@ -33,77 +33,76 @@ void jfBox_x86::init()
 
 void jfBox_x86::drawBox(const jfVector3& halfSize) const
 {
-    GLfloat x,y,z;
+    GLfloat x, y, z;
     //cout <<"halfSize is : "<<halfSize<<endl;
     x = (GLfloat)halfSize.getX();
     y = (GLfloat)halfSize.getY();
     z = (GLfloat)halfSize.getZ();
 
     glBegin(GL_QUADS);
-        // Bottom Face
-        glTexCoord2f(1.0f, 1.0f);
-        glVertex3f(-x, -y, -z);	// Top Right Of The Texture and Quad
-        glTexCoord2f(0.0f, 1.0f);
-        glVertex3f( x, -y, -z);	// Top Left Of The Texture and Quad
-        glTexCoord2f(0.0f, 0.0f);
-        glVertex3f( x, -y,  z);	// Bottom Left Of The Texture and Quad
-        glTexCoord2f(1.0f, 0.0f);
-        glVertex3f(x, -y,  z);	// Bottom Right Of The Texture and Quad
-        // Front Face
-        glTexCoord2f(0.0f, 0.0f);
-        glVertex3f(-x, -y,  z);	// Bottom Left Of The Texture and Quad
-        glTexCoord2f(1.0f, 0.0f);
-        glVertex3f( x, -y,  z);	// Bottom Right Of The Texture and Quad
-        glTexCoord2f(1.0f, 1.0f);
-        glVertex3f( x,  y,  z);	// Top Right Of The Texture and Quad
-        glTexCoord2f(0.0f, 1.0f);
-        glVertex3f(-x,  y,  z);	// Top Left Of The Texture and Quad
-        // Back Face
-        glTexCoord2f(1.0f, 0.0f);
-        glVertex3f(-x, -y, -z);	// Bottom Right Of The Texture and Quad
-        glTexCoord2f(1.0f, 1.0f);
-        glVertex3f(-x,  y, -z);	// Top Right Of The Texture and Quad
-        glTexCoord2f(0.0f, 1.0f);
-        glVertex3f( x,  y, -z);	// Top Left Of The Texture and Quad
-        glTexCoord2f(0.0f, 0.0f);
-        glVertex3f( x, -y, -z);	// Bottom Left Of The Texture and Quad
-        // Right face
-        glTexCoord2f(1.0f, 0.0f);
-        glVertex3f( x, -y, -z);	// Bottom Right Of The Texture and Quad
-        glTexCoord2f(1.0f, 1.0f);
-        glVertex3f( x,  y, -z);	// Top Right Of The Texture and Quad
-        glTexCoord2f(0.0f, 1.0f);
-        glVertex3f( x,  y,  z);	// Top Left Of The Texture and Quad
-        glTexCoord2f(0.0f, 0.0f);
-        glVertex3f( x, -y,  z);	// Bottom Left Of The Texture and Quad
-        // Left Face
-        glTexCoord2f(0.0f, 0.0f);
-        glVertex3f(-x, -y, -z);	// Bottom Left Of The Texture and Quad
-        glTexCoord2f(1.0f, 0.0f);
-        glVertex3f(-x, -y,  z);	// Bottom Right Of The Texture and Quad
-        glTexCoord2f(1.0f, 1.0f);
-        glVertex3f(-x,  y,  z);	// Top Right Of The Texture and Quad
-        glTexCoord2f(0.0f, 1.0f);
-        glVertex3f(-x,  y, -z);	// Top Left Of The Texture and Quad
-        // Top Face
-        glTexCoord2f(0.0f, 1.0f);
-        glVertex3f(-x,  y, -z);	// Top Left Of The Texture and Quad
-        glTexCoord2f(0.0f, 0.0f);
-        glVertex3f(-x,  y,  z);	// Bottom Left Of The Texture and Quad
-        glTexCoord2f(1.0f, 0.0f);
-        glVertex3f( x,  y,  z);	// Bottom Right Of The Texture and Quad
-        glTexCoord2f(1.0f, 1.0f);
-        glVertex3f( x,  y, -z);	// Top Right Of The Texture and Quad
+    // Bottom Face
+    glTexCoord2f(1.0f, 1.0f);
+    glVertex3f(-x, -y, -z); // Top Right Of The Texture and Quad
+    glTexCoord2f(0.0f, 1.0f);
+    glVertex3f(x, -y, -z); // Top Left Of The Texture and Quad
+    glTexCoord2f(0.0f, 0.0f);
+    glVertex3f(x, -y, z); // Bottom Left Of The Texture and Quad
+    glTexCoord2f(1.0f, 0.0f);
+    glVertex3f(x, -y, z); // Bottom Right Of The Texture and Quad
+    // Front Face
+    glTexCoord2f(0.0f, 0.0f);
+    glVertex3f(-x, -y, z); // Bottom Left Of The Texture and Quad
+    glTexCoord2f(1.0f, 0.0f);
+    glVertex3f(x, -y, z); // Bottom Right Of The Texture and Quad
+    glTexCoord2f(1.0f, 1.0f);
+    glVertex3f(x, y, z); // Top Right Of The Texture and Quad
+    glTexCoord2f(0.0f, 1.0f);
+    glVertex3f(-x, y, z); // Top Left Of The Texture and Quad
+    // Back Face
+    glTexCoord2f(1.0f, 0.0f);
+    glVertex3f(-x, -y, -z); // Bottom Right Of The Texture and Quad
+    glTexCoord2f(1.0f, 1.0f);
+    glVertex3f(-x, y, -z); // Top Right Of The Texture and Quad
+    glTexCoord2f(0.0f, 1.0f);
+    glVertex3f(x, y, -z); // Top Left Of The Texture and Quad
+    glTexCoord2f(0.0f, 0.0f);
+    glVertex3f(x, -y, -z); // Bottom Left Of The Texture and Quad
+    // Right face
+    glTexCoord2f(1.0f, 0.0f);
+    glVertex3f(x, -y, -z); // Bottom Right Of The Texture and Quad
+    glTexCoord2f(1.0f, 1.0f);
+    glVertex3f(x, y, -z); // Top Right Of The Texture and Quad
+    glTexCoord2f(0.0f, 1.0f);
+    glVertex3f(x, y, z); // Top Left Of The Texture and Quad
+    glTexCoord2f(0.0f, 0.0f);
+    glVertex3f(x, -y, z); // Bottom Left Of The Texture and Quad
+    // Left Face
+    glTexCoord2f(0.0f, 0.0f);
+    glVertex3f(-x, -y, -z); // Bottom Left Of The Texture and Quad
+    glTexCoord2f(1.0f, 0.0f);
+    glVertex3f(-x, -y, z); // Bottom Right Of The Texture and Quad
+    glTexCoord2f(1.0f, 1.0f);
+    glVertex3f(-x, y, z); // Top Right Of The Texture and Quad
+    glTexCoord2f(0.0f, 1.0f);
+    glVertex3f(-x, y, -z); // Top Left Of The Texture and Quad
+    // Top Face
+    glTexCoord2f(0.0f, 1.0f);
+    glVertex3f(-x, y, -z); // Top Left Of The Texture and Quad
+    glTexCoord2f(0.0f, 0.0f);
+    glVertex3f(-x, y, z); // Bottom Left Of The Texture and Quad
+    glTexCoord2f(1.0f, 0.0f);
+    glVertex3f(x, y, z); // Bottom Right Of The Texture and Quad
+    glTexCoord2f(1.0f, 1.0f);
+    glVertex3f(x, y, -z); // Top Right Of The Texture and Quad
     glEnd();
-
 }
 
 void jfBox_x86::buildLists(const jfVector3& halfSideLength) const
 {
     glPushMatrix();
-        glNewList(m_BoxList,GL_COMPILE);
-            drawBox(*m_HalfSize);
-        glEndList();
+    glNewList(m_BoxList, GL_COMPILE);
+    drawBox(*m_HalfSize);
+    glEndList();
     glPopMatrix();
 }
 
@@ -129,28 +128,27 @@ void jfBox_x86::setState(BoxType type, const jfVector3& pos)
 {
     m_Type = type;
 
-	switch(m_Type)
-	{
-		case JF_BOX_LIGHT:
-			//TODO
-			break;
-		case JF_BOX_HEAVY:
-            m_Body->setMass(20.0f); // 20.0kg
-            //m_Body->setVelocity(jfVector3_x86(0.0f, 30.0f, 40.0f)); // 50m/s
-            //m_Body->setAccel(jfVector3_x86(0.0f, -9.8f, 0.0f));
-            m_Body->setLinearDamping(0.99f);
-            m_Body->setAngularDamping(0.8f);
-			break;
-        case JF_BOX_UNUSED:
-            break;
-	}
+    switch (m_Type) {
+    case JF_BOX_LIGHT:
+        //TODO
+        break;
+    case JF_BOX_HEAVY:
+        m_Body->setMass(20.0f); // 20.0kg
+        //m_Body->setVelocity(jfVector3_x86(0.0f, 30.0f, 40.0f)); // 50m/s
+        //m_Body->setAccel(jfVector3_x86(0.0f, -9.8f, 0.0f));
+        m_Body->setLinearDamping(0.99f);
+        m_Body->setAngularDamping(0.8f);
+        break;
+    case JF_BOX_UNUSED:
+        break;
+    }
     jfMatrix3_x86 tensor;
     m_Body->setPos(pos);
-    m_Body->setOrientation(jfQuaternion_x86(0,0,0,0));
-    m_Body->setVelocity(jfVector3_x86(0,0,0));
-    m_Body->setRotation(jfVector3_x86(0,0,0));
+    m_Body->setOrientation(jfQuaternion_x86(0, 0, 0, 0));
+    m_Body->setVelocity(jfVector3_x86(0, 0, 0));
+    m_Body->setRotation(jfVector3_x86(0, 0, 0));
 
-    (*m_HalfSize) = jfVector3_x86(1,1,1);
+    (*m_HalfSize) = jfVector3_x86(1, 1, 1);
 
     jfReal mass = m_HalfSize->getX() * m_HalfSize->getY() * m_HalfSize->getZ();
     m_Body->setMass(mass);
@@ -160,7 +158,7 @@ void jfBox_x86::setState(BoxType type, const jfVector3& pos)
 
     m_Body->clearAccumulators();
     //Gravity
-    m_Body->setAccel(jfVector3_x86(0,-9.81f,0));
+    m_Body->setAccel(jfVector3_x86(0, -9.81f, 0));
 
     m_Body->setCanSleep(true);
     m_Body->setAwake();

@@ -22,11 +22,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include <jfpx/x86/jfRigidBody_x86.h>
 #include <jfpx/x86/jfVector3_x86.h>
 
-#include <SDL/SDL.h>
-#include <SDL/SDL_opengl.h>
 #include <GL/gl.h>
 #include <GL/glu.h>
-
+#include <SDL/SDL.h>
+#include <SDL/SDL_opengl.h>
 
 /*
  * =====================================================================================
@@ -34,29 +33,28 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *  Description: Represents a box which has a graphical and physical component.
  * =====================================================================================
  */
-class jfBox_x86 : public jfCollisionBox_x86
-{
-	public:
-		jfBox_x86();                             /* constructor */
-		~jfBox_x86();                             /* destructor */
+class jfBox_x86 : public jfCollisionBox_x86 {
+public:
+    jfBox_x86(); /* constructor */
+    ~jfBox_x86(); /* destructor */
 
-		/*-----------------------------------------------------------------------------
+    /*-----------------------------------------------------------------------------
 		 *  Interface
 		 *-----------------------------------------------------------------------------*/
-		virtual void render() const;
+    virtual void render() const;
 
-		/*
+    /*
 		 * ===  FUNCTION  ======================================================================
 		 *         Name:  setState
 		 *  Description:  Sets the box to a position on the z axis along the track.
 		 * =====================================================================================
 		 */
-		virtual void setState(const jfVector3& pos);
+    virtual void setState(const jfVector3& pos);
 
-	protected:
-        virtual void drawCube(float halfSideLength) const;
-	private:
+protected:
+    virtual void drawCube(float halfSideLength) const;
+
+private:
 };
 
 #endif //JFBOX_X86_H
-

@@ -16,8 +16,8 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 **/
 
-#ifndef  JFCOLLISIONSPHERE_X86_H
-#define  JFCOLLISIONSPHERE_X86_H
+#ifndef JFCOLLISIONSPHERE_X86_H
+#define JFCOLLISIONSPHERE_X86_H
 
 #include <jfpx/jfCollisionSphere.h>
 #include <jfpx/x86/jfCollisionPrimitive_x86.h>
@@ -29,19 +29,19 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *  Description:
  * =====================================================================================
  */
-class jfCollisionSphere_x86 : public jfCollisionSphere
-{
-	public:
-		jfCollisionSphere_x86();
+class jfCollisionSphere_x86 : public jfCollisionSphere {
+public:
+    jfCollisionSphere_x86();
 
-		virtual ~jfCollisionSphere_x86();
+    virtual ~jfCollisionSphere_x86();
 
-		/*-----------------------------------------------------------------------------
+    /*-----------------------------------------------------------------------------
 		 *  Inherited Methods
 		 *-----------------------------------------------------------------------------*/
-        virtual void calculateInternals();
-	protected:
-	private:
+    virtual void calculateInternals();
+
+protected:
+private:
 };
 
-#endif   // JFCOLLISIONSPHERE_X86_H
+#endif // JFCOLLISIONSPHERE_X86_H

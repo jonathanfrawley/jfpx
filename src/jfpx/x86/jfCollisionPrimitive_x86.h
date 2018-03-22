@@ -16,8 +16,8 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 **/
 
-#ifndef  JFCOLLISIONPRIMITIVE_X86_H
-#define  JFCOLLISIONPRIMITIVE_X86_H
+#ifndef JFCOLLISIONPRIMITIVE_X86_H
+#define JFCOLLISIONPRIMITIVE_X86_H
 
 #include <jfpx/jfCollisionPrimitive.h>
 
@@ -30,20 +30,19 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *  Description:
  * =====================================================================================
  */
-class jfCollisionPrimitive_x86 : public jfCollisionPrimitive
-{
-	public:
-		jfCollisionPrimitive_x86();
+class jfCollisionPrimitive_x86 : public jfCollisionPrimitive {
+public:
+    jfCollisionPrimitive_x86();
 
-		virtual ~jfCollisionPrimitive_x86();
+    virtual ~jfCollisionPrimitive_x86();
 
-		/*-----------------------------------------------------------------------------
+    /*-----------------------------------------------------------------------------
 		 *  Inherited Methods
 		 *-----------------------------------------------------------------------------*/
-        virtual void calculateInternals();
+    virtual void calculateInternals();
 
-	protected:
-	private:
+protected:
+private:
 };
 
-#endif   // JFCOLLISIONPRIMITIVE_X86_H
+#endif // JFCOLLISIONPRIMITIVE_X86_H

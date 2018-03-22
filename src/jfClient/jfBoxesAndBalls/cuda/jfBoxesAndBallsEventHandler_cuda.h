@@ -18,26 +18,26 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #ifndef JFBOXESANDBALLSEVENTHANDLER_CUDA_H
 #define JFBOXESANDBALLSEVENTHANDLER_CUDA_H
 
-#include <jfEvent/jfEventHandler.h>
 #include <jfCamera/jfFPSCamera.h>
+#include <jfEvent/jfEventHandler.h>
 
 #include <SDL/SDL.h>
 
-class jfBoxesAndBallsEventHandler_cuda : public jfEventHandler
-{
-    public:
-        jfBoxesAndBallsEventHandler_cuda();
-        virtual ~jfBoxesAndBallsEventHandler_cuda();
-        void handleKeyEvents();
-        void handleMouseEvents();
+class jfBoxesAndBallsEventHandler_cuda : public jfEventHandler {
+public:
+    jfBoxesAndBallsEventHandler_cuda();
+    virtual ~jfBoxesAndBallsEventHandler_cuda();
+    void handleKeyEvents();
+    void handleMouseEvents();
 
-        void setCam(jfFPSCamera* val) { cam = val; }
-    protected:
-        jfFPSCamera* cam;
-        bool m_WasMouse1Pressed;
-        int m_LastX;
-        int m_LastY;
-    private:
+    void setCam(jfFPSCamera* val) { cam = val; }
+protected:
+    jfFPSCamera* cam;
+    bool m_WasMouse1Pressed;
+    int m_LastX;
+    int m_LastY;
+
+private:
 };
 
 #endif // JFBOXESANDBALLSEVENTHANDLER_H

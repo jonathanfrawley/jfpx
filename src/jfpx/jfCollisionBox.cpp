@@ -18,8 +18,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include "jfCollisionBox.h"
 
 jfCollisionBox::jfCollisionBox()
-    :
-        m_HalfSize(0)
+    : m_HalfSize(0)
 {
 }
 

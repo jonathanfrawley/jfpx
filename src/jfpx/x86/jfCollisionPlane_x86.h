@@ -23,14 +23,13 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include <jfpx/x86/jfMatrix4_x86.h>
 #include <jfpx/x86/jfVector3_x86.h>
 
-class jfCollisionPlane_x86 : public jfCollisionPlane
-{
-    public:
-        jfCollisionPlane_x86();
-        virtual ~jfCollisionPlane_x86();
+class jfCollisionPlane_x86 : public jfCollisionPlane {
+public:
+    jfCollisionPlane_x86();
+    virtual ~jfCollisionPlane_x86();
 
-    protected:
-    private:
+protected:
+private:
 };
 
 #endif // JFCOLLISIONPLANE_X86_H

@@ -18,19 +18,19 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #ifndef JFBALLISTICEVENTHANDLER_H
 #define JFBALLISTICEVENTHANDLER_H
 
-#include <jfEvent/jfEventHandler.h>
 #include <jfClient/jfBigBallistic/x86/jfAmmoRound_x86.h>
+#include <jfEvent/jfEventHandler.h>
 
-class jfBigBallisticEventHandler_x86 : public jfEventHandler
-{
-    public:
-        jfBigBallisticEventHandler_x86();
-        virtual ~jfBigBallisticEventHandler_x86();
-        void handleKeyEvents();
-        ShotType getCurrentShotType();
-    protected:
-    private:
-        ShotType m_CurrentShotType;
+class jfBigBallisticEventHandler_x86 : public jfEventHandler {
+public:
+    jfBigBallisticEventHandler_x86();
+    virtual ~jfBigBallisticEventHandler_x86();
+    void handleKeyEvents();
+    ShotType getCurrentShotType();
+
+protected:
+private:
+    ShotType m_CurrentShotType;
 };
 
 #endif // JFBALLISTICEVENTHANDLER_H

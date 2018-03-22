@@ -21,20 +21,20 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include <jfpx/jfCollisionPrimitive.h>
 #include <jfpx/jfVector3.h>
 
-class jfCollisionBox : public jfCollisionPrimitive
-{
-    public:
-        jfCollisionBox();
-        virtual ~jfCollisionBox();
+class jfCollisionBox : public jfCollisionPrimitive {
+public:
+    jfCollisionBox();
+    virtual ~jfCollisionBox();
 
-		/*-----------------------------------------------------------------------------
+    /*-----------------------------------------------------------------------------
 		 *  Getters and Setters
 		 *-----------------------------------------------------------------------------*/
-        virtual void setHalfSize(const jfVector3& val) { (*m_HalfSize) = val; }
-		virtual void getHalfSize(jfVector3* val) const { (*val) = (*m_HalfSize); }
-    protected:
-        jfVector3* m_HalfSize;
-    private:
+    virtual void setHalfSize(const jfVector3& val) { (*m_HalfSize) = val; }
+    virtual void getHalfSize(jfVector3* val) const { (*val) = (*m_HalfSize); }
+protected:
+    jfVector3* m_HalfSize;
+
+private:
 };
 
 #endif // JFCOLLISIONBOX_H

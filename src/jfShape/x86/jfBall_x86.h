@@ -20,50 +20,50 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include <jfShape/jfBall.h>
 
+#include <jfTimer/jfTimer.h>
+#include <jfpx/x86/jfCollisionSphere_x86.h>
 #include <jfpx/x86/jfMatrix3_x86.h>
 #include <jfpx/x86/jfRigidBody_x86.h>
-#include <jfpx/x86/jfCollisionSphere_x86.h>
-#include <jfTimer/jfTimer.h>
 
-#include <SDL/SDL.h>
-#include <SDL/SDL_opengl.h>
 #include <GL/gl.h>
 #include <GL/glu.h>
+#include <SDL/SDL.h>
+#include <SDL/SDL_opengl.h>
 
+class jfBall_x86 : public jfBall {
+public:
+    jfBall_x86();
 
-class jfBall_x86 : public jfBall
-{
-    public:
-        jfBall_x86();
+    virtual ~jfBall_x86();
 
-        virtual ~jfBall_x86();
-
-		/*-----------------------------------------------------------------------------
+    /*-----------------------------------------------------------------------------
 		 *  Interface
 		 *-----------------------------------------------------------------------------*/
-		/*-----------------------------------------------------------------------------
+    /*-----------------------------------------------------------------------------
 		 *  Inherited Methods
 		 *-----------------------------------------------------------------------------*/
-	   /*
+    /*
 		* ===  FUNCTION  ======================================================================
 		*         Name:  render
 		*  Description:  Renders the current sphere.
 		* =====================================================================================
 		*/
-        virtual void render() const;
+    virtual void render() const;
 
-        void setState(BallType ballType, const jfVector3& pos);
-    protected:
-		/*
+    void setState(BallType ballType, const jfVector3& pos);
+
+protected:
+    /*
 		 * ===  FUNCTION  ======================================================================
 		 *         Name:  drawSphere
 		 *  Description:  Draws a sphere using opengl.
 		 * =====================================================================================
 		 */
-        virtual void drawSphere(float radius, int subdivisions) const;
+    virtual void drawSphere(float radius, int subdivisions) const;
 
-        GLUquadricObj* m_SphereQuadric;
-    private:
+    GLUquadricObj* m_SphereQuadric;
+
+private:
 };
 
 #endif // JFAMMOROUND_H

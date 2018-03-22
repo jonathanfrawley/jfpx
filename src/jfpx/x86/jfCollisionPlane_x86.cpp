@@ -18,8 +18,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include "jfCollisionPlane_x86.h"
 
 jfCollisionPlane_x86::jfCollisionPlane_x86()
-    :
-        jfCollisionPlane()
+    : jfCollisionPlane()
 {
     m_Direction = new jfVector3_x86();
 }

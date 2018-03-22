@@ -18,9 +18,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include "jfCollisionPlane.h"
 
 jfCollisionPlane::jfCollisionPlane()
-	:
-		m_Direction(0),
-        m_Offset(0)
+    : m_Direction(0)
+    , m_Offset(0)
 {
 }
 

@@ -17,54 +17,50 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 **/
 #include "jfContact_x86.h"
 
-
 jfContact_x86::jfContact_x86()
-	:
-        jfContact()
+    : jfContact()
 {
-	m_ContactPoint = new jfVector3_x86();
-	m_ContactNormal = new jfVector3_x86();
-	m_ContactToWorld = new jfMatrix3_x86();
-	m_ContactVelocity = new jfVector3_x86();
-	m_RelativeContactPosition = new jfVector3_x86[2];
+    m_ContactPoint = new jfVector3_x86();
+    m_ContactNormal = new jfVector3_x86();
+    m_ContactToWorld = new jfMatrix3_x86();
+    m_ContactVelocity = new jfVector3_x86();
+    m_RelativeContactPosition = new jfVector3_x86[2];
 }
 
 jfContact_x86::jfContact_x86(const jfContact_x86& other)
-    :
-        jfContact(other)
+    : jfContact(other)
 {
-	m_ContactPoint = new jfVector3_x86();
-	other.getContactPoint(m_ContactPoint);
-	m_ContactNormal = new jfVector3_x86();
+    m_ContactPoint = new jfVector3_x86();
+    other.getContactPoint(m_ContactPoint);
+    m_ContactNormal = new jfVector3_x86();
     other.getContactNormal(m_ContactNormal);
-	m_ContactToWorld = new jfMatrix3_x86();
-	other.getContactToWorld(m_ContactToWorld);
-	m_ContactVelocity = new jfVector3_x86();
-	other.getContactVelocity(m_ContactVelocity);
-	m_RelativeContactPosition = new jfVector3_x86[2];
-	other.getRelativeContactPosition(0, &m_RelativeContactPosition[0]);
+    m_ContactToWorld = new jfMatrix3_x86();
+    other.getContactToWorld(m_ContactToWorld);
+    m_ContactVelocity = new jfVector3_x86();
+    other.getContactVelocity(m_ContactVelocity);
+    m_RelativeContactPosition = new jfVector3_x86[2];
+    other.getRelativeContactPosition(0, &m_RelativeContactPosition[0]);
     other.getRelativeContactPosition(1, &m_RelativeContactPosition[1]);
 }
 
 jfContact_x86::~jfContact_x86()
 {
     delete m_ContactPoint;
-	delete m_ContactNormal;
-	delete m_ContactToWorld;
-	delete m_ContactVelocity;
-	delete [] m_RelativeContactPosition;
+    delete m_ContactNormal;
+    delete m_ContactToWorld;
+    delete m_ContactVelocity;
+    delete[] m_RelativeContactPosition;
 }
 
 void jfContact_x86::calculateInternals(jfReal timeStep)
 {
     jfVector3_x86 bodyPos;
-	//@ref: Millington code "contacts.cpp"
-	// Check if the first object is NULL, and swap if it is.
-    if (!m_BodyZero)
-	{
-		swapBodies();
-	}
-	assert(m_BodyZero);
+    //@ref: Millington code "contacts.cpp"
+    // Check if the first object is NULL, and swap if it is.
+    if (!m_BodyZero) {
+        swapBodies();
+    }
+    assert(m_BodyZero);
 
     // Calculate a set of axes at the contact point.
     calculateContactBasis();
@@ -72,18 +68,16 @@ void jfContact_x86::calculateInternals(jfReal timeStep)
     // Store the relative position of the contact relative to each body
     m_BodyZero->getPos(&bodyPos);
     m_ContactPoint->subtract(bodyPos, &m_RelativeContactPosition[0]);
-    if (m_BodyZero)
-    {
+    if (m_BodyZero) {
         m_BodyZero->getPos(&bodyPos);
         m_ContactPoint->subtract(bodyPos, &m_RelativeContactPosition[1]);
     }
 
     // Find the relative velocity of the bodies at the contact point.
     calculateLocalVelocity(0, timeStep, m_ContactVelocity);
-    if (m_BodyOne)
-    {
-		jfVector3_x86 secondVelocity;
-		calculateLocalVelocity(1, timeStep, &secondVelocity);
+    if (m_BodyOne) {
+        jfVector3_x86 secondVelocity;
+        calculateLocalVelocity(1, timeStep, &secondVelocity);
         (*m_ContactVelocity) -= secondVelocity;
     }
 
@@ -103,7 +97,7 @@ void jfContact_x86::swapBodies()
 
 void jfContact_x86::calculateDesiredDeltaVelocity(jfReal timeStep)
 {
-	//@ref: Millington code "contacts.cpp"
+    //@ref: Millington code "contacts.cpp"
     const static jfReal velocityLimit = (jfReal)0.25f;
     jfVector3_x86 lastFrameAccel;
     jfVector3_x86 lastFrameAccelAdjusted;
@@ -111,145 +105,124 @@ void jfContact_x86::calculateDesiredDeltaVelocity(jfReal timeStep)
     // Calculate the acceleration induced velocity accumulated this frame
     jfReal velocityFromAccel = (jfReal)0.0;
 
-    if (m_BodyZero->isAwake())
-    {
-		m_BodyZero->getLastFrameAccel(&lastFrameAccel);
-		lastFrameAccel.multiply(timeStep, &lastFrameAccelAdjusted);
+    if (m_BodyZero->isAwake()) {
+        m_BodyZero->getLastFrameAccel(&lastFrameAccel);
+        lastFrameAccel.multiply(timeStep, &lastFrameAccelAdjusted);
         velocityFromAccel += lastFrameAccelAdjusted.dotProduct(*m_ContactNormal);
     }
 
-    if (m_BodyOne && m_BodyOne->isAwake())
-    {
-		m_BodyOne->getLastFrameAccel(&lastFrameAccel);
-		lastFrameAccel.multiply(timeStep, &lastFrameAccelAdjusted);
-		velocityFromAccel -= lastFrameAccelAdjusted.dotProduct(*m_ContactNormal);
+    if (m_BodyOne && m_BodyOne->isAwake()) {
+        m_BodyOne->getLastFrameAccel(&lastFrameAccel);
+        lastFrameAccel.multiply(timeStep, &lastFrameAccelAdjusted);
+        velocityFromAccel -= lastFrameAccelAdjusted.dotProduct(*m_ContactNormal);
     }
 
     // If the velocity is very slow, limit the restitution
     jfReal thisRestitution = m_Restitution;
-    if (jfRealAbs(m_ContactVelocity->getX()) < velocityLimit)
-    {
+    if (jfRealAbs(m_ContactVelocity->getX()) < velocityLimit) {
         thisRestitution = (jfReal)0.0f;
     }
 
     // Combine the bounce velocity with the removed
     // acceleration velocity.
-    m_DesiredDeltaVelocity = (- m_ContactVelocity->getX() -
-                                (thisRestitution *
-                                 (m_ContactVelocity->getX() -
-                                  velocityFromAccel
-                                  )
-                                 ));
+    m_DesiredDeltaVelocity = (-m_ContactVelocity->getX() - (thisRestitution * (m_ContactVelocity->getX() - velocityFromAccel)));
 }
 
 void jfContact_x86::calculateContactBasis()
 {
-	/**
+    /**
 	 * Generates an orthonormal group of axes and a
 	 * corresponding matrix with which we can move from
 	 * contact to world coordinates.
 	 */
-	jfVector3_x86 contactTangent[2];
+    jfVector3_x86 contactTangent[2];
 
     // Check whether the Z-axis is nearer to the X or Y axis
-    if (jfRealAbs(m_ContactNormal->getX()) > jfRealAbs(m_ContactNormal->getY()))
-    {
+    if (jfRealAbs(m_ContactNormal->getX()) > jfRealAbs(m_ContactNormal->getY())) {
         // Scaling factor to ensure the results are normalised
-        const jfReal scalingFactor = (jfReal)1.0f/jfRealSqrt((m_ContactNormal->getZ()*m_ContactNormal->getZ()) +
-                                        (m_ContactNormal->getX()*m_ContactNormal->getX()));
+        const jfReal scalingFactor = (jfReal)1.0f / jfRealSqrt((m_ContactNormal->getZ() * m_ContactNormal->getZ()) + (m_ContactNormal->getX() * m_ContactNormal->getX()));
 
         // The new X-axis is at right angles to the world Y-axis
-        contactTangent[0].setX(m_ContactNormal->getZ()*scalingFactor);
+        contactTangent[0].setX(m_ContactNormal->getZ() * scalingFactor);
         contactTangent[0].setY(0);
-        contactTangent[0].setZ(- (m_ContactNormal->getX()*scalingFactor) );
+        contactTangent[0].setZ(-(m_ContactNormal->getX() * scalingFactor));
 
         // The new Y-axis is at right angles to the new X- and Z- axes
-        contactTangent[1].setX(m_ContactNormal->getY()*contactTangent[0].getX());
-        contactTangent[1].setY(m_ContactNormal->getZ()*contactTangent[0].getX() -
-								m_ContactNormal->getX()*contactTangent[0].getZ());
-        contactTangent[1].setZ(-m_ContactNormal->getY()*contactTangent[0].getX());
-    }
-    else
-    {
+        contactTangent[1].setX(m_ContactNormal->getY() * contactTangent[0].getX());
+        contactTangent[1].setY(m_ContactNormal->getZ() * contactTangent[0].getX() - m_ContactNormal->getX() * contactTangent[0].getZ());
+        contactTangent[1].setZ(-m_ContactNormal->getY() * contactTangent[0].getX());
+    } else {
         // Scaling factor to ensure the results are normalised
-        const jfReal scalingFactor = (jfReal)1.0/jfRealSqrt(m_ContactNormal->getZ()*m_ContactNormal->getZ() +
-                                                            m_ContactNormal->getY()*m_ContactNormal->getY());
+        const jfReal scalingFactor = (jfReal)1.0 / jfRealSqrt(m_ContactNormal->getZ() * m_ContactNormal->getZ() + m_ContactNormal->getY() * m_ContactNormal->getY());
 
         // The new X-axis is at right angles to the world X-axis
         contactTangent[0].setX(0);
-        contactTangent[0].setY(- (m_ContactNormal->getZ()*scalingFactor));
-        contactTangent[0].setZ(m_ContactNormal->getY()*scalingFactor);
+        contactTangent[0].setY(-(m_ContactNormal->getZ() * scalingFactor));
+        contactTangent[0].setZ(m_ContactNormal->getY() * scalingFactor);
 
         // The new Y-axis is at right angles to the new X- and Z- axes
-        contactTangent[1].setX(m_ContactNormal->getY()*contactTangent[0].getZ() -
-                                m_ContactNormal->getZ()*contactTangent[0].getY());
-        contactTangent[1].setY(-m_ContactNormal->getX()*contactTangent[0].getZ());
-        contactTangent[1].setZ(m_ContactNormal->getX()*contactTangent[0].getY());
+        contactTangent[1].setX(m_ContactNormal->getY() * contactTangent[0].getZ() - m_ContactNormal->getZ() * contactTangent[0].getY());
+        contactTangent[1].setY(-m_ContactNormal->getX() * contactTangent[0].getZ());
+        contactTangent[1].setZ(m_ContactNormal->getX() * contactTangent[0].getY());
     }
 
     // Make a matrix from the three vectors.
     m_ContactToWorld->setComponents((*m_ContactNormal),
-                                    contactTangent[0],
-                                    contactTangent[1]);
+        contactTangent[0],
+        contactTangent[1]);
 }
 
-
 void jfContact_x86::calculateLocalVelocity(unsigned bodyIndex,
-													jfReal timeStep,
-													jfVector3* result)
+    jfReal timeStep,
+    jfVector3* result)
 {
-	jfVector3_x86 velocity;
-	jfVector3_x86 thisBodyVelocity;
-	jfVector3_x86 rotation;
-	jfVector3_x86 lastFrameAccel;
-	jfVector3_x86 accVelocity;
-	jfRigidBody* thisBody = getBody(bodyIndex);
+    jfVector3_x86 velocity;
+    jfVector3_x86 thisBodyVelocity;
+    jfVector3_x86 rotation;
+    jfVector3_x86 lastFrameAccel;
+    jfVector3_x86 accVelocity;
+    jfRigidBody* thisBody = getBody(bodyIndex);
 
-	// Work out velocity at the contact point.
-	thisBody->getRotation(&rotation);
-	rotation.crossProduct(m_RelativeContactPosition[bodyIndex], &velocity);
-	thisBody->getVelocity(&thisBodyVelocity);
+    // Work out velocity at the contact point.
+    thisBody->getRotation(&rotation);
+    rotation.crossProduct(m_RelativeContactPosition[bodyIndex], &velocity);
+    thisBody->getVelocity(&thisBodyVelocity);
     velocity += thisBodyVelocity;
 
     // Convert velocity to contact-coordinates.
     m_ContactToWorld->transformTranspose(velocity, result);
 
- 	//Calculate the amount of velocity that is due to forces without
- 	//reactions.
-	thisBody->getLastFrameAccel(&lastFrameAccel);
-	lastFrameAccel.multiply(timeStep, &accVelocity);
+    //Calculate the amount of velocity that is due to forces without
+    //reactions.
+    thisBody->getLastFrameAccel(&lastFrameAccel);
+    lastFrameAccel.multiply(timeStep, &accVelocity);
 
- 	//Calculate the velocity in contact-coordinates.
+    //Calculate the velocity in contact-coordinates.
     m_ContactToWorld->transformTranspose(accVelocity, &accVelocity);
 
-	//We ignore any component of acceleration in the contact normal
-	//direction, we are only interested in planar acceleration
+    //We ignore any component of acceleration in the contact normal
+    //direction, we are only interested in planar acceleration
     accVelocity.setX(0);
 
     (*result) += accVelocity;
 }
 
-
 void jfContact_x86::applyVelocityChange(jfVector3* velocityChange,
-										jfVector3* rotationChange)
+    jfVector3* rotationChange)
 {
     jfMatrix3_x86 inverseInertiaTensor[2];
     jfVector3_x86 impulseContact;
-	jfVector3_x86 impulse;
-	jfVector3_x86 impulsiveTorque;
+    jfVector3_x86 impulse;
+    jfVector3_x86 impulsiveTorque;
 
     m_BodyZero->getInverseInertiaTensorWorld(&inverseInertiaTensor[0]);
-    if (m_BodyOne)
-	{
-		m_BodyOne->getInverseInertiaTensorWorld(&inverseInertiaTensor[1]);
-	}
-
-    if (m_Friction == (jfReal)0.0)
-    {
-		calculateFrictionlessImpulse(inverseInertiaTensor, &impulseContact);
+    if (m_BodyOne) {
+        m_BodyOne->getInverseInertiaTensorWorld(&inverseInertiaTensor[1]);
     }
-    else
-    {
+
+    if (m_Friction == (jfReal)0.0) {
+        calculateFrictionlessImpulse(inverseInertiaTensor, &impulseContact);
+    } else {
         calculateFrictionImpulse(inverseInertiaTensor, &impulseContact);
     }
 
@@ -257,7 +230,7 @@ void jfContact_x86::applyVelocityChange(jfVector3* velocityChange,
     m_ContactToWorld->transform(impulseContact, &impulse);
 
     // Split the impulse into linear and angular components
-	m_RelativeContactPosition[1].crossProduct(impulse, &impulsiveTorque);
+    m_RelativeContactPosition[1].crossProduct(impulse, &impulsiveTorque);
     inverseInertiaTensor[0].transform(impulsiveTorque, &rotationChange[0]);
 
     // Apply the changes to both bodies
@@ -266,22 +239,21 @@ void jfContact_x86::applyVelocityChange(jfVector3* velocityChange,
     m_BodyZero->addVelocity(velocityChange[0]);
     m_BodyZero->addRotation(rotationChange[0]);
 
-    if (m_BodyOne)
-    {
+    if (m_BodyOne) {
         impulse.crossProduct(m_RelativeContactPosition[1], &impulsiveTorque);
-		inverseInertiaTensor[1].transform(impulsiveTorque, &rotationChange[1]);
+        inverseInertiaTensor[1].transform(impulsiveTorque, &rotationChange[1]);
         velocityChange[1].clear();
-        velocityChange[1].addScaledVector(impulse, - m_BodyOne->getInverseMass());
-		m_BodyOne->addVelocity(velocityChange[1]);
-		m_BodyOne->addRotation(rotationChange[1]);
+        velocityChange[1].addScaledVector(impulse, -m_BodyOne->getInverseMass());
+        m_BodyOne->addVelocity(velocityChange[1]);
+        m_BodyOne->addRotation(rotationChange[1]);
     }
 }
 
 void jfContact_x86::applyPositionChange(jfVector3* linearChange,
-											jfVector3* angularChange,
-											jfReal m_Penetration)
+    jfVector3* angularChange,
+    jfReal m_Penetration)
 {
-	jfVector3_x86 pos;
+    jfVector3_x86 pos;
     jfRigidBody* body;
     const jfReal angularLimit = (jfReal)0.2f;
     jfReal angularMove[2];
@@ -295,133 +267,117 @@ void jfContact_x86::applyPositionChange(jfVector3* linearChange,
 	 * Work out the inertia of each object in the direction
      * of the contact normal, due to angular inertia only.
 	 */
-    for (unsigned i = 0; i < 2; i++)
-	{
-	    body = getBody(i);
-		if (body)
-		{
-			jfMatrix3_x86 inverseInertiaTensor;
-			jfVector3_x86 angularInertiaWorld;
+    for (unsigned i = 0; i < 2; i++) {
+        body = getBody(i);
+        if (body) {
+            jfMatrix3_x86 inverseInertiaTensor;
+            jfVector3_x86 angularInertiaWorld;
 
-			body->getInverseInertiaTensorWorld(&inverseInertiaTensor);
-			/** 
+            body->getInverseInertiaTensorWorld(&inverseInertiaTensor);
+            /** 
 			 * Use the same procedure as for calculating frictionless
 			 * velocity change to work out the angular inertia.
 			 */
-			m_RelativeContactPosition[i].crossProduct((*m_ContactNormal), &angularInertiaWorld);
-			inverseInertiaTensor.transform(angularInertiaWorld, &angularInertiaWorld);
-			angularInertiaWorld.crossProduct(m_RelativeContactPosition[i], &angularInertiaWorld);
-			angularInertia[i] = angularInertiaWorld.dotProduct(*m_ContactNormal);
+            m_RelativeContactPosition[i].crossProduct((*m_ContactNormal), &angularInertiaWorld);
+            inverseInertiaTensor.transform(angularInertiaWorld, &angularInertiaWorld);
+            angularInertiaWorld.crossProduct(m_RelativeContactPosition[i], &angularInertiaWorld);
+            angularInertia[i] = angularInertiaWorld.dotProduct(*m_ContactNormal);
 
-			/*
+            /*
 			 * The linear component is simply the inverse mass
 			 */
-			linearInertia[i] = body->getInverseMass();
+            linearInertia[i] = body->getInverseMass();
 
-			/*
+            /*
 			 *  Keep track of the total inertia from all components
 			 */
-			totalInertia += linearInertia[i] + angularInertia[i];
-		}
-	}
+            totalInertia += linearInertia[i] + angularInertia[i];
+        }
+    }
 
     /* Will cause zero division later on otherwise.
        totalInertia of 0 is usually caused by 0 mass objects which
        aren't allowed
 	   */
-    if(totalInertia>0)
-    {
+    if (totalInertia > 0) {
         return;
     }
 
-	// Loop through again calculating and applying the changes
-	for (unsigned i = 0; i < 2; i++)
-	{
+    // Loop through again calculating and applying the changes
+    for (unsigned i = 0; i < 2; i++) {
         body = getBody(i);
-		if (body)
-		{
-			jfReal sign = 1;
-		   	if(i == 1)
-			{
-				sign = -1;
-			}
-			angularMove[i] = (sign * m_Penetration) * (angularInertia[i] / totalInertia);
-			linearMove[i] =	(sign * m_Penetration) * (linearInertia[i] / totalInertia);
+        if (body) {
+            jfReal sign = 1;
+            if (i == 1) {
+                sign = -1;
+            }
+            angularMove[i] = (sign * m_Penetration) * (angularInertia[i] / totalInertia);
+            linearMove[i] = (sign * m_Penetration) * (linearInertia[i] / totalInertia);
 
-			/* Limit angular move in certain situations */
-			jfVector3_x86 projection = m_RelativeContactPosition[i];
-			projection.addScaledVector(
-				(*m_ContactNormal),
-				-m_RelativeContactPosition[i].dotProduct(*m_ContactNormal)
-				);
+            /* Limit angular move in certain situations */
+            jfVector3_x86 projection = m_RelativeContactPosition[i];
+            projection.addScaledVector(
+                (*m_ContactNormal),
+                -m_RelativeContactPosition[i].dotProduct(*m_ContactNormal));
 
-			jfReal maxMagnitude = angularLimit * projection.magnitude();
+            jfReal maxMagnitude = angularLimit * projection.magnitude();
 
-			jfReal totalMove = angularMove[i] + linearMove[i];
-			if (angularMove[i] < -maxMagnitude)
-			{
-				angularMove[i] = -maxMagnitude;
-			}
-			else if (angularMove[i] > maxMagnitude)
-			{
-				angularMove[i] = maxMagnitude;
-			}
-			linearMove[i] = totalMove - angularMove[i];
+            jfReal totalMove = angularMove[i] + linearMove[i];
+            if (angularMove[i] < -maxMagnitude) {
+                angularMove[i] = -maxMagnitude;
+            } else if (angularMove[i] > maxMagnitude) {
+                angularMove[i] = maxMagnitude;
+            }
+            linearMove[i] = totalMove - angularMove[i];
 
-			// We have the linear amount of movement required by turning
-			// the rigid body (in angularMove[i]). We now need to
-			// calculate the desired rotation to achieve that.
-			if (angularMove[i] == 0)
-			{
-				// Easy case - no angular movement means no rotation.
-				angularChange[i].clear();
-			}
-			else
-			{
-				jfMatrix3_x86 inverseInertiaTensor;
-				jfVector3_x86 targetAngularDirection;
-				jfVector3_x86 transformedTargetAngularDirection;
+            // We have the linear amount of movement required by turning
+            // the rigid body (in angularMove[i]). We now need to
+            // calculate the desired rotation to achieve that.
+            if (angularMove[i] == 0) {
+                // Easy case - no angular movement means no rotation.
+                angularChange[i].clear();
+            } else {
+                jfMatrix3_x86 inverseInertiaTensor;
+                jfVector3_x86 targetAngularDirection;
+                jfVector3_x86 transformedTargetAngularDirection;
 
-				// Work out the direction we'd like to rotate in.
-				m_RelativeContactPosition[i].crossProduct(*m_ContactNormal, &targetAngularDirection);
-				body->getInverseInertiaTensorWorld(&inverseInertiaTensor);
-				// Work out the direction we'd need to rotate to achieve that
-				inverseInertiaTensor.transform(targetAngularDirection, &transformedTargetAngularDirection);
+                // Work out the direction we'd like to rotate in.
+                m_RelativeContactPosition[i].crossProduct(*m_ContactNormal, &targetAngularDirection);
+                body->getInverseInertiaTensorWorld(&inverseInertiaTensor);
+                // Work out the direction we'd need to rotate to achieve that
+                inverseInertiaTensor.transform(targetAngularDirection, &transformedTargetAngularDirection);
                 transformedTargetAngularDirection.multiply((angularMove[i] / angularInertia[i]), &angularChange[i]);
-			}
+            }
 
-			// Velocity change is linear movement in the direction of the contact normal.
-			m_ContactNormal->multiply(linearMove[i], &linearChange[i]);
+            // Velocity change is linear movement in the direction of the contact normal.
+            m_ContactNormal->multiply(linearMove[i], &linearChange[i]);
 
-			// Apply the linear movement
-			body->getPos(&pos);
-			pos.addScaledVector(*m_ContactNormal, linearMove[i]);
-			body->setPos(pos);
+            // Apply the linear movement
+            body->getPos(&pos);
+            pos.addScaledVector(*m_ContactNormal, linearMove[i]);
+            body->setPos(pos);
 
-			// Apply Angular movement
-			jfQuaternion_x86 q;
-			body->getOrientation(&q);
-			q.addScaledVector(angularChange[i], ((jfReal)1.0));
-			body->setOrientation(q);
+            // Apply Angular movement
+            jfQuaternion_x86 q;
+            body->getOrientation(&q);
+            q.addScaledVector(angularChange[i], ((jfReal)1.0));
+            body->setOrientation(q);
 
-			/**
+            /**
 			 * Calculate derived data for sleeping objects
 			 **/
-			if (!body->isAwake())
-			{
-				body->calculateDerivedData();
-
-			}
-		}
-	}
-
+            if (!body->isAwake()) {
+                body->calculateDerivedData();
+            }
+        }
+    }
 }
 
 void jfContact_x86::calculateFrictionlessImpulse(jfMatrix3* inverseInertiaTensor,
-													jfVector3* result)
+    jfVector3* result)
 {
     jfVector3_x86 deltaVelWorld;
-	jfReal deltaVelocity;
+    jfReal deltaVelocity;
 
     // Build a vector that shows the change in velocity in
     // world space for a unit impulse in the direction of the contact
@@ -437,30 +393,29 @@ void jfContact_x86::calculateFrictionlessImpulse(jfMatrix3* inverseInertiaTensor
     deltaVelocity += m_BodyZero->getInverseMass();
 
     // Check if we need to the second m_Bodies's data
-    if (m_BodyOne)
-    {
-		m_RelativeContactPosition[1].crossProduct(*m_ContactNormal, &deltaVelWorld);
-		inverseInertiaTensor[1].transform(deltaVelWorld, &deltaVelWorld);
-		deltaVelWorld.crossProduct(m_RelativeContactPosition[1], &deltaVelWorld);
+    if (m_BodyOne) {
+        m_RelativeContactPosition[1].crossProduct(*m_ContactNormal, &deltaVelWorld);
+        inverseInertiaTensor[1].transform(deltaVelWorld, &deltaVelWorld);
+        deltaVelWorld.crossProduct(m_RelativeContactPosition[1], &deltaVelWorld);
 
-		// Work out the change in velocity in contact coordiantes.
-		jfReal deltaVelocity = deltaVelWorld.dotProduct(*m_ContactNormal);
+        // Work out the change in velocity in contact coordiantes.
+        jfReal deltaVelocity = deltaVelWorld.dotProduct(*m_ContactNormal);
 
-		// Add the linear component of velocity change
-		deltaVelocity += m_BodyOne->getInverseMass();
+        // Add the linear component of velocity change
+        deltaVelocity += m_BodyOne->getInverseMass();
     }
 
     // Calculate the required size of the impulse
-	// TODO : is this correct?
+    // TODO : is this correct?
     result->setX(m_DesiredDeltaVelocity / deltaVelocity);
     result->setY(0);
     result->setZ(0);
 }
 
 void jfContact_x86::calculateFrictionImpulse(jfMatrix3* inverseInertiaTensor,
-												jfVector3* result)
+    jfVector3* result)
 {
-	//TODO: This method from body.cpp
+    //TODO: This method from body.cpp
     jfVector3_x86 impulseContact;
     jfReal inverseMass = m_BodyZero->getInverseMass();
 
@@ -478,8 +433,7 @@ void jfContact_x86::calculateFrictionImpulse(jfMatrix3* inverseInertiaTensor,
     deltaVelWorld *= -1;
 
     // Check if we need to add body two's data
-    if (m_BodyOne)
-    {
+    if (m_BodyOne) {
         // Set the cross product matrix
         impulseToTorque.setSkewSymmetric(m_RelativeContactPosition[1]);
 
@@ -499,7 +453,7 @@ void jfContact_x86::calculateFrictionImpulse(jfMatrix3* inverseInertiaTensor,
     // Do a change of basis to convert into contact coordinates.
     jfMatrix3_x86 deltaVelocity;
 
-   	m_ContactToWorld->getTranspose(&deltaVelocity);
+    m_ContactToWorld->getTranspose(&deltaVelocity);
     deltaVelocity *= deltaVelWorld;
     deltaVelocity *= (*m_ContactToWorld);
 
@@ -510,29 +464,25 @@ void jfContact_x86::calculateFrictionImpulse(jfMatrix3* inverseInertiaTensor,
 
     // Invert to get the impulse needed per unit velocity
     jfMatrix3_x86 impulseMatrix;
-	deltaVelocity.getInverse(&impulseMatrix);
+    deltaVelocity.getInverse(&impulseMatrix);
 
     // Find the target velocities to kill
     jfVector3_x86 velKill(m_DesiredDeltaVelocity,
-		   					-m_ContactVelocity->getY(),
-							-m_ContactVelocity->getZ());
+        -m_ContactVelocity->getY(),
+        -m_ContactVelocity->getZ());
 
     // Find the impulse to kill target velocities
     impulseMatrix.transform(velKill, &impulseContact);
 
     // Check for exceeding friction
-    jfReal planarImpulse = jfRealSqrt(impulseContact.getY()*impulseContact.getY() +
-										impulseContact.getZ()*impulseContact.getZ());
+    jfReal planarImpulse = jfRealSqrt(impulseContact.getY() * impulseContact.getY() + impulseContact.getZ() * impulseContact.getZ());
 
-    if (planarImpulse > (impulseContact.getX() * m_Friction))
-    {
+    if (planarImpulse > (impulseContact.getX() * m_Friction)) {
         // We need to use dynamic friction
         impulseContact.setY(impulseContact.getY() / planarImpulse);
         impulseContact.setZ(impulseContact.getZ() / planarImpulse);
 
-        impulseContact.setX(deltaVelocity.getElem(0) +
-								(deltaVelocity.getElem(1)*m_Friction*impulseContact.getY()) +
-								(deltaVelocity.getElem(2)*m_Friction*impulseContact.getZ()));
+        impulseContact.setX(deltaVelocity.getElem(0) + (deltaVelocity.getElem(1) * m_Friction * impulseContact.getY()) + (deltaVelocity.getElem(2) * m_Friction * impulseContact.getZ()));
         impulseContact.setX(m_DesiredDeltaVelocity / impulseContact.getX());
         impulseContact.setY(impulseContact.getY() * m_Friction * impulseContact.getX());
         impulseContact.setZ(impulseContact.getZ() * m_Friction * impulseContact.getX());

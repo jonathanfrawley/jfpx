@@ -17,10 +17,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 **/
 #include "jfForceGenerator.h"
 
-jfForceGenerator::jfForceGenerator ()
+jfForceGenerator::jfForceGenerator()
 {
 }
 
-jfForceGenerator::~jfForceGenerator ()
+jfForceGenerator::~jfForceGenerator()
 {
 }

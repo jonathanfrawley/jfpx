@@ -20,21 +20,21 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include <jfpx/jfCollisionPrimitive.h>
 
-class jfCollisionSphere : public jfCollisionPrimitive
-{
-    public:
-        jfCollisionSphere();
+class jfCollisionSphere : public jfCollisionPrimitive {
+public:
+    jfCollisionSphere();
 
-        virtual ~jfCollisionSphere();
+    virtual ~jfCollisionSphere();
 
-		/*-----------------------------------------------------------------------------
+    /*-----------------------------------------------------------------------------
 		 *  Getters and setters
 		 *-----------------------------------------------------------------------------*/
-		virtual jfReal getRadius() const { return m_Radius; }
-		virtual void setRadius(jfReal val) { m_Radius = val; }
-    protected:
-		jfReal m_Radius;
-    private:
+    virtual jfReal getRadius() const { return m_Radius; }
+    virtual void setRadius(jfReal val) { m_Radius = val; }
+protected:
+    jfReal m_Radius;
+
+private:
 };
 
 #endif // JFCOLLISIONSPHERE_H

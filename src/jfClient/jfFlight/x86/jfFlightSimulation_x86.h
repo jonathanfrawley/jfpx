@@ -18,8 +18,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #ifndef JFFLIGHTSIMULATION_X86_H
 #define JFFLIGHTSIMULATION_X86_H
 
-#include <jfClient/jfFlight/x86/jfFlightEventHandler_x86.h>
 #include <jfClient/jfFlight/x86/jfFlight3DGraphicsHandler_x86.h>
+#include <jfClient/jfFlight/x86/jfFlightEventHandler_x86.h>
 #include <jfSimulation/jfSimulation.h>
 
 #include <jfTimer/jfTimer.h>
@@ -28,41 +28,41 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include <jfpx/x86/jfAeroControlForceGenerator_x86.h>
 #include <jfpx/x86/jfAeroForceGenerator_x86.h>
-#include <jfpx/x86/jfRigidBody_x86.h>
 #include <jfpx/x86/jfForceRegistry_x86.h>
+#include <jfpx/x86/jfRigidBody_x86.h>
 #include <jfpx/x86/jfVector3_x86.h>
 
+class jfFlightSimulation_x86 : public jfSimulation {
+public:
+    jfFlightSimulation_x86();
+    virtual ~jfFlightSimulation_x86();
 
-class jfFlightSimulation_x86 : public jfSimulation
-{
-    public:
-        jfFlightSimulation_x86();
-        virtual ~jfFlightSimulation_x86();
+    void resetAircraft();
+    /* Inherited from superclass */
+    virtual bool init();
+    virtual void run();
 
-		void resetAircraft();
-        /* Inherited from superclass */
-		virtual bool init();
-		virtual void run();
-    protected:
-        /* Flight simulator vars*/
-        jfVector3* m_WindSpeed;
-        jfAeroControlForceGenerator* m_RightWing;
-        jfAeroControlForceGenerator* m_LeftWing;
-        jfAeroControlForceGenerator* m_Rudder;
-        jfAeroForceGenerator* m_Tail;
-        jfRigidBody* m_Aircraft;
-        jfForceRegistry* m_Registry;
-        jfReal m_LeftWingControl;
-        jfReal m_RightWingControl;
-        jfReal m_RudderControl;
+protected:
+    /* Flight simulator vars*/
+    jfVector3* m_WindSpeed;
+    jfAeroControlForceGenerator* m_RightWing;
+    jfAeroControlForceGenerator* m_LeftWing;
+    jfAeroControlForceGenerator* m_Rudder;
+    jfAeroForceGenerator* m_Tail;
+    jfRigidBody* m_Aircraft;
+    jfForceRegistry* m_Registry;
+    jfReal m_LeftWingControl;
+    jfReal m_RightWingControl;
+    jfReal m_RudderControl;
 
-        /* Essentials */
-        jfFlightEventHandler_x86* m_EventHandler;
-        jfFlight3DGraphicsHandler_x86* m_3DGraphicsHandler;
-        jfSDL* m_WindowManager;
-        jfTimer* m_Timer;
-		int m_LastFrameDuration;
-    private:
+    /* Essentials */
+    jfFlightEventHandler_x86* m_EventHandler;
+    jfFlight3DGraphicsHandler_x86* m_3DGraphicsHandler;
+    jfSDL* m_WindowManager;
+    jfTimer* m_Timer;
+    int m_LastFrameDuration;
+
+private:
 };
 
 #endif // JFFLIGHTSIMULATION_X86_H

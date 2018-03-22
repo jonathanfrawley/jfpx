@@ -18,10 +18,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include "jfCollisionPrimitive.h"
 
 jfCollisionPrimitive::jfCollisionPrimitive()
-	:
-		m_Body(0),
-		m_Offset(0),
-		m_Transform(0)
+    : m_Body(0)
+    , m_Offset(0)
+    , m_Transform(0)
 {
 }
 

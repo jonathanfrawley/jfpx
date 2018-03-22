@@ -16,11 +16,11 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 **/
 
-#ifndef  JFSHAPEFACTORY_H
-#define  JFSHAPEFACTORY_H
+#ifndef JFSHAPEFACTORY_H
+#define JFSHAPEFACTORY_H
 
-#include <jfShape/jfBox.h>
 #include <jfShape/jfBall.h>
+#include <jfShape/jfBox.h>
 
 /*
  * =====================================================================================
@@ -28,17 +28,16 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *  Description:
  * =====================================================================================
  */
-class jfShapeFactory
-{
-	public:
-		jfShapeFactory();
+class jfShapeFactory {
+public:
+    jfShapeFactory();
 
-		virtual jfBox* makeBox() = 0;
+    virtual jfBox* makeBox() = 0;
 
-		virtual jfBall* makeBall() = 0;
-		
-	protected:
-	private:
+    virtual jfBall* makeBall() = 0;
+
+protected:
+private:
 };
 
-#endif   // JFSHAPEFACTORY_H
+#endif // JFSHAPEFACTORY_H

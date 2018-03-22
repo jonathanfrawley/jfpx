@@ -28,19 +28,17 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *  Description:
  * =====================================================================================
  */
-class jfGravityForceGenerator_x86 : public jfGravityForceGenerator
-{
-	public:
-		jfGravityForceGenerator_x86 ();
-		jfGravityForceGenerator_x86 (jfVector3* gravity);
-		virtual ~jfGravityForceGenerator_x86 ();
+class jfGravityForceGenerator_x86 : public jfGravityForceGenerator {
+public:
+    jfGravityForceGenerator_x86();
+    jfGravityForceGenerator_x86(jfVector3* gravity);
+    virtual ~jfGravityForceGenerator_x86();
 
-		/* Implemented methods in superclass */
-		virtual void updateForce(jfRigidBody* body, jfReal duration);
+    /* Implemented methods in superclass */
+    virtual void updateForce(jfRigidBody* body, jfReal duration);
 
-	protected:
-	private:
+protected:
+private:
 };
-
 
 #endif

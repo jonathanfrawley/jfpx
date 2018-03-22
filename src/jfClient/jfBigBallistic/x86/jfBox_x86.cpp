@@ -28,46 +28,70 @@ jfBox_x86::~jfBox_x86()
 void jfBox_x86::drawCube(float halfSideLength) const
 {
     glPushMatrix();
-        //glColor3f(0.3,0.3,0.3);
-        glBegin(GL_QUADS);
-            // Front Face
-            glNormal3f( 0.0f, 0.0f, halfSideLength);
-            glTexCoord2f(0.0f, 0.0f); glVertex3f(-halfSideLength, -halfSideLength,  halfSideLength);
-            glTexCoord2f(halfSideLength, 0.0f); glVertex3f( halfSideLength, -halfSideLength,  halfSideLength);
-            glTexCoord2f(halfSideLength, halfSideLength); glVertex3f( halfSideLength,  halfSideLength,  halfSideLength);
-            glTexCoord2f(0.0f, halfSideLength); glVertex3f(-halfSideLength,  halfSideLength,  halfSideLength);
-            // Back Face
-            glNormal3f( 0.0f, 0.0f,-halfSideLength);
-            glTexCoord2f(halfSideLength, 0.0f); glVertex3f(-halfSideLength, -halfSideLength, -halfSideLength);
-            glTexCoord2f(halfSideLength, halfSideLength); glVertex3f(-halfSideLength,  halfSideLength, -halfSideLength);
-            glTexCoord2f(0.0f, halfSideLength); glVertex3f( halfSideLength,  halfSideLength, -halfSideLength);
-            glTexCoord2f(0.0f, 0.0f); glVertex3f( halfSideLength, -halfSideLength, -halfSideLength);
-            // Top Face
-            glNormal3f( 0.0f, halfSideLength, 0.0f);
-            glTexCoord2f(0.0f, halfSideLength); glVertex3f(-halfSideLength,  halfSideLength, -halfSideLength);
-            glTexCoord2f(0.0f, 0.0f); glVertex3f(-halfSideLength,  halfSideLength,  halfSideLength);
-            glTexCoord2f(halfSideLength, 0.0f); glVertex3f( halfSideLength,  halfSideLength,  halfSideLength);
-            glTexCoord2f(halfSideLength, halfSideLength); glVertex3f( halfSideLength,  halfSideLength, -halfSideLength);
-            // Bottom Face
-            glNormal3f( 0.0f,-halfSideLength, 0.0f);
-            glTexCoord2f(halfSideLength, halfSideLength); glVertex3f(-halfSideLength, -halfSideLength, -halfSideLength);
-            glTexCoord2f(0.0f, halfSideLength); glVertex3f( halfSideLength, -halfSideLength, -halfSideLength);
-            glTexCoord2f(0.0f, 0.0f); glVertex3f( halfSideLength, -halfSideLength,  halfSideLength);
-            glTexCoord2f(halfSideLength, 0.0f); glVertex3f(-halfSideLength, -halfSideLength,  halfSideLength);
-            // Right Face
-            glNormal3f( halfSideLength, 0.0f, 0.0f);
-            glTexCoord2f(halfSideLength, 0.0f); glVertex3f( halfSideLength, -halfSideLength, -halfSideLength);
-            glTexCoord2f(halfSideLength, halfSideLength); glVertex3f( halfSideLength,  halfSideLength, -halfSideLength);
-            glTexCoord2f(0.0f, halfSideLength); glVertex3f( halfSideLength,  halfSideLength,  halfSideLength);
-            glTexCoord2f(0.0f, 0.0f); glVertex3f( halfSideLength, -halfSideLength,  halfSideLength);
-            // Left Face
-            glNormal3f(-halfSideLength, 0.0f, 0.0f);
-            glTexCoord2f(0.0f, 0.0f); glVertex3f(-halfSideLength, -halfSideLength, -halfSideLength);
-            glTexCoord2f(halfSideLength, 0.0f); glVertex3f(-halfSideLength, -halfSideLength,  halfSideLength);
-            glTexCoord2f(halfSideLength, halfSideLength); glVertex3f(-halfSideLength,  halfSideLength,  halfSideLength);
-            glTexCoord2f(0.0f, halfSideLength); glVertex3f(-halfSideLength,  halfSideLength, -halfSideLength);
+    //glColor3f(0.3,0.3,0.3);
+    glBegin(GL_QUADS);
+    // Front Face
+    glNormal3f(0.0f, 0.0f, halfSideLength);
+    glTexCoord2f(0.0f, 0.0f);
+    glVertex3f(-halfSideLength, -halfSideLength, halfSideLength);
+    glTexCoord2f(halfSideLength, 0.0f);
+    glVertex3f(halfSideLength, -halfSideLength, halfSideLength);
+    glTexCoord2f(halfSideLength, halfSideLength);
+    glVertex3f(halfSideLength, halfSideLength, halfSideLength);
+    glTexCoord2f(0.0f, halfSideLength);
+    glVertex3f(-halfSideLength, halfSideLength, halfSideLength);
+    // Back Face
+    glNormal3f(0.0f, 0.0f, -halfSideLength);
+    glTexCoord2f(halfSideLength, 0.0f);
+    glVertex3f(-halfSideLength, -halfSideLength, -halfSideLength);
+    glTexCoord2f(halfSideLength, halfSideLength);
+    glVertex3f(-halfSideLength, halfSideLength, -halfSideLength);
+    glTexCoord2f(0.0f, halfSideLength);
+    glVertex3f(halfSideLength, halfSideLength, -halfSideLength);
+    glTexCoord2f(0.0f, 0.0f);
+    glVertex3f(halfSideLength, -halfSideLength, -halfSideLength);
+    // Top Face
+    glNormal3f(0.0f, halfSideLength, 0.0f);
+    glTexCoord2f(0.0f, halfSideLength);
+    glVertex3f(-halfSideLength, halfSideLength, -halfSideLength);
+    glTexCoord2f(0.0f, 0.0f);
+    glVertex3f(-halfSideLength, halfSideLength, halfSideLength);
+    glTexCoord2f(halfSideLength, 0.0f);
+    glVertex3f(halfSideLength, halfSideLength, halfSideLength);
+    glTexCoord2f(halfSideLength, halfSideLength);
+    glVertex3f(halfSideLength, halfSideLength, -halfSideLength);
+    // Bottom Face
+    glNormal3f(0.0f, -halfSideLength, 0.0f);
+    glTexCoord2f(halfSideLength, halfSideLength);
+    glVertex3f(-halfSideLength, -halfSideLength, -halfSideLength);
+    glTexCoord2f(0.0f, halfSideLength);
+    glVertex3f(halfSideLength, -halfSideLength, -halfSideLength);
+    glTexCoord2f(0.0f, 0.0f);
+    glVertex3f(halfSideLength, -halfSideLength, halfSideLength);
+    glTexCoord2f(halfSideLength, 0.0f);
+    glVertex3f(-halfSideLength, -halfSideLength, halfSideLength);
+    // Right Face
+    glNormal3f(halfSideLength, 0.0f, 0.0f);
+    glTexCoord2f(halfSideLength, 0.0f);
+    glVertex3f(halfSideLength, -halfSideLength, -halfSideLength);
+    glTexCoord2f(halfSideLength, halfSideLength);
+    glVertex3f(halfSideLength, halfSideLength, -halfSideLength);
+    glTexCoord2f(0.0f, halfSideLength);
+    glVertex3f(halfSideLength, halfSideLength, halfSideLength);
+    glTexCoord2f(0.0f, 0.0f);
+    glVertex3f(halfSideLength, -halfSideLength, halfSideLength);
+    // Left Face
+    glNormal3f(-halfSideLength, 0.0f, 0.0f);
+    glTexCoord2f(0.0f, 0.0f);
+    glVertex3f(-halfSideLength, -halfSideLength, -halfSideLength);
+    glTexCoord2f(halfSideLength, 0.0f);
+    glVertex3f(-halfSideLength, -halfSideLength, halfSideLength);
+    glTexCoord2f(halfSideLength, halfSideLength);
+    glVertex3f(-halfSideLength, halfSideLength, halfSideLength);
+    glTexCoord2f(0.0f, halfSideLength);
+    glVertex3f(-halfSideLength, halfSideLength, -halfSideLength);
 
-        glEnd();
+    glEnd();
     glPopMatrix();
 }
 
@@ -81,7 +105,7 @@ void jfBox_x86::render() const
 
     jfVector3_x86 pos;
     m_Body->getPos(&pos);
-    cout <<"Box pos is : "<<pos<<endl;
+    cout << "Box pos is : " << pos << endl;
 
     //glPushMatrix();
     glMultMatrixf(mat);
@@ -94,12 +118,12 @@ void jfBox_x86::render() const
 void jfBox_x86::setState(const jfVector3& pos)
 {
     m_Body->setPos(pos);
-    m_Body->setOrientation(jfQuaternion_x86(0,0,0,0));
-    m_Body->setVelocity(jfVector3_x86(0,0,0));
-    m_Body->setRotation(jfVector3_x86(0,0,0));
-    (*m_HalfSize) = jfVector3_x86(2,2,2);
+    m_Body->setOrientation(jfQuaternion_x86(0, 0, 0, 0));
+    m_Body->setVelocity(jfVector3_x86(0, 0, 0));
+    m_Body->setRotation(jfVector3_x86(0, 0, 0));
+    (*m_HalfSize) = jfVector3_x86(2, 2, 2);
 
-    jfReal mass = m_HalfSize->getX() * m_HalfSize->getY() * m_HalfSize->getZ();// * 8.0f;
+    jfReal mass = m_HalfSize->getX() * m_HalfSize->getY() * m_HalfSize->getZ(); // * 8.0f;
     //jfReal mass = 1.1;
     m_Body->setMass(mass);
 
@@ -111,7 +135,7 @@ void jfBox_x86::setState(const jfVector3& pos)
     m_Body->setAngularDamping(0.99f);
     m_Body->clearAccumulators();
     //Gravity
-    m_Body->setAccel(jfVector3_x86(0,-9.81f,0));
+    m_Body->setAccel(jfVector3_x86(0, -9.81f, 0));
 
     m_Body->setCanSleep(true);
     m_Body->setAwake();

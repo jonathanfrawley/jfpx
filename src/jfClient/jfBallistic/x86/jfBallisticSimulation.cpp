@@ -17,7 +17,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 **/
 #include "jfBallisticSimulation.h"
 
-
 jfBallisticSimulation::jfBallisticSimulation()
 {
     m_EventHandler = new jfBallisticEventHandler();
@@ -25,8 +24,7 @@ jfBallisticSimulation::jfBallisticSimulation()
     m_3DGraphicsHandler = new jfBallisticSDLGL3DGraphicsHandler();
     m_Timer = new jfTimer();
     unsigned int i;
-    for(i=0;i<MAX_AMMO_ROUNDS;i++)
-    {
+    for (i = 0; i < MAX_AMMO_ROUNDS; i++) {
         m_Ammo.push_back(new jfAmmoRound());
     }
 }
@@ -41,19 +39,17 @@ jfBallisticSimulation::~jfBallisticSimulation()
 
 bool jfBallisticSimulation::init()
 {
-    if(! m_WindowManager->createWindow(800, 600, 32, false, "Ballistic Simulation"))
-    {
+    if (!m_WindowManager->createWindow(800, 600, 32, false, "Ballistic Simulation")) {
         return false;
     }
 
     m_EventHandler->setWindowManager(m_WindowManager);
-//    m_EventHandler->setSimulation(this);
+    //    m_EventHandler->setSimulation(this);
     m_3DGraphicsHandler->init();
     m_3DGraphicsHandler->setAmmo(&m_Ammo);
 
     vector<jfAmmoRound*>::iterator it;
-    for( it = m_Ammo.begin() ; it != m_Ammo.end() ; ++it)
-    {
+    for (it = m_Ammo.begin(); it != m_Ammo.end(); ++it) {
         (*it)->setType(UNUSED);
     }
 
@@ -67,24 +63,20 @@ void jfBallisticSimulation::fire()
     // Find the first available round.
     jfAmmoRound* shot;
     vector<jfAmmoRound*>::iterator it;
-    for( it = m_Ammo.begin() ; it != m_Ammo.end() ; ++it)
-    {
-        if ((*it)->getType() == UNUSED)
-        {
+    for (it = m_Ammo.begin(); it != m_Ammo.end(); ++it) {
+        if ((*it)->getType() == UNUSED) {
             break;
         }
     }
 
     // If we didn't find an usused round, then exit - we can't fire.
-    if (it == m_Ammo.end())
-    {
+    if (it == m_Ammo.end()) {
         return;
     }
     shot = (*it);
 
     // Set the properties of the particle
-    switch(m_EventHandler->getCurrentShotType())
-    {
+    switch (m_EventHandler->getCurrentShotType()) {
     case PISTOL:
         shot->getParticle()->setMass(2.0f); // 2.0kg
         shot->getParticle()->setVel(new jfVector3_x86(0.0f, 0.0f, 35.0f)); // 35m/s
@@ -122,47 +114,38 @@ void jfBallisticSimulation::fire()
     //printf("shot is : <%d> \n", shot);
     // Clear the force accumulators
     //shot->getParticle()->clearAccumulator();
-
 }
 
 void jfBallisticSimulation::run()
 {
-    while(m_EventHandler->handleEvents())
-    {
+    while (m_EventHandler->handleEvents()) {
         m_EventHandler->handleKeyEvents();
         m_LastFrameDuration = m_Timer->getTicks();
         m_Timer->start();
-        if((m_EventHandler->getMouseEvent().getStatus() == EVENT_MOUSELEFT))
-        {
-            if(!m_MousePressedLast)
-            {
+        if ((m_EventHandler->getMouseEvent().getStatus() == EVENT_MOUSELEFT)) {
+            if (!m_MousePressedLast) {
                 m_MousePressedLast = true;
                 fire();
             }
-        }
-        else
-        {
+        } else {
             m_MousePressedLast = false;
         }
         m_3DGraphicsHandler->draw();
         // Find the duration of the last frame in seconds
         float duration = (float)m_LastFrameDuration / 1000;
-        if (duration <= 0.0f) continue;
+        if (duration <= 0.0f)
+            continue;
 
         // Update the physics of each particle in turn
         int i;
-        for (i=0; i < MAX_AMMO_ROUNDS; i++)
-        {
+        for (i = 0; i < MAX_AMMO_ROUNDS; i++) {
             jfAmmoRound* shot = (m_Ammo[i]);
-            if (shot->getType() != UNUSED)
-            {
+            if (shot->getType() != UNUSED) {
                 // Run the physics
                 shot->getParticle()->integrate(duration);
 
                 // Check if the particle is now invalid
-                if (shot->getParticle()->getPos()->getY() < 0.0f ||
-                    shot->getParticle()->getPos()->getZ() > 200.0f)
-                {
+                if (shot->getParticle()->getPos()->getY() < 0.0f || shot->getParticle()->getPos()->getZ() > 200.0f) {
                     // We simply set the shot type to be unused, so the
                     // memory it occupies can be reused by another shot.
                     shot->setType(UNUSED);

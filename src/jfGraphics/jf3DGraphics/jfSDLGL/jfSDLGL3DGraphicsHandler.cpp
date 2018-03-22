@@ -58,28 +58,28 @@ void jfSDLGL3DGraphicsHandler::init()
     glEnable(GL_LIGHT0);
     glEnable(GL_COLOR_MATERIAL);
 
-    glViewport( 0, 0, 800, 600 );
+    glViewport(0, 0, 800, 600);
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
-    gluPerspective( 45.0f, (GLfloat)800.0f/(GLfloat)600.0f, 1000.0f, 5000.0f );
+    gluPerspective(45.0f, (GLfloat)800.0f / (GLfloat)600.0f, 1000.0f, 5000.0f);
     glMatrixMode(GL_MODELVIEW);
-    glClearColor(0.3f, 0.3f, 0.3f, 1.0f);   // Black Background
-    glEnable( GL_TEXTURE_2D );
-    glShadeModel( GL_SMOOTH );
-    glClearDepth( 1.0f );
-    glEnable( GL_DEPTH_TEST );
-    glDepthFunc( GL_LEQUAL );
-    glHint( GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST );
+    glClearColor(0.3f, 0.3f, 0.3f, 1.0f); // Black Background
+    glEnable(GL_TEXTURE_2D);
+    glShadeModel(GL_SMOOTH);
+    glClearDepth(1.0f);
+    glEnable(GL_DEPTH_TEST);
+    glDepthFunc(GL_LEQUAL);
+    glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST);
     initObjects();
 }
 
 void jfSDLGL3DGraphicsHandler::draw()
 {
     glMatrixMode(GL_MODELVIEW);
-    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);	// Clear Screen And Depth Buffer
-	glLoadIdentity();
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); // Clear Screen And Depth Buffer
+    glLoadIdentity();
     drawObjects();
     glFlush();
-	//Goes at end
-	SDL_GL_SwapBuffers();
+    //Goes at end
+    SDL_GL_SwapBuffers();
 }

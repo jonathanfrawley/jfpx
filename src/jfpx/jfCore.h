@@ -18,7 +18,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #ifndef JFCORE_H
 #define JFCORE_H
 
-#include <jfpx/jfPrecision.h>
 #include <jfpx/jfConstants.h>
+#include <jfpx/jfPrecision.h>
 
 #endif //JFCORE_H

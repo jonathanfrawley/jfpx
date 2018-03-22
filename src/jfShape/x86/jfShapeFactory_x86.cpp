@@ -23,10 +23,10 @@ jfShapeFactory_x86::jfShapeFactory_x86()
 
 jfBox_x86* jfShapeFactory_x86::makeBox()
 {
-	return new jfBox_x86();
+    return new jfBox_x86();
 }
 
 jfBall_x86* jfShapeFactory_x86::makeBall()
 {
-	return new jfBall_x86();
+    return new jfBall_x86();
 }

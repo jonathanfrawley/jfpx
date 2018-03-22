@@ -19,33 +19,32 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define JFAEROCONTROLFORCEGENERATOR_X86_H
 
 #include <jfpx/jfAeroControlForceGenerator.h>
+#include <jfpx/x86/jfAeroForceGenerator_x86.h>
 #include <jfpx/x86/jfMatrix3_x86.h>
 #include <jfpx/x86/jfMatrix4_x86.h>
 #include <jfpx/x86/jfVector3_x86.h>
-#include <jfpx/x86/jfAeroForceGenerator_x86.h>
 
+class jfAeroControlForceGenerator_x86 : public jfAeroControlForceGenerator {
+public:
+    jfAeroControlForceGenerator_x86();
+    jfAeroControlForceGenerator_x86(const jfMatrix3& baseTensor,
+        const jfMatrix3& minTensor,
+        const jfMatrix3& maxTensor,
+        const jfVector3& pos,
+        jfVector3* windSpeed);
+    virtual ~jfAeroControlForceGenerator_x86();
 
-class jfAeroControlForceGenerator_x86 :  public jfAeroControlForceGenerator
-{
-    public:
-        jfAeroControlForceGenerator_x86();
-        jfAeroControlForceGenerator_x86(const jfMatrix3& baseTensor,
-                                        const jfMatrix3& minTensor,
-                                        const jfMatrix3& maxTensor,
-                                        const jfVector3& pos,
-                                        jfVector3* windSpeed);
-        virtual ~jfAeroControlForceGenerator_x86();
-
-		/*-----------------------------------------------------------------------------
+    /*-----------------------------------------------------------------------------
 		 *  Inherited methods
 		 *-----------------------------------------------------------------------------*/
-        virtual void updateForce(jfRigidBody* body, jfReal timeStep) const;
-        virtual void getTensor(jfMatrix3* result) const;
-        virtual void updateForceFromTensor(jfRigidBody* body,
-												jfReal timeStep,
-												jfMatrix3& tensor) const;
-    protected:
-    private:
+    virtual void updateForce(jfRigidBody* body, jfReal timeStep) const;
+    virtual void getTensor(jfMatrix3* result) const;
+    virtual void updateForceFromTensor(jfRigidBody* body,
+        jfReal timeStep,
+        jfMatrix3& tensor) const;
+
+protected:
+private:
 };
 
 #endif // JFAEROCONTROLFORCEGENERATOR_X86_H

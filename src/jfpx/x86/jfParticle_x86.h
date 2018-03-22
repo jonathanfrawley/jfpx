@@ -18,19 +18,19 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #ifndef JFPARTICLE_X86_H
 #define JFPARTICLE_X86_H
 
-#include <jfpx/jfPrecision.h>
 #include <jfpx/jfParticle.h>
+#include <jfpx/jfPrecision.h>
 #include <jfpx/x86/jfVector3_x86.h>
 
-class jfParticle_x86 : public jfParticle
-{
-    public:
-        jfParticle_x86();
-        ~jfParticle_x86();
-        /* Inherited functions from superclass */
-        virtual void integrate(jfReal timeStep);
-    protected:
-    private:
+class jfParticle_x86 : public jfParticle {
+public:
+    jfParticle_x86();
+    ~jfParticle_x86();
+    /* Inherited functions from superclass */
+    virtual void integrate(jfReal timeStep);
+
+protected:
+private:
 };
 
 #endif

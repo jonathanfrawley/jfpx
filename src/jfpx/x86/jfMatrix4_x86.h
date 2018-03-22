@@ -21,46 +21,45 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include <jfpx/jfMatrix4.h>
 #include <jfpx/x86/jfVector3_x86.h>
 
+class jfMatrix4_x86 : public jfMatrix4 {
+public:
+    jfMatrix4_x86();
 
-class jfMatrix4_x86 : public jfMatrix4
-{
-    public:
-        jfMatrix4_x86();
+    jfMatrix4_x86(const jfMatrix4& other);
 
-        jfMatrix4_x86(const jfMatrix4& other);
+    virtual ~jfMatrix4_x86();
 
-        virtual ~jfMatrix4_x86();
-
-	   /*-----------------------------------------------------------------------------
+    /*-----------------------------------------------------------------------------
 		*  Inherited methods
 		*-----------------------------------------------------------------------------*/
-		virtual void multiply(const jfVector3& vec, jfVector3* result) const;
+    virtual void multiply(const jfVector3& vec, jfVector3* result) const;
 
-        virtual void multiply(const jfMatrix4& other, jfMatrix4* result) const;
+    virtual void multiply(const jfMatrix4& other, jfMatrix4* result) const;
 
-        virtual jfReal getDeterminant() const;
+    virtual jfReal getDeterminant() const;
 
-        virtual void setInverse(const jfMatrix4& other);
+    virtual void setInverse(const jfMatrix4& other);
 
-        virtual void getInverse(jfMatrix4* result) const;
+    virtual void getInverse(jfMatrix4* result) const;
 
-		virtual void invert();
+    virtual void invert();
 
-        virtual void setOrientationAndPos(const jfQuaternion& q, const jfVector3& pos);
+    virtual void setOrientationAndPos(const jfQuaternion& q, const jfVector3& pos);
 
-        virtual void transform(const jfVector3& vec, jfVector3* result) const;
+    virtual void transform(const jfVector3& vec, jfVector3* result) const;
 
-        virtual void transformInverse(const jfVector3& vec, jfVector3* result) const;
+    virtual void transformInverse(const jfVector3& vec, jfVector3* result) const;
 
-        virtual void transformDirection(const jfVector3& vec, jfVector3* result) const;
+    virtual void transformDirection(const jfVector3& vec, jfVector3* result) const;
 
-        virtual void transformInverseDirection(const jfVector3& vec, jfVector3* result) const;
+    virtual void transformInverseDirection(const jfVector3& vec, jfVector3* result) const;
 
-		virtual void fillColumnMajorArray(float array[16]) const;
+    virtual void fillColumnMajorArray(float array[16]) const;
 
-		virtual void getAxisVector(unsigned index, jfVector3* result) const;
-    protected:
-    private:
+    virtual void getAxisVector(unsigned index, jfVector3* result) const;
+
+protected:
+private:
 };
 
 #endif // JFMATRIX4_X86_H

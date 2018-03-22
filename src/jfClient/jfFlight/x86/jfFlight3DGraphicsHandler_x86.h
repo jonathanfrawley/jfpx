@@ -19,10 +19,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define JFFLIGHT3DGRAPHICSHANDLER_X86_H
 
 #include <jfGraphics/jf3DGraphics/jfSDLGL/jfSDLGL3DGraphicsHandler.h>
-#include <jfpx/jfRigidBody.h>
-#include <jfpx/x86/jfVector3_x86.h>
-#include <jfpx/x86/jfMatrix4_x86.h>
 #include <jfLog/jfLog.h>
+#include <jfpx/jfRigidBody.h>
+#include <jfpx/x86/jfMatrix4_x86.h>
+#include <jfpx/x86/jfVector3_x86.h>
 
 #include <GL/gl.h>
 #include <GL/glu.h>
@@ -30,41 +30,41 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include <SDL/SDL_opengl.h>
 #include <stdio.h>
 
-class jfFlight3DGraphicsHandler_x86 : public jfSDLGL3DGraphicsHandler
-{
-    public:
-        jfFlight3DGraphicsHandler_x86();
-        virtual ~jfFlight3DGraphicsHandler_x86();
+class jfFlight3DGraphicsHandler_x86 : public jfSDLGL3DGraphicsHandler {
+public:
+    jfFlight3DGraphicsHandler_x86();
+    virtual ~jfFlight3DGraphicsHandler_x86();
 
-	   /*
+    /*
 		* ===  FUNCTION  ======================================================================
 		*         Name:  setAircraft
 		*  Description:  Sets pointer to Aircraft
 		* =====================================================================================
 		*/
-		void setAircraft(jfRigidBody* val) { aircraft = val; }
+    void setAircraft(jfRigidBody* val) { aircraft = val; }
 
-		/*
+    /*
 		 * ===  FUNCTION  ======================================================================
 		 *         Name:  drawAircraft
 		 *  Description:  Draws the aircraft using OpenGL.
 		 * =====================================================================================
 		 */
-		void drawAircraft() const;
+    void drawAircraft() const;
 
-		/*
+    /*
 		 * ===  FUNCTION  ======================================================================
 		 *         Name:  drawCube
 		 *  Description:  Draws a cube using OpenGL.
 		 * =====================================================================================
 		 */
-        void drawCube(float length) const;
-        /* Inherited methods */
-        virtual void initObjects();
-		virtual void drawObjects() const;
-    protected:
-		jfRigidBody* aircraft; //Not our object
-    private:
+    void drawCube(float length) const;
+    /* Inherited methods */
+    virtual void initObjects();
+    virtual void drawObjects() const;
+
+protected:
+    jfRigidBody* aircraft; //Not our object
+private:
 };
 
 #endif // JFFLIGHT3DGRAPHICSHANDLER_X86_H

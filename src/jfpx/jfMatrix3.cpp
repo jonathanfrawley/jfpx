@@ -20,8 +20,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 jfMatrix3::jfMatrix3()
 {
     int i;
-    for(i=0;i<9;i++)
-    {
+    for (i = 0; i < 9; i++) {
         m_Elems[i] = (jfReal)0.0;
     }
     //Create Identity Matrix
@@ -31,18 +30,18 @@ jfMatrix3::jfMatrix3()
 }
 
 jfMatrix3::jfMatrix3(jfReal e0, jfReal e1, jfReal e2,
-                        jfReal e3, jfReal e4, jfReal e5,
-                        jfReal e6, jfReal e7, jfReal e8)
+    jfReal e3, jfReal e4, jfReal e5,
+    jfReal e6, jfReal e7, jfReal e8)
 {
-	m_Elems[0] = e0;
-	m_Elems[1] = e1;
-	m_Elems[2] = e2;
-	m_Elems[3] = e3;
-	m_Elems[4] = e4;
-	m_Elems[5] = e5;
-	m_Elems[6] = e6;
-	m_Elems[7] = e7;
-	m_Elems[8] = e8;
+    m_Elems[0] = e0;
+    m_Elems[1] = e1;
+    m_Elems[2] = e2;
+    m_Elems[3] = e3;
+    m_Elems[4] = e4;
+    m_Elems[5] = e5;
+    m_Elems[6] = e6;
+    m_Elems[7] = e7;
+    m_Elems[8] = e8;
 }
 
 jfMatrix3::jfMatrix3(const jfMatrix3& other)
@@ -63,8 +62,7 @@ jfMatrix3::~jfMatrix3()
 void jfMatrix3::copyHere(const jfMatrix3& other)
 {
     unsigned i;
-    for(i=0;i<9;i++)
-    {
+    for (i = 0; i < 9; i++) {
         m_Elems[i] = other.getElem(i);
     }
 }

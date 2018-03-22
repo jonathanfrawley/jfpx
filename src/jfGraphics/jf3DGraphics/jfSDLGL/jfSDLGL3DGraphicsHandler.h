@@ -20,23 +20,23 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include <jfGraphics/jf3DGraphics/jf3DGraphicsHandler.h>
 
-#include <SDL/SDL.h>
-#include <SDL/SDL_opengl.h>
 #include <GL/gl.h>
 #include <GL/glu.h>
+#include <SDL/SDL.h>
+#include <SDL/SDL_opengl.h>
 
-class jfSDLGL3DGraphicsHandler : public jf3DGraphicsHandler
-{
-    public:
-        jfSDLGL3DGraphicsHandler();
-        virtual ~jfSDLGL3DGraphicsHandler();
-        void init();
-        /* Interface */
-        virtual void initObjects() = 0;
-        virtual void drawObjects() const = 0;
-        void draw();
-    protected:
-    private:
+class jfSDLGL3DGraphicsHandler : public jf3DGraphicsHandler {
+public:
+    jfSDLGL3DGraphicsHandler();
+    virtual ~jfSDLGL3DGraphicsHandler();
+    void init();
+    /* Interface */
+    virtual void initObjects() = 0;
+    virtual void drawObjects() const = 0;
+    void draw();
+
+protected:
+private:
 };
 
 #endif // JFSDLGL3DGRAPHICSHANDLER_H

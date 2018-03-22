@@ -18,51 +18,51 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #ifndef JFCOLLISIONPRIMITIVE_H
 #define JFCOLLISIONPRIMITIVE_H
 
-#include <jfpx/jfRigidBody.h>
 #include <jfpx/jfMatrix4.h>
+#include <jfpx/jfRigidBody.h>
 
-class jfCollisionPrimitive
-{
-    public:
-        jfCollisionPrimitive();
+class jfCollisionPrimitive {
+public:
+    jfCollisionPrimitive();
 
-        virtual ~jfCollisionPrimitive();
+    virtual ~jfCollisionPrimitive();
 
-		/*
+    /*
 		 * ===  FUNCTION  ======================================================================
 		 *         Name:  getAxisVector
 		 *  Description:  Convenience function gets the a specified axis in the transformation matrix
 		 * =====================================================================================
 		 */
-		virtual void getAxisVector(unsigned index, jfVector3* result) const
-		{
-			m_Transform->getAxisVector(index, result);
-		}
+    virtual void getAxisVector(unsigned index, jfVector3* result) const
+    {
+        m_Transform->getAxisVector(index, result);
+    }
 
-	   /*-----------------------------------------------------------------------------
+    /*-----------------------------------------------------------------------------
 		*  Interface
 		*-----------------------------------------------------------------------------*/
-	   /*
+    /*
 		* ===  FUNCTION  ======================================================================
 		*         Name:  calculateInternals
 		*  Description:  Calculates the internals for the primitive.
 		* =====================================================================================
 		*/
-        virtual void calculateInternals() = 0;
+    virtual void calculateInternals() = 0;
 
-		/*-----------------------------------------------------------------------------
+    /*-----------------------------------------------------------------------------
 		 *  Getters and Setters
 		 *-----------------------------------------------------------------------------*/
-		virtual void getTransformMatrix(jfMatrix4* result) const { (*result) =  (*m_Transform); }
+    virtual void getTransformMatrix(jfMatrix4* result) const { (*result) = (*m_Transform); }
 
-		//Should only be used in contact generation
-		virtual jfRigidBody* getBody() const { return m_Body; }
+    //Should only be used in contact generation
+    virtual jfRigidBody* getBody() const { return m_Body; }
 
-    protected:
-        jfRigidBody* m_Body;
-        jfMatrix4* m_Offset;
-        jfMatrix4* m_Transform;
-    private:
+protected:
+    jfRigidBody* m_Body;
+    jfMatrix4* m_Offset;
+    jfMatrix4* m_Transform;
+
+private:
 };
 
 #endif // JFCOLLISIONPRIMITIVE_H

@@ -19,31 +19,31 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define JFAEROFORCEGENERATOR_X86_H
 
 #include <jfpx/jfAeroForceGenerator.h>
-#include <jfpx/x86/jfVector3_x86.h>
 #include <jfpx/x86/jfMatrix3_x86.h>
 #include <jfpx/x86/jfMatrix4_x86.h>
+#include <jfpx/x86/jfVector3_x86.h>
 
-class jfAeroForceGenerator_x86 : public jfAeroForceGenerator
-{
-    public:
-        jfAeroForceGenerator_x86();
+class jfAeroForceGenerator_x86 : public jfAeroForceGenerator {
+public:
+    jfAeroForceGenerator_x86();
 
-        jfAeroForceGenerator_x86(const jfMatrix3& tensor,
-                                    const jfVector3& pos,
-                                    jfVector3* windSpeed);
+    jfAeroForceGenerator_x86(const jfMatrix3& tensor,
+        const jfVector3& pos,
+        jfVector3* windSpeed);
 
-        virtual ~jfAeroForceGenerator_x86();
+    virtual ~jfAeroForceGenerator_x86();
 
-		/*-----------------------------------------------------------------------------
+    /*-----------------------------------------------------------------------------
 		 *  Inherited methods
 		 *-----------------------------------------------------------------------------*/
-        virtual void updateForce(jfRigidBody* body, jfReal timeStep) const;
+    virtual void updateForce(jfRigidBody* body, jfReal timeStep) const;
 
-        virtual void updateForceFromTensor(jfRigidBody* body,
-                                            jfReal timeStep,
-                                            jfMatrix3& tensor) const;
-    protected:
-    private:
+    virtual void updateForceFromTensor(jfRigidBody* body,
+        jfReal timeStep,
+        jfMatrix3& tensor) const;
+
+protected:
+private:
 };
 
 #endif // JFAEROFORCEGENERATOR_X86_H

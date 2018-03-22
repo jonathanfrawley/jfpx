@@ -36,29 +36,25 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #ifndef JFCONTACTGENERATOR_H
 #define JFCONTACTGENERATOR_H
 
-
 /*
  * =====================================================================================
  *        Class: jfContactGenerator
  *  Description: Interface for contact generators.
  * =====================================================================================
  */
-class jfContactGenerator
-{
-	public:
-		/* 
+class jfContactGenerator {
+public:
+    /* 
 		 * ===  FUNCTION  ======================================================================
 		 *         Name:  addContact
 		 *  Description:  Fills the contact structure with the generated contact.
 		 *  @return : Number of contacts written to.
 		 * =====================================================================================
 		 */
-		virtual unsigned addContact(Contact *contact, unsigned limit) const = 0;
-		
-	protected:
-	private:
+    virtual unsigned addContact(Contact* contact, unsigned limit) const = 0;
+
+protected:
+private:
 };
-
-
 
 #endif //JFCONTACTGENERATOR_H

@@ -27,15 +27,15 @@ jfCollisionSphere_x86::jfCollisionSphere_x86()
 jfCollisionSphere_x86::~jfCollisionSphere_x86()
 {
     delete m_Body;
-	delete m_Offset;
-	delete m_Transform;
+    delete m_Offset;
+    delete m_Transform;
 }
 
 void jfCollisionSphere_x86::calculateInternals()
 {
     //@ref: Millington p.274
     //Used in case sphere body doesn't match up with collision sphere
-	jfMatrix4_x86 bodyTransform;
-	m_Body->getTransformMatrix(&bodyTransform);
-	bodyTransform.multiply((*m_Offset), m_Transform);
+    jfMatrix4_x86 bodyTransform;
+    m_Body->getTransformMatrix(&bodyTransform);
+    bodyTransform.multiply((*m_Offset), m_Transform);
 }

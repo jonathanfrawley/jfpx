@@ -16,14 +16,14 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 **/
 
-#ifndef  JFCOLLISIONDETECTOR_X86_H
-#define  JFCOLLISIONDETECTOR_X86_H
+#ifndef JFCOLLISIONDETECTOR_X86_H
+#define JFCOLLISIONDETECTOR_X86_H
 
 #include <jfpx/jfCollisionDetector.h>
 
-#include <jfpx/x86/jfVector3_x86.h>
 #include <jfpx/x86/jfContact_x86.h>
 #include <jfpx/x86/jfIntersectionTester_x86.h>
+#include <jfpx/x86/jfVector3_x86.h>
 
 #include <vector>
 using namespace std;
@@ -34,52 +34,44 @@ using namespace std;
  *  Description:
  * =====================================================================================
  */
-class jfCollisionDetector_x86 : public jfCollisionDetector
-{
-	public:
+class jfCollisionDetector_x86 : public jfCollisionDetector {
+public:
+    virtual unsigned sphereAndHalfSpace(const jfCollisionSphere& sphere,
+        const jfCollisionPlane& plane,
+        jfCollisionData* data) const;
 
-        virtual unsigned sphereAndHalfSpace(const jfCollisionSphere& sphere,
-												const jfCollisionPlane& plane,
-												jfCollisionData* data
-												) const;
+    virtual unsigned sphereAndTruePlane(const jfCollisionSphere& sphere,
+        const jfCollisionPlane& plane,
+        jfCollisionData* data) const;
 
-        virtual unsigned sphereAndTruePlane(const jfCollisionSphere& sphere,
-											const jfCollisionPlane& plane,
-											jfCollisionData* data
-											) const;
+    virtual unsigned sphereAndSphere(const jfCollisionSphere& one,
+        const jfCollisionSphere& two,
+        jfCollisionData* data) const;
 
-        virtual unsigned sphereAndSphere(const jfCollisionSphere& one,
-											const jfCollisionSphere& two,
-											jfCollisionData* data
-											) const;
+    virtual unsigned sphereAndSphereBatch(vector<jfBall*>& spheres,
+        jfCollisionData* collisionData) const;
 
-        virtual unsigned sphereAndSphereBatch(vector<jfBall*>& spheres,
-                                                jfCollisionData* collisionData) const;
+    virtual unsigned boxAndHalfSpace(const jfCollisionBox& box,
+        const jfCollisionPlane& plane,
+        jfCollisionData* data) const;
 
-        virtual unsigned boxAndHalfSpace(const jfCollisionBox& box,
-											const jfCollisionPlane& plane,
-											jfCollisionData* data
-											) const;
+    virtual unsigned boxAndBox(const jfCollisionBox& one,
+        const jfCollisionBox& two,
+        jfCollisionData* data) const;
 
-        virtual unsigned boxAndBox(const jfCollisionBox& one,
-										const jfCollisionBox& two,
-										jfCollisionData* data
-										) const;
+    virtual unsigned boxAndBoxBatch(vector<jfBox*>& boxes,
+        jfCollisionData* collisionData) const;
 
-        virtual unsigned boxAndBoxBatch(vector<jfBox*>& boxes,
-                                        jfCollisionData* collisionData) const;
+    virtual unsigned boxAndPoint(const jfCollisionBox& box,
+        const jfVector3& point,
+        jfCollisionData* data) const;
 
-        virtual unsigned boxAndPoint(const jfCollisionBox& box,
-										const jfVector3& point,
-										jfCollisionData* data
-										) const;
+    virtual unsigned boxAndSphere(const jfCollisionBox& box,
+        const jfCollisionSphere& sphere,
+        jfCollisionData* data) const;
 
-        virtual unsigned boxAndSphere(const jfCollisionBox& box,
-										const jfCollisionSphere& sphere,
-										jfCollisionData* data
-										) const;
-	protected:
-		/*
+protected:
+    /*
 		 * ===  FUNCTION  ======================================================================
 		 *         Name:  penetrationOnAxis
 		 *  Description: This function checks if the two boxes overlap
@@ -89,43 +81,41 @@ class jfCollisionDetector_x86 : public jfCollisionDetector
 		 * points, to avoid having to recalculate it each time.
 		 * =====================================================================================
 		 */
-		virtual jfReal penetrationOnAxis(
-			const jfCollisionBox& one,
-			const jfCollisionBox& two,
-			jfVector3& axis,
-			const jfVector3& toCentre
-			) const;
+    virtual jfReal penetrationOnAxis(
+        const jfCollisionBox& one,
+        const jfCollisionBox& two,
+        jfVector3& axis,
+        const jfVector3& toCentre) const;
 
-		virtual bool tryAxis(
-			const jfCollisionBox& one,
-			const jfCollisionBox& two,
-			jfVector3& axis,
-			const jfVector3& toCentre,
-			unsigned index,
-			// These values may be updated
-			jfReal& smallestPenetration,
-			unsigned& smallestCase
-			) const;
+    virtual bool tryAxis(
+        const jfCollisionBox& one,
+        const jfCollisionBox& two,
+        jfVector3& axis,
+        const jfVector3& toCentre,
+        unsigned index,
+        // These values may be updated
+        jfReal& smallestPenetration,
+        unsigned& smallestCase) const;
 
-		virtual void fillPointFaceBoxBox(
-			const jfCollisionBox& one,
-			const jfCollisionBox& two,
-			const jfVector3& toCentre,
-			jfCollisionData* data,
-			unsigned best,
-			jfReal pen
-			) const;
+    virtual void fillPointFaceBoxBox(
+        const jfCollisionBox& one,
+        const jfCollisionBox& two,
+        const jfVector3& toCentre,
+        jfCollisionData* data,
+        unsigned best,
+        jfReal pen) const;
 
-		virtual void contactPoint(
-			const jfVector3& pOne,
-			const jfVector3& dOne,
-			jfReal oneSize,
-			const jfVector3& pTwo,
-			const jfVector3& dTwo,
-			jfReal twoSize,
-			bool useOne,
-			jfVector3* result) const;
-	private:
+    virtual void contactPoint(
+        const jfVector3& pOne,
+        const jfVector3& dOne,
+        jfReal oneSize,
+        const jfVector3& pTwo,
+        const jfVector3& dTwo,
+        jfReal twoSize,
+        bool useOne,
+        jfVector3* result) const;
+
+private:
 };
 
-#endif   // JFCOLLISIONDETECTOR_X86_H
+#endif // JFCOLLISIONDETECTOR_X86_H

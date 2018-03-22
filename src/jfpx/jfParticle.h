@@ -21,40 +21,51 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include <jfpx/jfPrecision.h>
 #include <jfpx/jfVector3.h>
 
-class jfParticle
-{
-    public:
-        jfParticle();
-        virtual ~jfParticle();
+class jfParticle {
+public:
+    jfParticle();
+    virtual ~jfParticle();
 
-        /* Interface */
-        virtual void integrate( jfReal timeStep ) = 0;
+    /* Interface */
+    virtual void integrate(jfReal timeStep) = 0;
 
-        /* Own Functions */
-        virtual void clearAccumulator() { m_ForceAccum->clear(); }
+    /* Own Functions */
+    virtual void clearAccumulator() { m_ForceAccum->clear(); }
 
-        /* Getters and Setters */
-        virtual jfVector3* getPos() { return m_Pos; }
-        virtual void setPos(jfVector3* val) { delete m_Pos; m_Pos = val; }
-        virtual jfVector3* getVel() { return m_Vel; }
-        virtual void setVel(jfVector3* val) { delete m_Vel; m_Vel = val; }
-        virtual jfVector3* getAccel() { return m_Accel; }
-        virtual void setAccel(jfVector3* val) { delete m_Accel; m_Accel = val; }
-        virtual jfReal getDamping() { return m_Damping; }
-        virtual void setDamping(jfReal val) { m_Damping = val; }
-        virtual jfReal getInverseMass() { return m_InverseMass; }
-        virtual void setInverseMass(jfReal val) { m_InverseMass = val; }
-        virtual jfReal getMass() { return ((jfReal)(1.0)/m_InverseMass); }
-        virtual void setMass(jfReal val) { m_InverseMass = (((jfReal)1.0)/val); }
+    /* Getters and Setters */
+    virtual jfVector3* getPos() { return m_Pos; }
+    virtual void setPos(jfVector3* val)
+    {
+        delete m_Pos;
+        m_Pos = val;
+    }
+    virtual jfVector3* getVel() { return m_Vel; }
+    virtual void setVel(jfVector3* val)
+    {
+        delete m_Vel;
+        m_Vel = val;
+    }
+    virtual jfVector3* getAccel() { return m_Accel; }
+    virtual void setAccel(jfVector3* val)
+    {
+        delete m_Accel;
+        m_Accel = val;
+    }
+    virtual jfReal getDamping() { return m_Damping; }
+    virtual void setDamping(jfReal val) { m_Damping = val; }
+    virtual jfReal getInverseMass() { return m_InverseMass; }
+    virtual void setInverseMass(jfReal val) { m_InverseMass = val; }
+    virtual jfReal getMass() { return ((jfReal)(1.0) / m_InverseMass); }
+    virtual void setMass(jfReal val) { m_InverseMass = (((jfReal)1.0) / val); }
 
-    protected:
-        jfVector3* m_Pos;
-        jfVector3* m_Vel;
-        jfVector3* m_Accel;
-        jfVector3* m_ForceAccum;
-        jfReal m_Damping;
-        jfReal m_InverseMass; //Inverse mass due to zero division, need to represent infinte mass, etc.
-    private:
+protected:
+    jfVector3* m_Pos;
+    jfVector3* m_Vel;
+    jfVector3* m_Accel;
+    jfVector3* m_ForceAccum;
+    jfReal m_Damping;
+    jfReal m_InverseMass; //Inverse mass due to zero division, need to represent infinte mass, etc.
+private:
 };
 
 #endif // JFPARTICLE_H

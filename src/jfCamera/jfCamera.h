@@ -20,50 +20,49 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include <jfpx/jfVector3.h>
 
-class jfCamera
-{
-    public:
-        jfCamera();
+class jfCamera {
+public:
+    jfCamera();
 
-        virtual ~jfCamera();
+    virtual ~jfCamera();
 
-		/*-----------------------------------------------------------------------------
+    /*-----------------------------------------------------------------------------
 		 *  Interface
 		 *-----------------------------------------------------------------------------*/
-		/*-----------------------------------------------------------------------------
+    /*-----------------------------------------------------------------------------
 		 *  Getters and Setters
 		 *-----------------------------------------------------------------------------*/
-        void getPos(jfVector3* pos) const
-        {
-            (*pos) = (*m_Pos);
-        }
-        virtual void setPos(const jfVector3& newPos)
-        {
-            (*m_Pos) = newPos;
-        }
+    void getPos(jfVector3* pos) const
+    {
+        (*pos) = (*m_Pos);
+    }
+    virtual void setPos(const jfVector3& newPos)
+    {
+        (*m_Pos) = newPos;
+    }
 
-        void getRot(jfVector3* rot) const
-        {
-            (*rot) = (*m_Rot);
-        }
-        void setRot(const jfVector3& newRot)
-        {
-            (*m_Rot) = newRot;
-        }
+    void getRot(jfVector3* rot) const
+    {
+        (*rot) = (*m_Rot);
+    }
+    void setRot(const jfVector3& newRot)
+    {
+        (*m_Rot) = newRot;
+    }
 
-        jfReal getHeading()
-        {
-            return m_Heading;
-        }
-        void setHeading(jfReal val)
-        {
-            m_Heading = val;
-        }
+    jfReal getHeading()
+    {
+        return m_Heading;
+    }
+    void setHeading(jfReal val)
+    {
+        m_Heading = val;
+    }
 
-    protected:
-        jfVector3* m_Pos;
-        jfVector3* m_Rot;
-        jfReal m_Heading;
+protected:
+    jfVector3* m_Pos;
+    jfVector3* m_Rot;
+    jfReal m_Heading;
 };
 
 #endif //JFCAMERA_H

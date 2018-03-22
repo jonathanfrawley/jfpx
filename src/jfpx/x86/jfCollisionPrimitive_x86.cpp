@@ -19,9 +19,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 jfCollisionPrimitive_x86::jfCollisionPrimitive_x86()
 {
-	m_Body = new jfRigidBody_x86();
-	m_Offset = new jfMatrix4_x86();
-	m_Transform = new jfMatrix4_x86();
+    m_Body = new jfRigidBody_x86();
+    m_Offset = new jfMatrix4_x86();
+    m_Transform = new jfMatrix4_x86();
 }
 
 jfCollisionPrimitive_x86::~jfCollisionPrimitive_x86()
@@ -30,7 +30,7 @@ jfCollisionPrimitive_x86::~jfCollisionPrimitive_x86()
 
 void jfCollisionPrimitive_x86::calculateInternals()
 {
-	jfMatrix4_x86 bodyTransform;
-	m_Body->getTransformMatrix(&bodyTransform);
-	bodyTransform.multiply((*m_Offset), m_Transform);
+    jfMatrix4_x86 bodyTransform;
+    m_Body->getTransformMatrix(&bodyTransform);
+    bodyTransform.multiply((*m_Offset), m_Transform);
 }

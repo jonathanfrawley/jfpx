@@ -15,17 +15,16 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 **/
-#ifndef  JFBOX_H
-#define  JFBOX_H
+#ifndef JFBOX_H
+#define JFBOX_H
 
-#include <jfpx/x86/jfCollisionBox_x86.h>
 #include <jfShape/jfShape.h>
+#include <jfpx/x86/jfCollisionBox_x86.h>
 
-typedef enum _BoxType
-{
-	JF_BOX_UNUSED,
-	JF_BOX_HEAVY,
-	JF_BOX_LIGHT
+typedef enum _BoxType {
+    JF_BOX_UNUSED,
+    JF_BOX_HEAVY,
+    JF_BOX_LIGHT
 } BoxType;
 
 /*
@@ -34,51 +33,49 @@ typedef enum _BoxType
  *  Description:
  * =====================================================================================
  */
-class jfBox : public jfShape, public jfCollisionBox_x86
-{
-	public:
-		jfBox();
+class jfBox : public jfShape, public jfCollisionBox_x86 {
+public:
+    jfBox();
 
-		virtual ~jfBox();
+    virtual ~jfBox();
 
-		/*-----------------------------------------------------------------------------
+    /*-----------------------------------------------------------------------------
 		 *  Interface
 		 *-----------------------------------------------------------------------------*/
-		/*
+    /*
 		 * ===  FUNCTION  ======================================================================
 		 *         Name:  setState
 		 *  Description:  Sets the box to a position
 		 * =====================================================================================
 		 */
-		virtual void setState(BoxType type, const jfVector3& pos) = 0;
+    virtual void setState(BoxType type, const jfVector3& pos) = 0;
 
-		/*
+    /*
 		 * ===  FUNCTION  ======================================================================
 		 *         Name:  init
 		 *  Description:  Initialise the box.
 		 * =====================================================================================
 		 */
-        virtual void init() = 0;
+    virtual void init() = 0;
 
-		/*-----------------------------------------------------------------------------
+    /*-----------------------------------------------------------------------------
 		 *  Inherited Methods
 		 *-----------------------------------------------------------------------------*/
-        virtual void render() const = 0;
+    virtual void render() const = 0;
 
-
-		/*-----------------------------------------------------------------------------
+    /*-----------------------------------------------------------------------------
 		 *  Getters and Setters
 		 *-----------------------------------------------------------------------------*/
-		virtual BoxType getType() { return m_Type; }
-		virtual void setType(BoxType type) { m_Type = type; }
+    virtual BoxType getType() { return m_Type; }
+    virtual void setType(BoxType type) { m_Type = type; }
 
-	protected:
-		/*-----------------------------------------------------------------------------
+protected:
+    /*-----------------------------------------------------------------------------
 		 *  Member Variables
 		 *-----------------------------------------------------------------------------*/
-		BoxType m_Type;
-	private:
+    BoxType m_Type;
+
+private:
 };
 
-
-#endif   // JFBOX_H
+#endif // JFBOX_H

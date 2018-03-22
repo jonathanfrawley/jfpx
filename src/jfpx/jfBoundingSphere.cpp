@@ -18,20 +18,18 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include "jfBoundingSphere.h"
 
 jfBoundingSphere::jfBoundingSphere()
-	:
-		m_Centre(0),
-		m_Radius(0)
+    : m_Centre(0)
+    , m_Radius(0)
 {
 }
 
 jfBoundingSphere::jfBoundingSphere(const jfVector3& centre, jfReal radius)
-	:
-		m_Centre(centre.clone()),
-		m_Radius(radius)
+    : m_Centre(centre.clone())
+    , m_Radius(radius)
 {
 }
 
 jfBoundingSphere::~jfBoundingSphere()
 {
-	delete m_Centre;
+    delete m_Centre;
 }

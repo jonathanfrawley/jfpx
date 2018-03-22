@@ -17,25 +17,25 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 **/
 #include "jfGravityForceGenerator_x86.h"
 
-jfGravityForceGenerator_x86::jfGravityForceGenerator_x86 ()
+jfGravityForceGenerator_x86::jfGravityForceGenerator_x86()
 {
 }
 
-jfGravityForceGenerator_x86::jfGravityForceGenerator_x86 (jfVector3* gravity) : jfGravityForceGenerator(gravity)
+jfGravityForceGenerator_x86::jfGravityForceGenerator_x86(jfVector3* gravity)
+    : jfGravityForceGenerator(gravity)
 {
 }
 
-jfGravityForceGenerator_x86::~jfGravityForceGenerator_x86 ()
+jfGravityForceGenerator_x86::~jfGravityForceGenerator_x86()
 {
 }
 
 void jfGravityForceGenerator_x86::updateForce(jfRigidBody* body, jfReal duration)
 {
     jfVector3_x86 force;
-	if( ! body->hasFiniteMass())
-	{
-		return;
-	}
-	m_Gravity->multiply(body->getMass(), &force);
-	body->addForce(force);
+    if (!body->hasFiniteMass()) {
+        return;
+    }
+    m_Gravity->multiply(body->getMass(), &force);
+    body->addForce(force);
 }

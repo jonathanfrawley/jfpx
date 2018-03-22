@@ -18,17 +18,16 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #ifndef JF3DGRAPHICSHANDLER_H
 #define JF3DGRAPHICSHANDLER_H
 
+class jf3DGraphicsHandler {
+public:
+    jf3DGraphicsHandler();
+    virtual ~jf3DGraphicsHandler();
+    /* Interface */
+    virtual void init() = 0;
+    virtual void draw() = 0;
 
-class jf3DGraphicsHandler
-{
-    public:
-        jf3DGraphicsHandler();
-        virtual ~jf3DGraphicsHandler();
-        /* Interface */
-        virtual void init() = 0;
-        virtual void draw() = 0;
-    protected:
-    private:
+protected:
+private:
 };
 
 #endif // JF3DGRAPHICSHANDLER_H

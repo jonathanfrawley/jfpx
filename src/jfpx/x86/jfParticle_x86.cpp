@@ -29,14 +29,13 @@ jfParticle_x86::~jfParticle_x86()
 
 void jfParticle_x86::integrate(jfReal timeStep)
 {
-    if( timeStep < 0.0 )
-    {
+    if (timeStep < 0.0) {
         return;
     }
 
     m_Pos->addScaledVector((*m_Vel), timeStep); //Update position
 
-    jfVector3_x86* newAccel = new jfVector3_x86(m_Accel->getX(),m_Accel->getY(), m_Accel->getZ());
+    jfVector3_x86* newAccel = new jfVector3_x86(m_Accel->getX(), m_Accel->getY(), m_Accel->getZ());
     newAccel->addScaledVector((*m_ForceAccum), m_InverseMass);
 
     m_Vel->addScaledVector((*newAccel), timeStep);

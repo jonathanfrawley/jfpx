@@ -25,16 +25,13 @@ int main()
 {
     jfSimulation* simulation = new jfFlightSimulation_x86();
 
-	if(simulation->init())
-	{
-		simulation->run();
-	}
-	else
-	{
-		std::cout << "Simulation init failed! Not running..." << std::endl;
-	}
+    if (simulation->init()) {
+        simulation->run();
+    } else {
+        std::cout << "Simulation init failed! Not running..." << std::endl;
+    }
 
-	delete simulation;
+    delete simulation;
 
-	return 0;
+    return 0;
 }

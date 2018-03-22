@@ -15,9 +15,9 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 **/
-#ifndef  JFCONSTANTS_H
-#define  JFCONSTANTS_H
+#ifndef JFCONSTANTS_H
+#define JFCONSTANTS_H
 
 const double JF_MATH_PI = 3.14159265;
 
-#endif   // JFCONSTANTS_H
+#endif // JFCONSTANTS_H

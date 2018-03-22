@@ -18,51 +18,50 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #ifndef JFBOXESANDBALLSSDLGL3DGRAPHICSHANDLER_H
 #define JFBOXESANDBALLSSDLGL3DGRAPHICSHANDLER_H
 
+#include <jfCamera/jfFPSCamera.h>
 #include <jfGraphics/jf3DGraphics/jfSDLGL/jfSDLGL3DGraphicsHandler.h>
 #include <jfpx/jfContact.h>
 #include <jfpx/x86/jfVector3_x86.h>
-#include <jfCamera/jfFPSCamera.h>
 
-#include <jfShape/jfBox.h>
 #include <jfShape/jfBall.h>
+#include <jfShape/jfBox.h>
 
 #include <vector>
 using namespace std;
 
-class jfBoxesAndBalls3DGraphicsHandler_x86 : public jfSDLGL3DGraphicsHandler
-{
-    public:
-        jfBoxesAndBalls3DGraphicsHandler_x86();
+class jfBoxesAndBalls3DGraphicsHandler_x86 : public jfSDLGL3DGraphicsHandler {
+public:
+    jfBoxesAndBalls3DGraphicsHandler_x86();
 
-        virtual ~jfBoxesAndBalls3DGraphicsHandler_x86();
+    virtual ~jfBoxesAndBalls3DGraphicsHandler_x86();
 
-        virtual void initObjects();
+    virtual void initObjects();
 
-        virtual void drawSphere(float radius,
-                                  int subdivisions) const;
+    virtual void drawSphere(float radius,
+        int subdivisions) const;
 
-        virtual int loadGLTextures();
+    virtual int loadGLTextures();
 
-        virtual void drawObjects() const;
+    virtual void drawObjects() const;
 
-        virtual void setBalls(vector<jfBall*>* val) { m_Balls = val; }
+    virtual void setBalls(vector<jfBall*>* val) { m_Balls = val; }
 
-        virtual void setBoxes(vector<jfBox*>* val) { m_Boxes = val; }
+    virtual void setBoxes(vector<jfBox*>* val) { m_Boxes = val; }
 
-        virtual void drawDebug(vector<jfContact*> contacts) const;
+    virtual void drawDebug(vector<jfContact*> contacts) const;
 
-        virtual void setCam(jfFPSCamera* val) { cam = val; }
-    protected:
-    private:
-        GLUquadricObj* m_SphereQuadric;
+    virtual void setCam(jfFPSCamera* val) { cam = val; }
+protected:
+private:
+    GLUquadricObj* m_SphereQuadric;
 
-        //Pointer to shapes to draw
-        vector<jfBall*>* m_Balls;
-        vector<jfBox*>* m_Boxes;
+    //Pointer to shapes to draw
+    vector<jfBall*>* m_Balls;
+    vector<jfBox*>* m_Boxes;
 
-        GLuint m_Textures[1];
+    GLuint m_Textures[1];
 
-        jfFPSCamera* cam;
+    jfFPSCamera* cam;
 };
 
 #endif // JFBOXESANDBALLSSDLGL3DGRAPHICSHANDLER_H

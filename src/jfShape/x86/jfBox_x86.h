@@ -22,10 +22,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include <jfpx/x86/jfRigidBody_x86.h>
 #include <jfpx/x86/jfVector3_x86.h>
 
-#include <SDL/SDL.h>
-#include <SDL/SDL_opengl.h>
 #include <GL/gl.h>
 #include <GL/glu.h>
+#include <SDL/SDL.h>
+#include <SDL/SDL_opengl.h>
 
 /*
  * =====================================================================================
@@ -33,35 +33,33 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *  Description:
  * =====================================================================================
  */
-class jfBox_x86 : public jfBox
-{
-	public:
-		jfBox_x86();
+class jfBox_x86 : public jfBox {
+public:
+    jfBox_x86();
 
-		~jfBox_x86();
+    ~jfBox_x86();
 
-		/*-----------------------------------------------------------------------------
+    /*-----------------------------------------------------------------------------
 		 *  Interface
 		 *-----------------------------------------------------------------------------*/
 
-		/*-----------------------------------------------------------------------------
+    /*-----------------------------------------------------------------------------
 		 *  Inherited Methods
 		 *-----------------------------------------------------------------------------*/
-        virtual void init();
+    virtual void init();
 
-		virtual void render() const;
+    virtual void render() const;
 
-        virtual void setState(BoxType type, const jfVector3& pos);
+    virtual void setState(BoxType type, const jfVector3& pos);
 
-	protected:
-        void drawBox(const jfVector3& halfSize) const;
+protected:
+    void drawBox(const jfVector3& halfSize) const;
 
-        void buildLists(const jfVector3& halfSideLength) const;
+    void buildLists(const jfVector3& halfSideLength) const;
 
-        GLuint	m_BoxList;
-	private:
+    GLuint m_BoxList;
 
+private:
 };
 
 #endif //JFBOX_X86_H
-

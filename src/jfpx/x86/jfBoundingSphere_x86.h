@@ -15,12 +15,12 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 **/
-#ifndef  JFBOUNDINGSPHERE_X86_H
-#define  JFBOUNDINGSPHERE_X86_H
+#ifndef JFBOUNDINGSPHERE_X86_H
+#define JFBOUNDINGSPHERE_X86_H
 
 #include <jfpx/jfBoundingSphere.h>
-#include <jfpx/x86/jfVector3_x86.h>
 #include <jfpx/x86/jfCollisionPrimitive_x86.h>
+#include <jfpx/x86/jfVector3_x86.h>
 
 /*
  * =====================================================================================
@@ -28,30 +28,28 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *  Description:
  * =====================================================================================
  */
-class jfBoundingSphere_x86 : public jfCollisionPrimitive_x86, public jfBoundingSphere
-{
-	public:
-		jfBoundingSphere_x86();
+class jfBoundingSphere_x86 : public jfCollisionPrimitive_x86, public jfBoundingSphere {
+public:
+    jfBoundingSphere_x86();
 
-		jfBoundingSphere_x86(const jfVector3& centre, jfReal radius);
+    jfBoundingSphere_x86(const jfVector3& centre, jfReal radius);
 
-		jfBoundingSphere_x86(const jfBoundingVolume& one, const jfBoundingVolume& two);
+    jfBoundingSphere_x86(const jfBoundingVolume& one, const jfBoundingVolume& two);
 
-		virtual ~jfBoundingSphere_x86();
+    virtual ~jfBoundingSphere_x86();
 
-		/*-----------------------------------------------------------------------------
+    /*-----------------------------------------------------------------------------
 		 *  Inherited Methods
 		 *-----------------------------------------------------------------------------*/
-        virtual bool overlaps(const jfBoundingVolume& other) const;
+    virtual bool overlaps(const jfBoundingVolume& other) const;
 
-		virtual jfReal getGrowth(const jfBoundingVolume& other) const;
+    virtual jfReal getGrowth(const jfBoundingVolume& other) const;
 
-		virtual void recalculateBoundingVolume(const jfBoundingVolume& one,
-                                                const jfBoundingVolume& two);
+    virtual void recalculateBoundingVolume(const jfBoundingVolume& one,
+        const jfBoundingVolume& two);
 
-	protected:
-	private:
+protected:
+private:
 };
 
-
-#endif   // JFBOUNDINGSPHERE_X86_H
+#endif // JFBOUNDINGSPHERE_X86_H

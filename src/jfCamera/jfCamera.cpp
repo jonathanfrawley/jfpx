@@ -18,10 +18,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include "jfCamera.h"
 
 jfCamera::jfCamera()
-	:
-		m_Pos(0),
-		m_Rot(0),
-		m_Heading(0)
+    : m_Pos(0)
+    , m_Rot(0)
+    , m_Heading(0)
 {
 }
 

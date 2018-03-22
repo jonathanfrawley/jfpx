@@ -18,17 +18,15 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include "jfAeroForceGenerator.h"
 
 jfAeroForceGenerator::jfAeroForceGenerator()
-											:
-											m_Tensor(0),
-											m_Pos(0),
-											m_WindSpeed(0)
+    : m_Tensor(0)
+    , m_Pos(0)
+    , m_WindSpeed(0)
 {
 }
 
 jfAeroForceGenerator::jfAeroForceGenerator(jfVector3* windSpeed)
-											:
-											m_Tensor(0),
-											m_Pos(0)
+    : m_Tensor(0)
+    , m_Pos(0)
 {
     m_WindSpeed = windSpeed;
 }

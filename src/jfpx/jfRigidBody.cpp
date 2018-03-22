@@ -17,25 +17,27 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 **/
 #include "jfRigidBody.h"
 
-jfRigidBody::jfRigidBody () : m_InverseMass(1), //Mass of 1 to avoid zero-division
-								m_Pos(0),
-								m_Orientation(0),
-								m_Velocity(0),
-								m_Rotation(0),
-								m_TransformMatrix(0),
-								m_InverseInertiaTensor(0),
-								m_InverseInertiaTensorWorld(0),
-								m_ForceAccum(0),
-								m_TorqueAccum(0),
-								m_LinearDamping(0),
-								m_AngularDamping(0),
-								m_Accel(0),
-								m_LastFrameAccel(0),
-								m_IsAwake(true),
-                                m_CanSleep(false)
+jfRigidBody::jfRigidBody()
+    : m_InverseMass(1)
+    , //Mass of 1 to avoid zero-division
+    m_Pos(0)
+    , m_Orientation(0)
+    , m_Velocity(0)
+    , m_Rotation(0)
+    , m_TransformMatrix(0)
+    , m_InverseInertiaTensor(0)
+    , m_InverseInertiaTensorWorld(0)
+    , m_ForceAccum(0)
+    , m_TorqueAccum(0)
+    , m_LinearDamping(0)
+    , m_AngularDamping(0)
+    , m_Accel(0)
+    , m_LastFrameAccel(0)
+    , m_IsAwake(true)
+    , m_CanSleep(false)
 {
 }
 
-jfRigidBody::~jfRigidBody ()
+jfRigidBody::~jfRigidBody()
 {
 }

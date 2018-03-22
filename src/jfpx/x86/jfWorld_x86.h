@@ -20,17 +20,16 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include <jfpx/jfWorld.h>
 
-class jfWorld_x86 : public jfWorld
-{
-	public:
-		jfWorld_x86();
-		virtual ~jfWorld_x86();
+class jfWorld_x86 : public jfWorld {
+public:
+    jfWorld_x86();
+    virtual ~jfWorld_x86();
 
-		/* Inherited from superclass */
-		virtual void startFrame();
-        virtual void step(jfReal timeStep);
-	protected:
+    /* Inherited from superclass */
+    virtual void startFrame();
+    virtual void step(jfReal timeStep);
 
+protected:
 };
 
 #endif //JFWORLD_X86_H

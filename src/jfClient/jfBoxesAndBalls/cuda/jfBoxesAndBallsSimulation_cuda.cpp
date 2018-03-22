@@ -19,30 +19,28 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 jfBoxesAndBallsSimulation_cuda::jfBoxesAndBallsSimulation_cuda()
 {
-	m_PhysicsFactory = new jfFactory_cuda();
-	//m_PhysicsFactory = new jfFactory_x86();
-	m_ShapeFactory = new jfShapeFactory_x86();
+    m_PhysicsFactory = new jfFactory_cuda();
+    //m_PhysicsFactory = new jfFactory_x86();
+    m_ShapeFactory = new jfShapeFactory_x86();
     m_EventHandler = new jfBoxesAndBallsEventHandler_cuda();
     m_WindowManager = new jfSDL();
     m_3DGraphicsHandler = new jfBoxesAndBalls3DGraphicsHandler_cuda();
     m_Timer = new jfTimer();
 
     unsigned i;
-    for(i=0; i<m_MaxBalls ;i++)
-    {
+    for (i = 0; i < m_MaxBalls; i++) {
         m_Balls.push_back(m_ShapeFactory->makeBall());
     }
-    for(i=0;i<m_MaxBoxes;i++)
-    {
+    for (i = 0; i < m_MaxBoxes; i++) {
         m_Boxes.push_back(m_ShapeFactory->makeBox());
     }
-	m_CollisionData = m_PhysicsFactory->makeCollisionData();
-	m_ContactResolver = m_PhysicsFactory->makeContactResolver(m_MaxContacts);
-	m_CollisionDetector = m_PhysicsFactory->makeCollisionDetector();
-	m_Plane = m_PhysicsFactory->makeCollisionPlane();
-	m_Cam = new jfFPSCamera();
+    m_CollisionData = m_PhysicsFactory->makeCollisionData();
+    m_ContactResolver = m_PhysicsFactory->makeContactResolver(m_MaxContacts);
+    m_CollisionDetector = m_PhysicsFactory->makeCollisionDetector();
+    m_Plane = m_PhysicsFactory->makeCollisionPlane();
+    m_Cam = new jfFPSCamera();
 #ifdef PERF_TIMING
-	m_PerformanceTimer = new jfPerformanceTimer();
+    m_PerformanceTimer = new jfPerformanceTimer();
 #endif
 }
 
@@ -53,21 +51,20 @@ jfBoxesAndBallsSimulation_cuda::~jfBoxesAndBallsSimulation_cuda()
     delete m_3DGraphicsHandler;
     delete m_Timer;
     delete m_Plane;
-	delete m_CollisionData;
-	delete m_ContactResolver;
-	delete m_CollisionDetector;
-	delete m_PhysicsFactory;
-	delete m_ShapeFactory;
-	delete m_Cam;
-	#ifdef PERF_TIMING
-	delete m_PerformanceTimer;
-	#endif
+    delete m_CollisionData;
+    delete m_ContactResolver;
+    delete m_CollisionDetector;
+    delete m_PhysicsFactory;
+    delete m_ShapeFactory;
+    delete m_Cam;
+#ifdef PERF_TIMING
+    delete m_PerformanceTimer;
+#endif
 }
 
 void jfBoxesAndBallsSimulation_cuda::drawDebug()
 {
-    if (!m_RenderDebugInfo)
-    {
+    if (!m_RenderDebugInfo) {
         return;
     }
 
@@ -81,15 +78,14 @@ void jfBoxesAndBallsSimulation_cuda::drawDebug()
 
 bool jfBoxesAndBallsSimulation_cuda::init()
 {
-    if(! m_WindowManager->createWindow(800, 600, 32, false, "Ballistic Simulation"))
-    {
+    if (!m_WindowManager->createWindow(800, 600, 32, false, "Ballistic Simulation")) {
         return false;
     }
 
-    m_Cam->setPos(jfVector3_x86(0,10,50));
-    m_Cam->setRot(jfVector3_x86(0,0,0));
+    m_Cam->setPos(jfVector3_x86(0, 10, 50));
+    m_Cam->setRot(jfVector3_x86(0, 0, 0));
     m_EventHandler->setWindowManager(m_WindowManager);
-//    m_EventHandler->setSimulation(this);
+    //    m_EventHandler->setSimulation(this);
     m_EventHandler->setCam(m_Cam);
     m_3DGraphicsHandler->init();
     m_3DGraphicsHandler->setBalls(&m_Balls);
@@ -98,32 +94,30 @@ bool jfBoxesAndBallsSimulation_cuda::init()
 
     vector<jfBall*>::iterator ball;
     jfReal y = 1.f;
-    for( ball = m_Balls.begin() ; ball != m_Balls.end() ; ball++)
-    {
-        jfVector3_x86 pos = jfVector3_x86(y*0.1,y,0);
-        (*ball)->setState(JF_BALL_HEAVY,pos);
+    for (ball = m_Balls.begin(); ball != m_Balls.end(); ball++) {
+        jfVector3_x86 pos = jfVector3_x86(y * 0.1, y, 0);
+        (*ball)->setState(JF_BALL_HEAVY, pos);
         (*ball)->setRadius(1.0);
-        (*ball)->getBody()->setAccel(jfVector3_x86(0,-9.8,0));
-        y+=3;
+        (*ball)->getBody()->setAccel(jfVector3_x86(0, -9.8, 0));
+        y += 3;
         //(*ball)->setType(JF_BALL_UNUSED);
     }
-    y=10;
+    y = 10;
     // Initialise the boxes
     vector<jfBox*>::iterator box;
-    for (box = m_Boxes.begin(); box != m_Boxes.end() ; box++)
-    {
+    for (box = m_Boxes.begin(); box != m_Boxes.end(); box++) {
         (*box)->init();
-        jfVector3_x86 pos = jfVector3_x86(0,y,3);
+        jfVector3_x86 pos = jfVector3_x86(0, y, 3);
         (*box)->setState(JF_BOX_HEAVY, pos);
-        y+=3;
+        y += 3;
     }
 
     m_Timer->start();
     m_MousePressedLast = false;
 
 #ifdef PERF_TIMING
-	//Remove performance timing file from before.
-	remove(timingFilename);
+    //Remove performance timing file from before.
+    remove(timingFilename);
 #endif
 
     return true;
@@ -131,7 +125,7 @@ bool jfBoxesAndBallsSimulation_cuda::init()
 
 void jfBoxesAndBallsSimulation_cuda::fire()
 {
-/*    // Find the first available round.
+    /*    // Find the first available round.
     vector<jfAmmoRound_x86*>::iterator shot;
     for (shot = m_Ammo.begin(); shot != m_Ammo.end() ; shot++)
     {
@@ -153,11 +147,9 @@ void jfBoxesAndBallsSimulation_cuda::fire()
 void jfBoxesAndBallsSimulation_cuda::updateObjects(jfReal timeStep)
 {
     // Update the physics of each particle in turn
-	vector<jfBall*>::iterator ball;
-    for (ball = m_Balls.begin(); ball != m_Balls.end() ; ball++)
-    {
-        if ((*ball)->getType() != JF_BALL_UNUSED)
-        {
+    vector<jfBall*>::iterator ball;
+    for (ball = m_Balls.begin(); ball != m_Balls.end(); ball++) {
+        if ((*ball)->getType() != JF_BALL_UNUSED) {
             //jfVector3_x86 bodyPos;
 
             // Run the physics
@@ -169,12 +161,10 @@ void jfBoxesAndBallsSimulation_cuda::updateObjects(jfReal timeStep)
         }
     }
 
-	vector<jfBox*>::iterator box;
+    vector<jfBox*>::iterator box;
     // Update the boxes
-    for (box = m_Boxes.begin(); box != m_Boxes.end() ; box++)
-    {
-        if ((*box)->getType() != JF_BOX_UNUSED)
-        {
+    for (box = m_Boxes.begin(); box != m_Boxes.end(); box++) {
+        if ((*box)->getType() != JF_BOX_UNUSED) {
             // Run the physics
             (*box)->getBody()->calculateDerivedData();
             (*box)->getBody()->integrate(timeStep);
@@ -185,34 +175,31 @@ void jfBoxesAndBallsSimulation_cuda::updateObjects(jfReal timeStep)
 
 void jfBoxesAndBallsSimulation_cuda::generateContacts()
 {
-    vector<jfBox*>::iterator box, otherBox;
-    vector<jfBall*>::iterator ball, otherBall;
+    vector<jfBox *>::iterator box, otherBox;
+    vector<jfBall *>::iterator ball, otherBall;
 
-    m_Plane->setDirection(jfVector3_x86(0,1,0));
+    m_Plane->setDirection(jfVector3_x86(0, 1, 0));
     m_Plane->setOffset(0);
 
     // Set up the collision data structure
     m_CollisionData->reset();
-    m_CollisionData->setFriction((jfReal) 0.4);
+    m_CollisionData->setFriction((jfReal)0.4);
     m_CollisionData->setRestitution((jfReal)0.0001);
     m_CollisionData->setTolerance((jfReal)0.001);
 
     //m_CollisionDetector->boxAndBoxBatch(m_Boxes, m_CollisionData);
 
-    for (box = m_Boxes.begin(); box != m_Boxes.end() ; box++)
-    {
+    for (box = m_Boxes.begin(); box != m_Boxes.end(); box++) {
         // Check ground plane collisions
         m_CollisionDetector->boxAndHalfSpace((*(*box)), (*m_Plane), m_CollisionData);
 
         // Check for collisions with each ball
-		for (ball = m_Balls.begin(); ball != m_Balls.end() ; ball++)
-		{
-            if (m_CollisionDetector->boxAndSphere((*(*box)), (*(*ball)), m_CollisionData))
-            {
-                cout<<"Box and Sphere Collision."<<endl;
+        for (ball = m_Balls.begin(); ball != m_Balls.end(); ball++) {
+            if (m_CollisionDetector->boxAndSphere((*(*box)), (*(*ball)), m_CollisionData)) {
+                cout << "Box and Sphere Collision." << endl;
             }
         }
-/*
+        /*
         //Check for collisions with other boxes
         for(otherBox = m_Boxes.begin(); otherBox != m_Boxes.end();otherBox++)
         {
@@ -224,14 +211,13 @@ void jfBoxesAndBallsSimulation_cuda::generateContacts()
         */
     }
     m_CollisionDetector->boxAndBoxBatch(m_Boxes, m_CollisionData);
-   	m_CollisionDetector->sphereAndSphereBatch(m_Balls, m_CollisionData);
+    m_CollisionDetector->sphereAndSphereBatch(m_Balls, m_CollisionData);
 
-	// Check for collisions with each ball
-    for (ball = m_Balls.begin(); ball != m_Balls.end() ; ball++)
-    {
+    // Check for collisions with each ball
+    for (ball = m_Balls.begin(); ball != m_Balls.end(); ball++) {
         //Check for collisions with ground
         m_CollisionDetector->sphereAndHalfSpace((*(*ball)), (*m_Plane), m_CollisionData);
-/*
+        /*
         //Check for collisions with other balls
         for(otherBall = m_Balls.begin(); otherBall != m_Balls.end(); otherBall++)
         {
@@ -249,8 +235,7 @@ void jfBoxesAndBallsSimulation_cuda::generateContacts()
 
 void jfBoxesAndBallsSimulation_cuda::run()
 {
-    while(m_EventHandler->handleEvents())
-    {
+    while (m_EventHandler->handleEvents()) {
         m_EventHandler->handleKeyEvents();
         m_EventHandler->handleMouseEvents();
 
@@ -260,23 +245,19 @@ void jfBoxesAndBallsSimulation_cuda::run()
 
         jfReal timeStep = 0.01; // Fix it so both cuda and x86 versions will have around same amounts of work to do on each frame.
 
-        if((m_EventHandler->getMouseEvent().getStatus() == EVENT_MOUSELEFT))
-        {
-            if(!m_MousePressedLast)
-            {
+        if ((m_EventHandler->getMouseEvent().getStatus() == EVENT_MOUSELEFT)) {
+            if (!m_MousePressedLast) {
                 m_MousePressedLast = true;
                 fire();
             }
-        }
-        else
-        {
+        } else {
             m_MousePressedLast = false;
         }
 
         // start timer
-//        gettimeofday(&t1, NULL);
+        //        gettimeofday(&t1, NULL);
 
-		updateObjects(timeStep);
+        updateObjects(timeStep);
 /*
         // stop timer
         gettimeofday(&t2, NULL);
@@ -287,25 +268,23 @@ void jfBoxesAndBallsSimulation_cuda::run()
         logToFile(buf, "CollisionDetectionTimes.dat");
         //gettimeofday(&t1, NULL);
 */
-    #ifdef PERF_TIMING
+#ifdef PERF_TIMING
         m_PerformanceTimer->start();
-    #endif
+#endif
         generateContacts();
-    #ifdef PERF_TIMING
+#ifdef PERF_TIMING
         m_PerformanceTimer->stop();
         m_ElapsedTime = m_PerformanceTimer->getElapsedTime();
         char buf[255];
         sprintf(buf, "%lf\n", m_ElapsedTime);
         logToFile(buf, timingFilename);
-    #endif
-
+#endif
 
         vector<jfContact*> contacts; // = m_CollisionData->getContacts();
         m_CollisionData->getContacts(&contacts);
         //cout <<"contacts.size() is : " <<contacts.size()<<endl;
         m_ContactResolver->resolveContacts(contacts,
-                                            timeStep);
-
+            timeStep);
 
         /*m_ContactResolver->resolveContacts(m_CollisionData->getContactArray(),
                                             m_CollisionData->getContactCount(),

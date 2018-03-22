@@ -17,16 +17,17 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 **/
 #include "jfGravityForceGenerator.h"
 
-
-jfGravityForceGenerator::jfGravityForceGenerator () : m_Gravity(0)
+jfGravityForceGenerator::jfGravityForceGenerator()
+    : m_Gravity(0)
 {
 }
 
-jfGravityForceGenerator::jfGravityForceGenerator (jfVector3* gravity) : m_Gravity(gravity)
+jfGravityForceGenerator::jfGravityForceGenerator(jfVector3* gravity)
+    : m_Gravity(gravity)
 {
 }
 
-jfGravityForceGenerator::~jfGravityForceGenerator ()
+jfGravityForceGenerator::~jfGravityForceGenerator()
 {
-	delete m_Gravity;
+    delete m_Gravity;
 }

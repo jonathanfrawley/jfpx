@@ -18,47 +18,34 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include "jfFPSCamera.h"
 
 jfFPSCamera::jfFPSCamera()
-	:
-		jfCamera(),
-		m_Speed(0.2)
+    : jfCamera()
+    , m_Speed(0.2)
 {
-	m_Rot = new jfVector3_x86();
-	m_Pos = new jfVector3_x86();
+    m_Rot = new jfVector3_x86();
+    m_Pos = new jfVector3_x86();
 }
 
 jfFPSCamera::~jfFPSCamera()
 {
-	delete m_Rot;
-	delete m_Pos;
+    delete m_Rot;
+    delete m_Pos;
 }
 
 void jfFPSCamera::strafeLeft()
 {
-        (*m_Pos) += jfVector3_x86( - ((float)cos(m_Rot->getY() * PI_OVER_180) * m_Speed)
-                                , 0
-                                , - ((float)sin(m_Rot->getY() * PI_OVER_180) * m_Speed)
-                                );
+    (*m_Pos) += jfVector3_x86(-((float)cos(m_Rot->getY() * PI_OVER_180) * m_Speed), 0, -((float)sin(m_Rot->getY() * PI_OVER_180) * m_Speed));
 }
 
 void jfFPSCamera::strafeRight()
 {
-        (*m_Pos) += jfVector3_x86( ((float)cos(m_Rot->getY() * PI_OVER_180) * m_Speed)
-                                , 0
-                                , ((float)sin(m_Rot->getY() * PI_OVER_180) * m_Speed)
-                                );
+    (*m_Pos) += jfVector3_x86(((float)cos(m_Rot->getY() * PI_OVER_180) * m_Speed), 0, ((float)sin(m_Rot->getY() * PI_OVER_180) * m_Speed));
 }
 
 void jfFPSCamera::strafeForward()
 {
-        (*m_Pos) += jfVector3_x86( ((float)sin(m_Rot->getY() * PI_OVER_180) * m_Speed)
-                                , 0
-                                , - ((float)cos(m_Rot->getY() * PI_OVER_180) * m_Speed)
-                                );
+    (*m_Pos) += jfVector3_x86(((float)sin(m_Rot->getY() * PI_OVER_180) * m_Speed), 0, -((float)cos(m_Rot->getY() * PI_OVER_180) * m_Speed));
 }
 void jfFPSCamera::strafeBackward()
 {
-        (*m_Pos) += jfVector3_x86( - ((float)sin(m_Rot->getY() * PI_OVER_180) * m_Speed)
-                                , 0
-                                , ((float)cos(m_Rot->getY() * PI_OVER_180) * m_Speed)
-                                );
+    (*m_Pos) += jfVector3_x86(-((float)sin(m_Rot->getY() * PI_OVER_180) * m_Speed), 0, ((float)cos(m_Rot->getY() * PI_OVER_180) * m_Speed));
 }

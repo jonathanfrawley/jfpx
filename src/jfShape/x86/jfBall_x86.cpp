@@ -21,18 +21,18 @@ jfBall_x86::jfBall_x86()
 {
     m_SphereQuadric = gluNewQuadric();
     gluQuadricDrawStyle(m_SphereQuadric, GLU_SMOOTH);
-	gluQuadricTexture(m_SphereQuadric, GL_TRUE);
+    gluQuadricTexture(m_SphereQuadric, GL_TRUE);
 }
 
 jfBall_x86::~jfBall_x86()
 {
-	gluDeleteQuadric(m_SphereQuadric);
+    gluDeleteQuadric(m_SphereQuadric);
 }
 
 void jfBall_x86::drawSphere(float radius, int subdivisions) const
 {
     glPushMatrix();
-        gluSphere(m_SphereQuadric, radius, subdivisions, subdivisions);
+    gluSphere(m_SphereQuadric, radius, subdivisions, subdivisions);
     glPopMatrix();
 }
 
@@ -54,28 +54,27 @@ void jfBall_x86::setState(BallType ballType, const jfVector3& pos)
 {
     jfMatrix3_x86 tensor;
 
-	m_Type = ballType;
-	switch(m_Type)
-	{
-		case JF_BALL_LIGHT:
-			//TODO
-			break;
-		case JF_BALL_HEAVY:
-            m_Body->setMass(20.0f); // 20.0kg
-            //m_Body->setVelocity(jfVector3_x86(0.0f, 30.0f, 40.0f)); // 50m/s
-            //m_Body->setAccel(jfVector3_x86(0.0f, -9.8f, 0.0f));
-            m_Body->setLinearDamping(0.99f);
-            m_Body->setAngularDamping(0.8f);
-			break;
-        case JF_BALL_UNUSED:
-            break;
-	}
+    m_Type = ballType;
+    switch (m_Type) {
+    case JF_BALL_LIGHT:
+        //TODO
+        break;
+    case JF_BALL_HEAVY:
+        m_Body->setMass(20.0f); // 20.0kg
+        //m_Body->setVelocity(jfVector3_x86(0.0f, 30.0f, 40.0f)); // 50m/s
+        //m_Body->setAccel(jfVector3_x86(0.0f, -9.8f, 0.0f));
+        m_Body->setLinearDamping(0.99f);
+        m_Body->setAngularDamping(0.8f);
+        break;
+    case JF_BALL_UNUSED:
+        break;
+    }
     m_Radius = 1.0f;
     m_Body->setCanSleep(true);
     m_Body->setAwake();
 
-    jfReal coeff = 0.4f*m_Body->getMass()*m_Radius*m_Radius;
-    tensor.setInertiaTensorCoeffs(coeff,coeff,coeff);
+    jfReal coeff = 0.4f * m_Body->getMass() * m_Radius * m_Radius;
+    tensor.setInertiaTensorCoeffs(coeff, coeff, coeff);
     m_Body->setInertiaTensor(tensor);
 
     //Our good friend gravity

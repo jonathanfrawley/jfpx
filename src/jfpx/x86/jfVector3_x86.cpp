@@ -23,14 +23,14 @@ jfVector3_x86::jfVector3_x86()
 }
 
 jfVector3_x86::jfVector3_x86(const jfReal x,
-								const jfReal y,
-								const jfReal z) : jfVector3(x,y,z)
+    const jfReal y,
+    const jfReal z)
+    : jfVector3(x, y, z)
 {
 }
 
 jfVector3_x86::jfVector3_x86(const jfVector3& other)
-    :
-        jfVector3(other)
+    : jfVector3(other)
 {
 }
 
@@ -46,33 +46,32 @@ jfVector3_x86::~jfVector3_x86()
 
 void jfVector3_x86::invert()
 {
-	m_X = -m_X;
+    m_X = -m_X;
     m_Y = -m_Y;
     m_Z = -m_Z;
 }
 
 jfReal jfVector3_x86::magnitude() const
 {
-    return jfRealSqrt((m_X*m_X) + (m_Y*m_Y) + (m_Z*m_Z));
+    return jfRealSqrt((m_X * m_X) + (m_Y * m_Y) + (m_Z * m_Z));
 }
 
 jfReal jfVector3_x86::squareMagnitude() const
 {
-    return ((m_X*m_X) + (m_Y*m_Y) + (m_Z*m_Z));
+    return ((m_X * m_X) + (m_Y * m_Y) + (m_Z * m_Z));
 }
 
 void jfVector3_x86::normalize()
 {
     jfReal mag = magnitude();
-    if(mag > 0)
-    {
-        (*this) *= ((jfReal)1/mag);
+    if (mag > 0) {
+        (*this) *= ((jfReal)1 / mag);
     }
 }
 
 void jfVector3_x86::operator*=(jfReal val)
 {
-	m_X *= val;
+    m_X *= val;
     m_Y *= val;
     m_Z *= val;
 }
@@ -86,7 +85,7 @@ void jfVector3_x86::operator+=(const jfVector3& v)
 
 void jfVector3_x86::operator-=(const jfVector3& v)
 {
-	m_X -= v.getX();
+    m_X -= v.getX();
     m_Y -= v.getY();
     m_Z -= v.getZ();
 }
@@ -100,56 +99,56 @@ void jfVector3_x86::addScaledVector(const jfVector3& v, jfReal scale)
 
 void jfVector3_x86::componentProductUpdate(const jfVector3& v)
 {
-	m_X *= v.getX();
+    m_X *= v.getX();
     m_Y *= v.getY();
     m_Z *= v.getZ();
 }
 
 jfReal jfVector3_x86::dotProduct(const jfVector3& v) const
 {
-    return ( (v.getX()*m_X) + (v.getY()*m_Y) + (v.getZ()*m_Z) );
+    return ((v.getX() * m_X) + (v.getY() * m_Y) + (v.getZ() * m_Z));
 }
 
 void jfVector3_x86::multiply(jfReal val, jfVector3* result) const
 {
-	result->setX(m_X*val);
-	result->setY(m_Y*val);
-	result->setZ(m_Z*val);
+    result->setX(m_X * val);
+    result->setY(m_Y * val);
+    result->setZ(m_Z * val);
 }
 
 void jfVector3_x86::add(const jfVector3& vec, jfVector3* result) const
 {
-	result->setX(m_X + vec.getX());
-	result->setY(m_Y + vec.getY());
-	result->setZ(m_Z + vec.getZ());
+    result->setX(m_X + vec.getX());
+    result->setY(m_Y + vec.getY());
+    result->setZ(m_Z + vec.getZ());
 }
 
 void jfVector3_x86::subtract(const jfVector3& vec, jfVector3* result) const
 {
-	result->setX(m_X - vec.getX());
-	result->setY(m_Y - vec.getY());
-	result->setZ(m_Z - vec.getZ());
+    result->setX(m_X - vec.getX());
+    result->setY(m_Y - vec.getY());
+    result->setZ(m_Z - vec.getZ());
 }
 
 void jfVector3_x86::subtract(jfReal val, jfVector3* result) const
 {
-	result->setX(m_X - val);
-	result->setY(m_Y - val);
-	result->setZ(m_Z - val);
+    result->setX(m_X - val);
+    result->setY(m_Y - val);
+    result->setZ(m_Z - val);
 }
 
 void jfVector3_x86::componentProduct(const jfVector3& vec, jfVector3* result) const
 {
-	result->setX(m_X * vec.getX());
-	result->setY(m_Y * vec.getY());
-	result->setZ(m_Z * vec.getZ());
+    result->setX(m_X * vec.getX());
+    result->setY(m_Y * vec.getY());
+    result->setZ(m_Z * vec.getZ());
 }
 
 void jfVector3_x86::crossProduct(const jfVector3& vec, jfVector3* result) const
 {
     jfVector3_x86 tempResult;
-	tempResult.setX((m_Y*vec.getZ()) - (m_Z*vec.getY()));
-	tempResult.setY((m_Z*vec.getX()) - (m_X*vec.getZ()));
-	tempResult.setZ((m_X*vec.getY()) - (m_Y*vec.getX()));
-	(*result) = tempResult;
+    tempResult.setX((m_Y * vec.getZ()) - (m_Z * vec.getY()));
+    tempResult.setY((m_Z * vec.getX()) - (m_X * vec.getZ()));
+    tempResult.setZ((m_X * vec.getY()) - (m_Y * vec.getX()));
+    (*result) = tempResult;
 }

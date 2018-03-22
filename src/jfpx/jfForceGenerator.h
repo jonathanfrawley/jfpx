@@ -18,8 +18,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #ifndef JFFORCEGENERATOR_H
 #define JFFORCEGENERATOR_H
 
-#include <jfpx/jfRigidBody.h>
 #include <jfpx/jfCore.h>
+#include <jfpx/jfRigidBody.h>
 
 /*
  * =====================================================================================
@@ -27,18 +27,16 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *  Description:
  * =====================================================================================
  */
-class jfForceGenerator
-{
-	public:
-		jfForceGenerator ();
-		virtual ~jfForceGenerator ();
+class jfForceGenerator {
+public:
+    jfForceGenerator();
+    virtual ~jfForceGenerator();
 
-		/* Interface */
-		virtual void updateForce(jfRigidBody* body, jfReal duration) const = 0;
+    /* Interface */
+    virtual void updateForce(jfRigidBody* body, jfReal duration) const = 0;
 
-	protected:
-	private:
+protected:
+private:
 };
-
 
 #endif //JFFORCEGENERATOR_H

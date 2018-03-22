@@ -20,23 +20,22 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include <jfpx/jfCollisionBox.h>
 
-#include <jfpx/x86/jfVector3_x86.h>
-#include <jfpx/x86/jfRigidBody_x86.h>
 #include <jfpx/x86/jfMatrix4_x86.h>
+#include <jfpx/x86/jfRigidBody_x86.h>
+#include <jfpx/x86/jfVector3_x86.h>
 
+class jfCollisionBox_x86 : public jfCollisionBox {
+public:
+    jfCollisionBox_x86();
+    virtual ~jfCollisionBox_x86();
 
-class jfCollisionBox_x86 : public jfCollisionBox
-{
-    public:
-        jfCollisionBox_x86();
-        virtual ~jfCollisionBox_x86();
-
-		/*-----------------------------------------------------------------------------
+    /*-----------------------------------------------------------------------------
 		 *  Inherited Methods
 		 *-----------------------------------------------------------------------------*/
-        virtual void calculateInternals();
-    protected:
-    private:
+    virtual void calculateInternals();
+
+protected:
+private:
 };
 
 #endif // JFCOLLISIONBOX_X86_H

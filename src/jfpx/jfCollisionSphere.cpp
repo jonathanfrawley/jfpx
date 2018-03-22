@@ -18,8 +18,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include "jfCollisionSphere.h"
 
 jfCollisionSphere::jfCollisionSphere()
-	:
-		m_Radius(0)
+    : m_Radius(0)
 {
 }
 

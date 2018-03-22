@@ -18,14 +18,12 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #ifndef JFSIMULATION_H
 #define JFSIMULATION_H
 
-class jfSimulation
-{
-	public:
-		jfSimulation();
-		virtual ~jfSimulation();
-		virtual bool init() = 0;
-		virtual void run() = 0;
+class jfSimulation {
+public:
+    jfSimulation();
+    virtual ~jfSimulation();
+    virtual bool init() = 0;
+    virtual void run() = 0;
 };
 
 #endif
-

@@ -20,36 +20,35 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include <jfSimulation/jfSimulation.h>
 //#include <jfEvent/jfEventHandler.h>
-#include <jfEvent/jfEvent.h>
+#include <jfClient/jfBallistic/x86/jfAmmoRound.h>
 #include <jfClient/jfBallistic/x86/jfBallisticEventHandler.h>
 #include <jfClient/jfBallistic/x86/jfBallisticSDLGL3DGraphicsHandler.h>
-#include <jfClient/jfBallistic/x86/jfAmmoRound.h>
-#include <jfGraphics/jfWindowManager/jfWindowManager.h>
-#include <jfGraphics/jfWindowManager/jfSDL/jfSDL.h>
+#include <jfEvent/jfEvent.h>
 #include <jfGraphics/jf3DGraphics/jf3DGraphicsHandler.h>
 #include <jfGraphics/jf3DGraphics/jfSDLGL/jfSDLGL3DGraphicsHandler.h>
+#include <jfGraphics/jfWindowManager/jfSDL/jfSDL.h>
+#include <jfGraphics/jfWindowManager/jfWindowManager.h>
 #include <jfTimer/jfTimer.h>
 
 #include <vector>
 using namespace std;
 
-class jfBallisticSimulation : public jfSimulation
-{
-	public:
-		jfBallisticSimulation();
-		virtual ~jfBallisticSimulation();
-		bool init();
-		void run();
-        void fire();
-    private:
-        jfBallisticEventHandler* m_EventHandler;
-        jfWindowManager* m_WindowManager;
-        jfBallisticSDLGL3DGraphicsHandler* m_3DGraphicsHandler;
-        jfTimer* m_Timer;
-        int m_LastFrameDuration;
-        vector<jfAmmoRound*> m_Ammo;
-        bool m_MousePressedLast;
+class jfBallisticSimulation : public jfSimulation {
+public:
+    jfBallisticSimulation();
+    virtual ~jfBallisticSimulation();
+    bool init();
+    void run();
+    void fire();
+
+private:
+    jfBallisticEventHandler* m_EventHandler;
+    jfWindowManager* m_WindowManager;
+    jfBallisticSDLGL3DGraphicsHandler* m_3DGraphicsHandler;
+    jfTimer* m_Timer;
+    int m_LastFrameDuration;
+    vector<jfAmmoRound*> m_Ammo;
+    bool m_MousePressedLast;
 };
 
 #endif
-
